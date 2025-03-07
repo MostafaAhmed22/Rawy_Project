@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rawy.DAL\Rawy.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

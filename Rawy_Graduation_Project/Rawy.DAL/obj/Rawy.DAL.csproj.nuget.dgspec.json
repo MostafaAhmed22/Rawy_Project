@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Graduation2\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj": {}
+    "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj": {}
   },
   "projects": {
-    "D:\\Graduation2\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj": {
+    "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Graduation2\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj",
+        "projectUniqueName": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj",
         "projectName": "Rawy.DAL",
-        "projectPath": "D:\\Graduation2\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj",
+        "projectPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Rawy.DAL.csproj",
         "packagesPath": "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\Graduation2\\Rawy_Graduation_Project\\Rawy.DAL\\obj\\",
+        "outputPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mostafa Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
