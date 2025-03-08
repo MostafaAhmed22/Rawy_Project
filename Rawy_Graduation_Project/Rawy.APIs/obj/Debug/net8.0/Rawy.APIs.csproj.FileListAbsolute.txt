@@ -153,3 +153,4 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\r
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\Rawy.APIs.pdb
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\Rawy.APIs.genruntimeconfig.cache
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\ref\Rawy.APIs.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\Rawy.APIs.MvcApplicationPartsAssemblyInfo.cs

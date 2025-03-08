@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Rawy.BLL.Interfaces;
+using Rawy.BLL.Specifications;
 using Rawy.DAL.Data;
 using Rawy.DAL.Models;
+using Rawy.DAL.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Repositories
 {
-	internal class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 	{
 		private readonly RawyDBContext _context;
 
@@ -19,14 +21,17 @@ namespace Rawy.BLL.Repositories
 			_context = context;
 		}
 
-		public async Task<IEnumerable<T>> GetAllAsync()
+		public async Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec)
 		{
-			return await _context.Set<T>().ToListAsync();
+
+			return await SpecificationsEvaluator<T>.GetQuery(_context.Set<T>(), spec).ToListAsync();
+
+			 //_context.Set<T>().ToListAsync();
 		}
 
-		public async Task<T?> GetByIdAsync(int id)
+		public async Task<T?> GetByIdWithSpecAsync(ISpecifications<T> spec)
 		{
-			return await _context.Set<T>().FindAsync(id);
+			return await SpecificationsEvaluator<T>.GetQuery(_context.Set<T>(), spec).FirstOrDefaultAsync();
 		}
 		public async Task AddAsync(T entity)
 		{
@@ -51,6 +56,16 @@ namespace Rawy.BLL.Repositories
 		{
 			_context.Set<T>().Update(entity);
 			await _context.SaveChangesAsync();
+		}
+
+		public async Task<IEnumerable<T>> GetAllAsync()
+		{
+			return await _context.Set<T>().ToListAsync();
+		}
+
+		public async Task<T?> GetByIdAsync(int id)
+		{
+			return await _context.Set<T>().FindAsync(id);
 		}
 	}
 }

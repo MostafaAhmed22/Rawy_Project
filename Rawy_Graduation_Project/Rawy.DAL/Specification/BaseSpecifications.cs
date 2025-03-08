@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Specification
 {
-	internal class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
+	public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
 	{
 		public Expression<Func<T, bool>> Criteria { get; set; } = null;
 		public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
@@ -24,5 +24,8 @@ namespace Rawy.DAL.Specification
         {
             Criteria = CriteriaExpression;
         }
-    }
+
+		// _context.Story.include( S => S.Writer).include(S=> S.Choices)
+		// _context.Story.Where(S=> S.Id == id)
+	}
 }

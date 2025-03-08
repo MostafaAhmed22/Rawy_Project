@@ -14,10 +14,10 @@ namespace Rawy.DAL.Models
 		public DateTime CreatedAt { get; set; }
 
 		// Choises of Story
-		public ICollection<StoryChoise> Choises { get; set; }
+	//	public ICollection<StoryChoise> Choises { get; set; }
 
-		//public int WriterId { get; set; }
-		//public Writer Writer { get; set; }
+		public int WriterId { get; set; }
+		public Writer Writer { get; set; }
 
 	}
 }

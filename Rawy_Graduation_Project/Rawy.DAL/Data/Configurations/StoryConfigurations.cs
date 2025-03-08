@@ -14,6 +14,7 @@ namespace Rawy.DAL.Data.Configurations
 		public void Configure(EntityTypeBuilder<Story> builder)
 		{
 			builder.HasKey(s => s.Id);
+			builder.Property(s => s.Id).IsRequired();
 
 			builder.Property(s => s.Title)
 				.IsRequired()
@@ -29,10 +30,10 @@ namespace Rawy.DAL.Data.Configurations
 				.HasDefaultValueSql("GETDATE()");
 
 			// Foreign Key Relationship with Choises
-			builder.HasMany(w => w.Choises)
-				.WithOne(s => s.Story)
-				.HasForeignKey(s => s.StoryId)
-				.OnDelete(DeleteBehavior.ClientSetNull);
+			//builder.HasMany(w => w.Choises)
+			//	.WithOne(s => s.Story)
+			//	.HasForeignKey(s => s.StoryId)
+			//	.OnDelete(DeleteBehavior.ClientSetNull);
 
 			// Foreign Key Relationship with Writer
 			//builder.HasOne(s => s.Writer)

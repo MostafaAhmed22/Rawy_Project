@@ -12,8 +12,6 @@ namespace Rawy.DAL.Models
 	{
 		public string FName { get; set; }
 		public string LName { get; set; }
-		public string? PreferedLanguage { get; set; }
-		public string? WritingStyle { get; set; }
-		public ICollection<Story> Stories { get; set; }
+
 	}
 }

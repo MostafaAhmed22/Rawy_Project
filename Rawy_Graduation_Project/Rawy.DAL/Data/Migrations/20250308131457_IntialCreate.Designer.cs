@@ -12,7 +12,7 @@ using Rawy.DAL.Data;
 namespace Rawy.DAL.Data.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250307184639_IntialCreate")]
+    [Migration("20250308131457_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -170,6 +170,11 @@ namespace Rawy.DAL.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -208,9 +213,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PreferedLanguage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -220,9 +222,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("WritingStyle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -235,6 +234,10 @@ namespace Rawy.DAL.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator().HasValue("AppUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
@@ -244,9 +247,6 @@ namespace Rawy.DAL.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -267,36 +267,31 @@ namespace Rawy.DAL.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("WriterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WriterId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("WriterId1");
 
                     b.ToTable("Stories");
                 });
 
-            modelBuilder.Entity("Rawy.DAL.Models.StoryChoise", b =>
+            modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasBaseType("Rawy.DAL.Models.AppUser");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ChoiceText")
-                        .IsRequired()
+                    b.Property<string>("PreferedLanguage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NextStoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("WritingStyle")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StoryId");
-
-                    b.ToTable("StoryChoise");
+                    b.HasDiscriminator().HasValue("Writer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -352,29 +347,18 @@ namespace Rawy.DAL.Data.Migrations
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
-                    b.HasOne("Rawy.DAL.Models.AppUser", null)
+                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
                         .WithMany("Stories")
-                        .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.StoryChoise", b =>
-                {
-                    b.HasOne("Rawy.DAL.Models.Story", "Story")
-                        .WithMany("Choises")
-                        .HasForeignKey("StoryId")
+                        .HasForeignKey("WriterId1")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Story");
+                    b.Navigation("Writer");
                 });
 
-            modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
+            modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
                     b.Navigation("Stories");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
-                {
-                    b.Navigation("Choises");
                 });
 #pragma warning restore 612, 618
         }
