@@ -36,10 +36,10 @@ namespace Rawy.DAL.Data.Configurations
 			//	.OnDelete(DeleteBehavior.ClientSetNull);
 
 			// Foreign Key Relationship with Writer
-			//builder.HasOne(s => s.Writer)
-			//	.WithMany(w => w.Stories)
-			//	.HasForeignKey(s => s.WriterId)
-			//	.OnDelete(DeleteBehavior.ClientSetNull);
+			builder.HasOne(s => s.Writer)
+				.WithMany(w => w.Stories)
+				.HasForeignKey(s => s.WriterId)
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

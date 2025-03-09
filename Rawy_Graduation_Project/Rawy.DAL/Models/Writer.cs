@@ -8,7 +8,8 @@ namespace Rawy.DAL.Models
 {
 	public class Writer : AppUser
 	{
-		public string? PreferedLanguage { get; set; }
+    //    public int Id { get; set; }
+        public string? PreferedLanguage { get; set; }
 		public string? WritingStyle { get; set; }
 		public ICollection<Story> Stories { get; set; }
 	}

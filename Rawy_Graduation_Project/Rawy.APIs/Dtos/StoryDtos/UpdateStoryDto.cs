@@ -8,6 +8,7 @@ namespace Rawy.APIs.Dtos.StoryDtos
 		public string Title { get; set; }
 		public string Content { get; set; }
 		public string Category { get; set; }
-		public ICollection<ChoiseDto> Choices { get; set; }
+
+		// public ICollection<ChoiseDto> Choices { get; set; }
 	}
 }

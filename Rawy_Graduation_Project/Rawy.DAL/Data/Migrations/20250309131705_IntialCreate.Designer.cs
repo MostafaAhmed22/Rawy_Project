@@ -12,7 +12,7 @@ using Rawy.DAL.Data;
 namespace Rawy.DAL.Data.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250308131457_IntialCreate")]
+    [Migration("20250309131705_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -267,16 +267,13 @@ namespace Rawy.DAL.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WriterId1")
+                    b.Property<string>("WriterId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WriterId1");
+                    b.HasIndex("WriterId");
 
                     b.ToTable("Stories");
                 });
@@ -349,7 +346,7 @@ namespace Rawy.DAL.Data.Migrations
                 {
                     b.HasOne("Rawy.DAL.Models.Writer", "Writer")
                         .WithMany("Stories")
-                        .HasForeignKey("WriterId1")
+                        .HasForeignKey("WriterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

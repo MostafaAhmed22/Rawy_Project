@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.StoryDtos;
@@ -41,23 +42,43 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<Story>> AddStory(Story story)
+		public async Task<ActionResult<Story>> AddStory(AddStoryDto _story)
 		{
-			//var story = _mapper.Map<Story>(story);
+			// Validate Request Body
+			if (_story == null)
+				return BadRequest("Story data is required.");
+
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			//  Validate WriterId
+			if (string.IsNullOrEmpty(_story.WriterId))
+				return BadRequest("WriterId is required.");
+
+			//  Ensure Title and Content Are Not Empty
+			if (string.IsNullOrWhiteSpace(_story.Title))
+				return BadRequest("Story title cannot be empty.");
+
+			if (string.IsNullOrWhiteSpace(_story.Content))
+				return BadRequest("Story content cannot be empty.");
+
+			var story = _mapper.Map<Story>(_story);
 			await _storyRepo.AddAsync(story);
 			return Ok(story);
 		}
-		//   public async Task<ActionResult<Story>> AddStory(AddStoryDto storyDto)
-		//{
-		//	var story = _mapper.Map<Story>(storyDto);
-		//	await _storyRepo.AddAsync(story);
-		//	return Ok(story);
-		//   }
 
 
 		[HttpPut("{id}")]
 		public async Task<ActionResult<Story>> UpdateStory(int id,UpdateStoryDto storyDto)
 		{
+			if (storyDto == null)
+				return BadRequest("Story data is required.");
+
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			//  Ensure the Story Exists
+			
 			var story = await _storyRepo.GetByIdAsync(id);
 			if (story == null)
 			{

@@ -80,8 +80,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "story",
-        "Type": "Rawy.DAL.Models.Story",
+        "Name": "_story",
+        "Type": "Rawy.APIs.Dtos.StoryDtos.AddStoryDto",
         "IsRequired": true
       }
     ],

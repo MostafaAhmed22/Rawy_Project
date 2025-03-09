@@ -171,15 +171,14 @@ namespace Rawy.DAL.Data.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    WriterId = table.Column<int>(type: "int", nullable: false),
-                    WriterId1 = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    WriterId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Stories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Stories_AspNetUsers_WriterId1",
-                        column: x => x.WriterId1,
+                        name: "FK_Stories_AspNetUsers_WriterId",
+                        column: x => x.WriterId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -225,9 +224,9 @@ namespace Rawy.DAL.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Stories_WriterId1",
+                name: "IX_Stories_WriterId",
                 table: "Stories",
-                column: "WriterId1");
+                column: "WriterId");
         }
 
         /// <inheritdoc />

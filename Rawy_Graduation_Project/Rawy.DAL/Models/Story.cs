@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Rawy.DAL.Models
@@ -16,7 +17,8 @@ namespace Rawy.DAL.Models
 		// Choises of Story
 	//	public ICollection<StoryChoise> Choises { get; set; }
 
-		public int WriterId { get; set; }
+		public string WriterId { get; set; }
+		[JsonIgnore]
 		public Writer Writer { get; set; }
 
 	}
