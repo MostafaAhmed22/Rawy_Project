@@ -7,6 +7,7 @@ using Rawy.BLL.Services;
 using Rawy.DAL.Data;
 using Rawy.DAL.Models;
 using Rawy.BLL.Repositories;
+using Rawy.BLL;
 
 namespace Rawy.APIs
 {
@@ -36,6 +37,8 @@ namespace Rawy.APIs
 			builder.Services.AddScoped<ITokenService, TokenService>();
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+
+			builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper

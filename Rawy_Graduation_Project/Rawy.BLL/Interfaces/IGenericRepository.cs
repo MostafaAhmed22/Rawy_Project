@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Interfaces
 {
-	public interface IGenericRepository<T> where T : BaseEntity
+	public interface IGenericRepository<T> where T : class
 	{
 			Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
 			Task<T?> GetByIdWithSpecAsync(ISpecifications<T> spec);
 		    Task<IEnumerable<T>> GetAllAsync();
-			Task<T?> GetByIdAsync(int id);
+			Task<T?> GetByIdAsync(string id);
 			Task AddAsync(T entity);
 			Task UpdateAsync(T entity);
-			Task DeleteAsync(int id);
+			Task DeleteAsync(string id);
 	}
 }

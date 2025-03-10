@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Specifications
 {
-	public class SpecificationsEvaluator<TEntity> where TEntity : BaseEntity
+	public class SpecificationsEvaluator<TEntity> where TEntity : class
 	{
 		public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> baseQuery ,ISpecifications<TEntity> spec)
 		{

@@ -14,6 +14,7 @@ namespace Rawy.APIs.Dtos
 		[Required]
 		[RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
 			ErrorMessage = "Password Must Contain uppercase/lowercase letters, numbers, and special characters.")]
+		[DataType(DataType.Password)]
 		public string Password { get; set; }
 		[Required]
 		[Phone]

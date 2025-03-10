@@ -18,6 +18,9 @@ namespace Rawy.APIs.Helper
 				.ForMember(dest => dest.Writer, opt => opt.Ignore()); //Ignore Writer navigation property;
 
 			CreateMap<UpdateStoryDto, Story>().ReverseMap();
+
+			CreateMap<AdminDto, AppUser>().ReverseMap();
+			CreateMap<WriterDto, AppUser>().ReverseMap();
 		}
     }
 }

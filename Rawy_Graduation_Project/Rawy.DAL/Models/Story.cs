@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Models
 {
-	public class Story : BaseEntity
+	public class Story 
 	{
-		public string Title { get; set; }
+        public string Id { get; set; }
+        public string Title { get; set; }
 		public string Content { get; set; }
 		public string Category { get; set; }
 		public DateTime CreatedAt { get; set; }
@@ -22,4 +23,5 @@ namespace Rawy.DAL.Models
 		public Writer Writer { get; set; }
 
 	}
+
 }

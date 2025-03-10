@@ -30,11 +30,6 @@ namespace Rawy.DAL.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
-                    PreferedLanguage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WritingStyle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -72,6 +67,25 @@ namespace Rawy.DAL.Data.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    AdminId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.AdminId);
+                    table.ForeignKey(
+                        name: "FK_Admins_AspNetUsers_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -162,6 +176,27 @@ namespace Rawy.DAL.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Writers",
+                columns: table => new
+                {
+                    WriterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PreferedLanguage = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    WritingStyle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Writers", x => x.WriterId);
+                    table.ForeignKey(
+                        name: "FK_Writers_AspNetUsers_WriterId",
+                        column: x => x.WriterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Stories",
                 columns: table => new
                 {
@@ -177,10 +212,10 @@ namespace Rawy.DAL.Data.Migrations
                 {
                     table.PrimaryKey("PK_Stories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Stories_AspNetUsers_WriterId",
+                        name: "FK_Stories_Writers_WriterId",
                         column: x => x.WriterId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        principalTable: "Writers",
+                        principalColumn: "WriterId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -233,6 +268,9 @@ namespace Rawy.DAL.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Admins");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -252,6 +290,9 @@ namespace Rawy.DAL.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Writers");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

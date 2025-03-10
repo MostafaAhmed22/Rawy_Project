@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Models
 {
-    public class StoryReview : BaseEntity
+    public class StoryReview 
     {
+		public string Id { get; set; }
 		public string Comment { get; set; }
 		public int Rating { get; set; } 
 		public DateTime CreatedAt { get; set; }

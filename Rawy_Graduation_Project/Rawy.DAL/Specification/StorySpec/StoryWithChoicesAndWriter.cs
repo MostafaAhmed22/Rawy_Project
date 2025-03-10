@@ -19,7 +19,7 @@ namespace Rawy.DAL.Specification.StorySpec
 
 
 		// This Constructor To Return Specific Story With its NavigationProperty
-		public StoryWithChoicesAndWriter(int id) : base(S => S.Id == id) 
+		public StoryWithChoicesAndWriter(string id) : base(S => S.Id == id) 
         {
 			Includes.Add(S => S.Writer);
 			//Includes.Add(S => S.Choises);

@@ -27,29 +27,35 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "Register",
-    "RelativePath": "api/Accounts/Register",
+    "Method": "RegisterAdmin",
+    "RelativePath": "api/Accounts/register-admin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.RegisterDto",
+        "Type": "Rawy.APIs.Dtos.AdminDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "RegisterWriter",
+    "RelativePath": "api/Accounts/register-writer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "Rawy.APIs.Dtos.UserDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.WriterDto",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.StoryController",
@@ -107,7 +113,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -133,7 +139,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -159,7 +165,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       },
       {
@@ -179,5 +185,47 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "GetAllWriters",
+    "RelativePath": "api/Writer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "GetWriterById",
+    "RelativePath": "api/Writer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "DeleteWriter",
+    "RelativePath": "api/Writer/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

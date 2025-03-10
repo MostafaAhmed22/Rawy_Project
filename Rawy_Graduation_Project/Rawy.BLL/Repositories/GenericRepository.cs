@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Repositories
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+	public class GenericRepository<T> : IGenericRepository<T> where T : class
 	{
 		private readonly RawyDBContext _context;
 
@@ -39,7 +39,7 @@ namespace Rawy.BLL.Repositories
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task DeleteAsync(int id)
+		public async Task DeleteAsync(string id)
 		{
 			var entity = await _context.Set<T>().FindAsync(id).AsTask(); // Convert ValueTask<T?> to Task<T?>
 			if (entity != null)
@@ -63,7 +63,7 @@ namespace Rawy.BLL.Repositories
 			return await _context.Set<T>().ToListAsync();
 		}
 
-		public async Task<T?> GetByIdAsync(int id)
+		public async Task<T?> GetByIdAsync(string id)
 		{
 			return await _context.Set<T>().FindAsync(id);
 		}

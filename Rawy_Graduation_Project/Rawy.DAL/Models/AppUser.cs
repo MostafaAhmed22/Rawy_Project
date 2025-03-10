@@ -10,8 +10,7 @@ namespace Rawy.DAL.Models
 {
 	public class AppUser : IdentityUser
 	{
-		public string FName { get; set; }
-		public string LName { get; set; }
-
-	}
+        public Writer Writer { get; set; }
+        public Admin Admin { get; set; }
+    }
 }

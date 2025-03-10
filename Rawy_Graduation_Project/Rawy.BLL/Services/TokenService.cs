@@ -33,7 +33,7 @@ namespace Rawy.BLL.Services
 			//Payload
 			// Private Claims
 			var AuthClaims = new List<Claim>(){
-				new Claim(ClaimTypes.GivenName ,user.FName),
+				//new Claim(ClaimTypes.GivenName ,user.FName),
 				new Claim(ClaimTypes.Email ,user.Email)
 
 			};

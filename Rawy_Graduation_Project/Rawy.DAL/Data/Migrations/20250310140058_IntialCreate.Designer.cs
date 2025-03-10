@@ -12,7 +12,7 @@ using Rawy.DAL.Data;
 namespace Rawy.DAL.Data.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250309131705_IntialCreate")]
+    [Migration("20250310140058_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -158,6 +158,26 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.Admin", b =>
+                {
+                    b.Property<string>("AdminId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -170,25 +190,12 @@ namespace Rawy.DAL.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -234,10 +241,6 @@ namespace Rawy.DAL.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator().HasValue("AppUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
@@ -280,15 +283,30 @@ namespace Rawy.DAL.Data.Migrations
 
             modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
-                    b.HasBaseType("Rawy.DAL.Models.AppUser");
+                    b.Property<string>("WriterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PreferedLanguage")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("WritingStyle")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasDiscriminator().HasValue("Writer");
+                    b.HasKey("WriterId");
+
+                    b.ToTable("Writers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -342,6 +360,17 @@ namespace Rawy.DAL.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.Admin", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
+                        .WithOne("Admin")
+                        .HasForeignKey("Rawy.DAL.Models.Admin", "AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.HasOne("Rawy.DAL.Models.Writer", "Writer")
@@ -351,6 +380,26 @@ namespace Rawy.DAL.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Writer");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
+                        .WithOne("Writer")
+                        .HasForeignKey("Rawy.DAL.Models.Writer", "WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
+                {
+                    b.Navigation("Admin")
+                        .IsRequired();
+
+                    b.Navigation("Writer")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>

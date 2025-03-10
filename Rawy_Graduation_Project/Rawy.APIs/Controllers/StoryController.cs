@@ -31,7 +31,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Story>> GetById(int id)
+		public async Task<ActionResult<Story>> GetById(string id)
 		{
 			var story = await _storyRepo.GetByIdAsync(id);
 			if (story == null)
@@ -69,7 +69,7 @@ namespace Rawy.APIs.Controllers
 
 
 		[HttpPut("{id}")]
-		public async Task<ActionResult<Story>> UpdateStory(int id,UpdateStoryDto storyDto)
+		public async Task<ActionResult<Story>> UpdateStory(string id,UpdateStoryDto storyDto)
 		{
 			if (storyDto == null)
 				return BadRequest("Story data is required.");
@@ -91,7 +91,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpDelete]
-		public async Task<ActionResult<Story>> DeleteStory(int id)
+		public async Task<ActionResult<Story>> DeleteStory(string id)
 		{
 			var story = await _storyRepo.GetByIdAsync(id);
 			if (story == null)
