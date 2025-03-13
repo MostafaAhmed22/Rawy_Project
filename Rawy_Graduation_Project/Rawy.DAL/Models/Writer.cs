@@ -16,6 +16,11 @@ namespace Rawy.DAL.Models
 		public string LName { get; set; }
         public string? PreferedLanguage { get; set; }
 		public string? WritingStyle { get; set; }
+		// Comments
+		public ICollection<Comment> Comments { get; set; }
+
+		//Rating 
+		public ICollection<Rating> Ratings { get; set; }
 		public ICollection<Story> Stories { get; set; }
 
 		public AppUser AppUser { get; set; } // Navigation property

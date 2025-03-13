@@ -21,6 +21,7 @@ namespace Rawy.APIs.Helper
 
 			CreateMap<AdminDto, AppUser>().ReverseMap();
 			CreateMap<WriterDto, AppUser>().ReverseMap();
+			CreateMap<CommentDto,Comment>().ReverseMap();
 		}
     }
 }

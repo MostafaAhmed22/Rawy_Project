@@ -8,7 +8,7 @@ using Rawy.DAL.Data;
 
 #nullable disable
 
-namespace Rawy.DAL.Data.Migrations
+namespace Rawy.DAL.Data.migrations
 {
     [DbContext(typeof(RawyDBContext))]
     partial class RawyDBContextModelSnapshot : ModelSnapshot
@@ -240,6 +240,70 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.Comment", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("StoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("WriterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StoryId");
+
+                    b.HasIndex("WriterId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.Rating", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<int>("Score")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
+
+                    b.Property<string>("StoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("WriterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StoryId");
+
+                    b.HasIndex("WriterId");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.Property<string>("Id")
@@ -365,6 +429,44 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.Comment", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.Story", "Story")
+                        .WithMany("Comments")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
+                        .WithMany("Comments")
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Story");
+
+                    b.Navigation("Writer");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.Rating", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.Story", "Story")
+                        .WithMany("Ratings")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
+                        .WithMany("Ratings")
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Story");
+
+                    b.Navigation("Writer");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.HasOne("Rawy.DAL.Models.Writer", "Writer")
@@ -396,8 +498,19 @@ namespace Rawy.DAL.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Ratings");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Ratings");
+
                     b.Navigation("Stories");
                 });
 #pragma warning restore 612, 618

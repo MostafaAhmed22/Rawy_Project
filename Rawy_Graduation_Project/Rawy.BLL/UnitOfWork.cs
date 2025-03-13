@@ -15,6 +15,8 @@ namespace Rawy.BLL
 		private IStoryRepository storyRepository;
 		private IWriterRepository writerRepository;
 		private IAdminRepository adminRepository;
+		private IRatingRepository ratingRepository;
+		private ICommentRepository commentRepository;
 
         public UnitOfWork(RawyDBContext context)
         {
@@ -23,13 +25,19 @@ namespace Rawy.BLL
 			storyRepository = new StoryRepository(_context);
 			writerRepository = new WriterRepository(_context);
 			adminRepository = new AdminRepository(_context);
-			
+			ratingRepository = new RatingRepository(_context);
+			commentRepository = new CommentRepository(_context);
+
+
 		}
         public IStoryRepository StoryRepository => storyRepository;
 
 		public IWriterRepository WriterRepository => writerRepository;
 
 		public IAdminRepository AdminRepository => adminRepository;	
+
+		public IRatingRepository RatingRepository => ratingRepository;
+		public ICommentRepository CommentRepository => commentRepository;
 
 		public void Dispose()
 		{

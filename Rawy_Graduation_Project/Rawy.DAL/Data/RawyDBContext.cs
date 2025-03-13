@@ -30,6 +30,8 @@ namespace Rawy.DAL.Data
 		public DbSet<Story> Stories { get; set; }
 		public DbSet<Writer> Writers { get; set; }
 		public DbSet<Admin> Admins { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+		public DbSet<Rating> Ratings { get; set; }
 
 	}
 }
