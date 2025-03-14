@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.StoryDtos;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
+using Rawy.DAL.Models.StorySpec;
 
 namespace Rawy.APIs.Controllers
 {
@@ -37,8 +39,21 @@ namespace Rawy.APIs.Controllers
 		[HttpGet("{storyId}")]
 		public async Task<IActionResult> GetComments(string storyId)
 		{
-			var comments = await _unitOfWork.CommentRepository.GetCommentsByStoryIdAsync(storyId);
-			return Ok(comments);
+
+			var spec = new CommentsOfStorySpec(storyId);
+
+			var comments = await _unitOfWork.CommentRepository.GetCommentsByStoryIdAsync(spec);
+
+			var commentDtos = comments.Select(c => new CommentResponseDto
+			{
+				Id = c.Id,
+				Content = c.Content,
+				WriterName = $"{c.Writer.FName} {c.Writer.LName}", // Avoid circular reference
+				StoryTitle = c.Story.Title // Avoid circular reference
+			}).ToList();
+
+			return Ok(commentDtos);
+
 		}
 
 

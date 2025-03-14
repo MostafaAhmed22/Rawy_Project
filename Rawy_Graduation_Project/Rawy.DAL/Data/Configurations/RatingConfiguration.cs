@@ -4,6 +4,7 @@ using Rawy.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,11 @@ namespace Rawy.DAL.Data.Configurations
 
 			builder.Property(r => r.CreatedAt)
 				.IsRequired()
-				.HasDefaultValueSql("GETDATE()"); 
+				.HasDefaultValueSql("GETDATE()");
+
+
+			builder.HasIndex(r => new { r.WriterId, r.StoryId })
+		   .IsUnique(); // Ensures one Writer can rate a Story only once
 
 			// Relationship with Story (Each rating belongs to a single story)
 			builder.HasOne(r => r.Story)

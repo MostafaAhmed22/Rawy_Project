@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Rawy.BLL.Interfaces;
+using Rawy.BLL.Specifications;
 using Rawy.DAL.Data;
 using Rawy.DAL.Models;
+using Rawy.DAL.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +20,10 @@ namespace Rawy.BLL.Repositories
             _context = context;
         }
 
-		public async Task<IEnumerable<Comment>> GetCommentsByStoryIdAsync(string storyId)
+		public async Task<IEnumerable<Comment>> GetCommentsByStoryIdAsync(ISpecifications<Comment> spec)
 		{
-			return await _context.Comments
-				.Where(c => c.StoryId == storyId)
-				.ToListAsync();
+			return await SpecificationsEvaluator<Comment>.GetQuery(_context.Comments, spec).ToListAsync();
+
 		}
 	}
 }

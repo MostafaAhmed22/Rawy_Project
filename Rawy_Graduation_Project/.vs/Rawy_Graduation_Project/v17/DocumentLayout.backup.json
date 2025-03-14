@@ -3,20 +3,44 @@
   "WorkspaceRootPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\storyresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\storyresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\interfaces\\iratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\interfaces\\iratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\repositories\\ratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\repositories\\ratingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\ratingresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\ratingresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\commentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\commentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\ratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\ratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\writer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,48 +51,16 @@
       "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\storychoise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\ratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\ratingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\storydtos\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\storydtos\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313192249_IntialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Rawy.DAL\\Data\\Migrations\\20250313192249_IntialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\data\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\data\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\helper\\mappingprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\helper\\mappingprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -77,6 +69,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\data\\migrations\\20250313193356_guidid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\data\\migrations\\20250313193356_guidid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\data\\migrations\\20250313192249_intialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\data\\migrations\\20250313192249_intialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,80 +98,123 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StoryResponseDto.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\StoryResponseDto.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\StoryDtos\\StoryResponseDto.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\StoryResponseDto.cs*",
+              "RelativeToolTip": "Rawy.APIs\\Dtos\\StoryDtos\\StoryResponseDto.cs*",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T15:09:42.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IRatingRepository.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IRatingRepository.cs",
+              "RelativeDocumentMoniker": "Rawy.BLL\\Interfaces\\IRatingRepository.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IRatingRepository.cs",
+              "RelativeToolTip": "Rawy.BLL\\Interfaces\\IRatingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T13:03:35.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RatingRepository.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\RatingRepository.cs",
+              "RelativeDocumentMoniker": "Rawy.BLL\\Repositories\\RatingRepository.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\RatingRepository.cs",
+              "RelativeToolTip": "Rawy.BLL\\Repositories\\RatingRepository.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAiwCYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T12:53:05.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "20250313193356_GuidId.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
-              "RelativeToolTip": "Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\RatingController.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\RatingController.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\RatingController.cs",
+              "RelativeToolTip": "Rawy.APIs\\Controllers\\RatingController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAADwvyAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T19:33:56.716Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Rating.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Rating.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\Rating.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Rating.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\Rating.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:51:02.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "RatingConfiguration.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
-              "RelativeToolTip": "Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAiwCMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:49:44.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\CommentController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\CommentController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\CommentController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAUwCkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:23:33.08Z",
+              "WhenOpened": "2025-03-14T12:47:37.433Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ICommentRepository.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\ICommentRepository.cs",
-              "RelativeDocumentMoniker": "Rawy.BLL\\Interfaces\\ICommentRepository.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\ICommentRepository.cs",
-              "RelativeToolTip": "Rawy.BLL\\Interfaces\\ICommentRepository.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAUwAsAAABIAAAAAAAAAA==",
+              "Title": "Story.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Story.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\Story.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Story.cs",
+              "RelativeToolTip": "Rawy.DAL\\Models\\Story.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wBIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:32:39.145Z",
+              "WhenOpened": "2025-03-13T19:18:29.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CommentRepository.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\CommentRepository.cs",
-              "RelativeDocumentMoniker": "Rawy.BLL\\Repositories\\CommentRepository.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\CommentRepository.cs",
-              "RelativeToolTip": "Rawy.BLL\\Repositories\\CommentRepository.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBQAAABTAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "StoryController.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\StoryController.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs*",
+              "RelativeToolTip": "Rawy.APIs\\Controllers\\StoryController.cs*",
+              "ViewState": "AgIAADkAAAAAAAAAAAAqwC8AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:28:12.379Z",
+              "WhenOpened": "2025-03-13T18:20:42.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RatingResponseDto.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\RatingResponseDto.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\StoryDtos\\RatingResponseDto.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\RatingResponseDto.cs",
+              "RelativeToolTip": "Rawy.APIs\\Dtos\\StoryDtos\\RatingResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T13:06:16.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RatingConfiguration.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
+              "RelativeToolTip": "Rawy.DAL\\Data\\Configurations\\RatingConfiguration.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwBsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T13:34:47.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CommentResponseDto.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\CommentResponseDto.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\StoryDtos\\CommentResponseDto.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\CommentResponseDto.cs",
+              "RelativeToolTip": "Rawy.APIs\\Dtos\\StoryDtos\\CommentResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T12:27:58.469Z",
               "EditorCaption": ""
             },
             {
@@ -189,20 +232,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Story.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Story.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\Story.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Story.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\Story.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABDAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "20250313193356_GuidId.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
+              "RelativeToolTip": "Rawy.DAL\\Data\\Migrations\\20250313193356_GuidId.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T19:18:29.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T19:33:56.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "StoryChoise.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StoryChoise.cs",
               "RelativeDocumentMoniker": "Rawy.DAL\\Models\\StoryChoise.cs",
@@ -210,16 +252,11 @@
               "RelativeToolTip": "Rawy.DAL\\Models\\StoryChoise.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T19:32:09.484Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2025-03-13T19:32:09.484Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "20250313192249_IntialCreate.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250313192249_IntialCreate.cs",
               "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Migrations\\20250313192249_IntialCreate.cs",
@@ -227,12 +264,11 @@
               "RelativeToolTip": "Rawy.DAL\\Data\\Migrations\\20250313192249_IntialCreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T19:22:50.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T19:22:50.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Writer.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Writer.cs",
               "RelativeDocumentMoniker": "Rawy.DAL\\Models\\Writer.cs",
@@ -240,25 +276,11 @@
               "RelativeToolTip": "Rawy.DAL\\Models\\Writer.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:46:22.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T18:46:22.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CommentDto.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\CommentDto.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\StoryDtos\\CommentDto.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\StoryDtos\\CommentDto.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\StoryDtos\\CommentDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T19:29:31.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "Comment.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "Rawy.DAL\\Models\\Comment.cs",
@@ -266,12 +288,11 @@
               "RelativeToolTip": "Rawy.DAL\\Models\\Comment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:38:59.731Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T18:38:59.731Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CommentConfiguration.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Configurations\\CommentConfiguration.cs",
               "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Configurations\\CommentConfiguration.cs",
@@ -279,21 +300,7 @@
               "RelativeToolTip": "Rawy.DAL\\Data\\Configurations\\CommentConfiguration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:43:37.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "MappingProfiles.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Helper\\MappingProfiles.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Helper\\MappingProfiles.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Helper\\MappingProfiles.cs",
-              "RelativeToolTip": "Rawy.APIs\\Helper\\MappingProfiles.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBcAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:25:08.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T18:43:37.611Z"
             },
             {
               "$type": "Document",
@@ -305,25 +312,11 @@
               "RelativeToolTip": "Rawy.APIs\\Controllers\\WriterController.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAqwCMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:20:44.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T18:20:44.903Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "StoryController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\StoryController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\StoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:20:42.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\BaseApiController.cs",
@@ -335,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 16,
               "Title": "AccountsController.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
               "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\AccountsController.cs",

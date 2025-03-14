@@ -67,7 +67,7 @@
     "Parameters": [
       {
         "Name": "commentDto",
-        "Type": "Rawy.APIs.Dtos.StoryDtos.CommentDto",
+        "Type": "Rawy.APIs.Dtos.CommentDto",
         "IsRequired": true
       }
     ],
@@ -93,6 +93,70 @@
     "ContainingType": "Rawy.APIs.Controllers.CommentController",
     "Method": "GetComments",
     "RelativePath": "api/Comment/{storyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "storyId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "AddRate",
+    "RelativePath": "api/Rating",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RatingtDto",
+        "Type": "Rawy.APIs.Dtos.StoryDtos.RatingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "DeleteRating",
+    "RelativePath": "api/Rating/{ratingId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ratingId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "GetAverageRating",
+    "RelativePath": "api/Rating/{storyId}/average-rating",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "storyId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "GetRating",
+    "RelativePath": "api/Rating/{storyId}/rating",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
