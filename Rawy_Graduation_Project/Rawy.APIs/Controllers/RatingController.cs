@@ -49,7 +49,7 @@ namespace Rawy.APIs.Controllers
 
 		//  Get All Rating for a Story
 		[HttpGet("{storyId}/rating")]
-		public async Task<IActionResult> GetRating(string storyId)
+		public async Task<IActionResult> GetRating(int storyId)
 		{
 
 			var spec = new RatingOfStorySpec(storyId);
@@ -73,7 +73,7 @@ namespace Rawy.APIs.Controllers
 
 		// Get AverageRating
 		[HttpGet("{storyId}/average-rating")]
-		public async Task<IActionResult> GetAverageRating(string storyId)
+		public async Task<IActionResult> GetAverageRating(int storyId)
 		{
 			var story = await _unitOfWork.StoryRepository.GetByIdAsync(storyId);
 			if (story == null)
@@ -92,7 +92,7 @@ namespace Rawy.APIs.Controllers
 
 		// Delete Rating
 		[HttpDelete("{ratingId}")]
-		public async Task<IActionResult> DeleteRating(string ratingId)
+		public async Task<IActionResult> DeleteRating(int ratingId)
 		{
 			var rating = await _unitOfWork.RatingRepository.GetByIdAsync(ratingId);
 			if (rating == null)

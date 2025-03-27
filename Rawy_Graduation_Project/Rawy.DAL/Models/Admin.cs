@@ -10,7 +10,7 @@ namespace Rawy.DAL.Models
 	public class Admin 
 	{
 		[ForeignKey(nameof(AppUser))]
-		public string AdminId { get; set; }
+		public int AdminId { get; set; }
 		public string FName { get; set; }
 		public string LName { get; set; }
         public AppUser AppUser { get; set; }

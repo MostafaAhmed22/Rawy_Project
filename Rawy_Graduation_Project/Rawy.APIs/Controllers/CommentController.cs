@@ -37,7 +37,7 @@ namespace Rawy.APIs.Controllers
 
 		//  Get All Comments for a Story
 		[HttpGet("{storyId}")]
-		public async Task<IActionResult> GetComments(string storyId)
+		public async Task<IActionResult> GetComments(int storyId)
 		{
 
 			var spec = new CommentsOfStorySpec(storyId);
@@ -59,7 +59,7 @@ namespace Rawy.APIs.Controllers
 
 		// Delete Comment
 		[HttpDelete("{commentId}")]
-		public async Task<IActionResult> DeleteComment(string commentId)
+		public async Task<IActionResult> DeleteComment(int commentId)
 		{
 			var comment = await _unitOfWork.CommentRepository.GetByIdAsync(commentId);
 			if (comment == null)

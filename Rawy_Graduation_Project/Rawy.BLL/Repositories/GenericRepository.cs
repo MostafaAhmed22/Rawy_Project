@@ -39,7 +39,7 @@ namespace Rawy.BLL.Repositories
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task DeleteAsync(string id)
+		public async Task DeleteAsync(int id)
 		{
 			var entity = await _context.Set<T>().FindAsync(id).AsTask(); // Convert ValueTask<T?> to Task<T?>
 			if (entity != null)
@@ -63,7 +63,7 @@ namespace Rawy.BLL.Repositories
 			return await _context.Set<T>().ToListAsync();
 		}
 
-		public async Task<T?> GetByIdAsync(string id)
+		public async Task<T?> GetByIdAsync(int id)
 		{
 			return await _context.Set<T>().FindAsync(id);
 		}

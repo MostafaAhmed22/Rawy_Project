@@ -13,9 +13,9 @@ namespace Rawy.BLL.Interfaces
 			Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
 			Task<T?> GetByIdWithSpecAsync(ISpecifications<T> spec);
 		    Task<IEnumerable<T>> GetAllAsync();
-			Task<T?> GetByIdAsync(string id);
+			Task<T?> GetByIdAsync(int id);
 			Task AddAsync(T entity);
 			Task UpdateAsync(T entity);
-			Task DeleteAsync(string id);
+			Task DeleteAsync(int id);
 	}
 }

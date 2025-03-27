@@ -30,7 +30,7 @@ namespace Rawy.APIs
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 			});
 
-			builder.Services.AddIdentity<AppUser, IdentityRole>()
+			builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 							.AddEntityFrameworkStores<RawyDBContext>()
 							.AddDefaultTokenProviders();
 

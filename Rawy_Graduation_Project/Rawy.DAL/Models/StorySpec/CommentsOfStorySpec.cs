@@ -17,7 +17,7 @@ namespace Rawy.DAL.Models.StorySpec
 
 		}
 
-		public CommentsOfStorySpec(string id) : base(C=>C.StoryId == id)
+		public CommentsOfStorySpec(int id) : base(C=>C.StoryId == id)
 		{
 			Includes.Add(C => C.Writer);
 			Includes.Add(C => C.Story);

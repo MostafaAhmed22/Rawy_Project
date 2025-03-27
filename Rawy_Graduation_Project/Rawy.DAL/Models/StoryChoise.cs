@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Models
 {
-	public class StoryChoise
+	public class StoryChoise : BaseEntity
 	{
-		public string Id { get; set; } = Guid.NewGuid().ToString();
+	//	public string Id { get; set; } = Guid.NewGuid().ToString();
 		public string StoryId { get; set; }
 		public string ChoiceText { get; set; }  // Example: "Go left" or "Go right"
 												//	public int? NextStoryId { get; set; }    // Links to next story part

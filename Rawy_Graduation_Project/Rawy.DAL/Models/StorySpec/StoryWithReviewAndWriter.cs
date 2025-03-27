@@ -17,7 +17,7 @@ namespace Rawy.DAL.Models.StorySpec
             Includes.Add(S => S.Ratings);
 		}
 
-        public StoryWithReview(string id) : base(S=> S.Id == id)
+        public StoryWithReview(int id) : base(S=> S.Id == id)
         {
 			Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);

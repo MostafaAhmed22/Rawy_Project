@@ -11,7 +11,7 @@ namespace Rawy.BLL.Interfaces
 	public interface IRatingRepository : IGenericRepository<Rating>
 	{
 		Task<IEnumerable<Rating>> GetRatingByStoryIdAsync(ISpecifications<Rating> spec);
-		Task<double> GetAverageRatingByStoryIdAsync(string storyId);
+		Task<double> GetAverageRatingByStoryIdAsync(int storyId);
 		Task AddRatingAsync(Rating rating);
 	}
 }

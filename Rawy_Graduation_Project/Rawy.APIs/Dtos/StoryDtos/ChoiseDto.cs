@@ -2,8 +2,8 @@
 {
 	public class ChoiseDto
 	{
-		public string Id { get; set; }
+		public int Id { get; set; }
 		public string Text { get; set; }
-		public string StoryId { get; set; }
+		public int StoryId { get; set; }
 	}
 }

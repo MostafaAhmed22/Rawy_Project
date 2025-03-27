@@ -64,11 +64,16 @@ namespace Rawy.APIs.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
+			var existinguser = await _userManager.FindByEmailAsync(model.Email);
+			if(existinguser != null )
+				return BadRequest(new { message = "Email already in use." });
+
+
 			var user = _mapper.Map<AppUser>(model);
 			//	new AppUser
 			//{
 			//	Email = model.Email,
-			//	UserName = model.Email.Split("@")[0],
+			//	UserName = model.username,
 			//	PhoneNumber = model.PhoneNumber
 			//};
 
@@ -77,12 +82,15 @@ namespace Rawy.APIs.Controllers
 				 return BadRequest(result.Errors);
 
 
+			// Assign the WRITER role
+		//	await _userManager.AddToRoleAsync(user, "WRITER");
+
 			// Create a Writer linked to the user
 			var writer = new Writer
 			{
 				WriterId = user.Id,
-				FName = model.FName,
-				LName = model.LName,
+				FName = model.FirstName,
+				LName = model.LastName,
 				PreferedLanguage = model.PreferredLanguage,
 				WritingStyle = model.WritingStyle
 			};

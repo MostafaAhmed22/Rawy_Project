@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Models
 {
-	public class Story 
+	public class Story : BaseEntity
 	{
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+      //  public string Id { get; set; } = Guid.NewGuid().ToString();
 		public string Title { get; set; }
 		public string Content { get; set; }
 		public string Category { get; set; }
@@ -24,7 +24,7 @@ namespace Rawy.DAL.Models
 		// Choises of Story
 		//	public ICollection<StoryChoise> Choises { get; set; }
 
-		public string WriterId { get; set; }
+		public int WriterId { get; set; }
 		[JsonIgnore]
 		public Writer Writer { get; set; }
 

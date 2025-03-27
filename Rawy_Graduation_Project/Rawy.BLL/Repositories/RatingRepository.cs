@@ -26,7 +26,7 @@ namespace Rawy.BLL.Repositories
 
 		}
 
-		public async Task<double> GetAverageRatingByStoryIdAsync(string storyId)
+		public async Task<double> GetAverageRatingByStoryIdAsync(int storyId)
 		{
 			var ratings = await _context.Ratings
 				.Where(r => r.StoryId == storyId)

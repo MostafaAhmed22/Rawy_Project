@@ -11,7 +11,7 @@ namespace Rawy.DAL.Models
 	{
 
 		[ForeignKey(nameof(AppUser))]
-		public string WriterId { get; set; }
+		public int WriterId { get; set; }
 		public string FName { get; set; }
 		public string LName { get; set; }
         public string? PreferedLanguage { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Rawy.DAL.Models;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.DAL.Data
 {
-	public class RawyDBContext : IdentityDbContext<AppUser>
+	public class RawyDBContext : IdentityDbContext<AppUser,IdentityRole<int>,int>
 	{
 
 		public RawyDBContext(DbContextOptions<RawyDBContext> options) : base(options)

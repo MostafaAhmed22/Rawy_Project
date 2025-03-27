@@ -21,7 +21,7 @@ namespace Rawy.APIs.Controllers
 
 		// Get Writer By ID
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetWriterById(string id)
+		public async Task<IActionResult> GetWriterById(int id)
 		{
 			var writer = await _unitOfWork.WriterRepository.GetByIdAsync(id);
 			if (writer == null)
@@ -39,7 +39,7 @@ namespace Rawy.APIs.Controllers
 
 		[HttpDelete("{id}")]
 		//[Authorize(Roles = "ADMIN")]
-		public async Task<IActionResult> DeleteWriter(string id)
+		public async Task<IActionResult> DeleteWriter(int id)
 		{
 			var writer = await _unitOfWork.WriterRepository.GetByIdAsync(id);
 			if (writer == null)

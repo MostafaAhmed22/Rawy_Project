@@ -48,7 +48,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Story>> GetById(string id)
+		public async Task<ActionResult<Story>> GetById(int id)
 		{
 			var spec = new StoryWithReview(id);
 			var story = await _unitOfWork.StoryRepository.GetByIdWithSpecAsync(spec);
@@ -85,7 +85,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest(ModelState);
 
 			//  Validate WriterId
-			if (string.IsNullOrEmpty(_story.WriterId))
+			if (_story.WriterId == 0)
 				return BadRequest("WriterId is required.");
 
 			//  Ensure Title and Content Are Not Empty
@@ -102,7 +102,7 @@ namespace Rawy.APIs.Controllers
 
 
 		[HttpPut("{id}")]
-		public async Task<ActionResult<Story>> UpdateStory(string id,UpdateStoryDto storyDto)
+		public async Task<ActionResult<Story>> UpdateStory(int id,UpdateStoryDto storyDto)
 		{
 			if (storyDto == null)
 				return BadRequest("Story data is required.");
@@ -124,7 +124,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpDelete]
-		public async Task<ActionResult<Story>> DeleteStory(string id)
+		public async Task<ActionResult<Story>> DeleteStory(int id)
 		{
 			var story = await _unitOfWork.StoryRepository.GetByIdAsync(id);
 			if (story == null)
