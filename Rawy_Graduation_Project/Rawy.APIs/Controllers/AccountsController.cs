@@ -4,21 +4,22 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Rawy.APIs.Dtos;
 using Rawy.BLL.Interfaces;
-using Rawy.BLL.Services;
 using Rawy.DAL.Models;
+using Rawy.APIs.Services.Token;
+using Rawy.APIs.Services.Auth;
 
 namespace Rawy.APIs.Controllers
 {
-	public class AccountsController : BaseApiController
+    public class AccountsController : BaseApiController
 	{
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
 		private readonly ITokenService _tokenService;
 		private readonly IMapper _mapper;
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly GoogleAuthService _googleAuthService;
+		private readonly IGoogleAuthServices _googleAuthService;
 
-		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, IUnitOfWork unitOfWork,GoogleAuthService googleAuthService)
+		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
@@ -108,48 +109,6 @@ namespace Rawy.APIs.Controllers
 			return Ok(ReturnedUser);
 		}
 
-
-		// Register Admin
-
-		[HttpPost("register-admin")]
-		public async Task<IActionResult> RegisterAdmin([FromBody] AdminDto model)
-		{
-			if (!ModelState.IsValid)
-				return BadRequest(ModelState);
-
-			var user = _mapper.Map<AppUser>(model);
-
-			//	new AppUser
-			//{
-			//	Email = model.Email,
-			//	UserName = model.Email.Split("@")[0],
-			//	PhoneNumber = model.PhoneNumber
-			//};
-
-			var result = await _userManager.CreateAsync(user, model.Password);
-			if (!result.Succeeded)
-				return BadRequest(result.Errors);
-
-
-			// Create a Admin linked to the user
-			var admin = new Admin
-			{
-				AdminId = user.Id,
-				FName = model.FName,
-				LName = model.LName
-
-			};
-
-			await _unitOfWork.AdminRepository.AddAsync(admin);
-			var ReturnedUser = new UserDto()
-			{
-				UserName = user.UserName,
-				Email = user.Email,
-				Token = await _tokenService.CreateTokenAsync(user, _userManager)
-			};
-			return Ok(ReturnedUser);
-		}
-
 		// Login
 		[HttpPost("Login")]
 		public async Task<ActionResult<UserDto>> Login(LoginDto model)
@@ -172,34 +131,38 @@ namespace Rawy.APIs.Controllers
 
 		}
 
-		[HttpPost("external-login")]
-		public async Task<IActionResult> ExternalLogin([FromBody] ExternalAuthDto model)
+		[HttpPost("GoogleLogin")]
+		public async Task<IActionResult> GoogleLogin([FromBody] ExternalAuthDto model)
 		{
-			var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
-			if (payload == null)
-			{
-				return BadRequest(new { message = "Invalid Google token." });
-			}
+			var token = await _googleAuthService.AuthenticateWithGoogleAsync(model.IdToken);
+			return Ok(token);
+			#region LogicWithoutGoogleService
+			//var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
+			//if (payload == null)
+			//{
+			//	return BadRequest(new { message = "Invalid Google token." });
+			//}
 
-			var user = await _userManager.FindByEmailAsync(payload.Email);
-			if (user == null)
-			{
-				user = new AppUser
-				{
-					UserName = payload.Email,
-					Email = payload.Email
-				};
-				var result = await _userManager.CreateAsync(user);
-				if (!result.Succeeded)
-				{
-					return BadRequest(result.Errors);
-				}
+			//var user = await _userManager.FindByEmailAsync(payload.Email);
+			//if (user == null)
+			//{
+			//	user = new AppUser
+			//	{
+			//		UserName = payload.Email,
+			//		Email = payload.Email
+			//	};
+			//	var result = await _userManager.CreateAsync(user);
+			//	if (!result.Succeeded)
+			//	{
+			//		return BadRequest(result.Errors);
+			//	}
 
-				await _userManager.AddToRoleAsync(user, "User"); // Assign a default role
-			}
+			//	await _userManager.AddToRoleAsync(user, "User"); // Assign a default role
+			//}
 
-			var token = _tokenService.CreateTokenAsync(user,_userManager);
-			return Ok(new { token });
+			//var token = _tokenService.CreateTokenAsync(user,_userManager);
+			//return Ok(new { token }); 
+			#endregion
 		}
 
 	}

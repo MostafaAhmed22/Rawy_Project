@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rawy.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf83452c6d65ca968b5562255553f0d14b09320c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa728b0437662a8d3dc793354a25845b0e62e561")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rawy.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rawy.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

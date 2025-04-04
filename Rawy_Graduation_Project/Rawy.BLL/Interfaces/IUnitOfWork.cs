@@ -10,8 +10,6 @@ namespace Rawy.BLL.Interfaces
 	{
         public IStoryRepository StoryRepository { get;  }
         public IWriterRepository WriterRepository { get; }
-        public IAdminRepository AdminRepository { get;  }
-
         public IRatingRepository RatingRepository { get; }
         public ICommentRepository CommentRepository { get;  }
     }

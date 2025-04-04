@@ -11,6 +11,5 @@ namespace Rawy.DAL.Models
 	public class AppUser : IdentityUser<int>
 	{
         public Writer Writer { get; set; }
-        public Admin Admin { get; set; }
     }
 }

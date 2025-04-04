@@ -1,8 +1,8 @@
 [
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "ExternalLogin",
-    "RelativePath": "api/Accounts/external-login",
+    "Method": "GoogleLogin",
+    "RelativePath": "api/Accounts/GoogleLogin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -40,22 +40,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "RegisterAdmin",
-    "RelativePath": "api/Accounts/register-admin",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Rawy.APIs.Dtos.AdminDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",

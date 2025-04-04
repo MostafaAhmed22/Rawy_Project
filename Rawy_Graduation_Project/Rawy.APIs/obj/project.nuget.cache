@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2F5HDTntOLY=",
+  "dgSpecHash": "9gHD/v8bD2s=",
   "success": true,
   "projectFilePath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Rawy.APIs.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\google.apis.auth\\1.69.0\\google.apis.auth.1.69.0.nupkg.sha512",
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\google.apis.core\\1.69.0\\google.apis.core.1.69.0.nupkg.sha512",
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\8.0.14\\microsoft.aspnetcore.authentication.facebook.8.0.14.nupkg.sha512",
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\8.0.14\\microsoft.aspnetcore.authentication.google.8.0.14.nupkg.sha512",
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.13\\microsoft.aspnetcore.cryptography.internal.8.0.13.nupkg.sha512",
     "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.13\\microsoft.aspnetcore.cryptography.keyderivation.8.0.13.nupkg.sha512",

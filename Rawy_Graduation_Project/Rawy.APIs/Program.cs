@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Helper;
 using Rawy.BLL.Interfaces;
-using Rawy.BLL.Services;
+using Rawy.APIs.Services;
 using Rawy.DAL.Data;
 using Rawy.DAL.Models;
 using Rawy.BLL.Repositories;
 using Rawy.BLL;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Rawy.APIs.Services.Auth;
+using Rawy.APIs.Services.Token;
+using Rawy.APIs.Services.Auth;
 namespace Rawy.APIs
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{
@@ -40,16 +43,41 @@ namespace Rawy.APIs
 				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
 				o.DefaultForbidScheme = GoogleDefaults.AuthenticationScheme;
 				o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-			})
-				.AddGoogle(options =>
+			}).AddCookie()
+			  .AddGoogle(options =>
 				{
-					IConfigurationSection googleAuth = builder.Configuration.GetSection("Authentication:Google");
-					options.ClientId = googleAuth["ClientId"];
-					options.ClientSecret = googleAuth["ClientSecret"];
+					var ClientId = builder.Configuration["Authentication:Google:ClientId"];
+					if(ClientId == null)
+						throw new ArgumentException(nameof(ClientId));
+
+					var ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+					if (ClientSecret == null)
+						throw new ArgumentException(nameof(ClientSecret));
+
+
+				//	IConfigurationSection googleAuth = builder.Configuration.GetSection("Authentication:Google");
+					options.ClientId = ClientId;
+					options.ClientSecret = ClientSecret;
+					options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 				});
 
+			builder.Services.AddAuthentication()
+			  .AddFacebook(options =>
+			  {
+				  var appId = builder.Configuration["Authentication:Facebook:AppId"];
+				  if (appId == null)
+					  throw new ArgumentException(nameof(appId));
+
+				  var appSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+				  if (appSecret == null)
+					  throw new ArgumentException(nameof(appSecret));
+
+				  options.AppId = appId;
+				  options.AppSecret = appSecret;
+			  });
+
 			builder.Services.AddScoped<ITokenService, TokenService>();
-			builder.Services.AddScoped<GoogleAuthService>();
+			builder.Services.AddScoped<IGoogleAuthServices,GoogleAuthService>();
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 

@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Rawy.BLL.Services
+namespace Rawy.APIs.Services.Token
 {
 	public class TokenService : ITokenService
 	{
@@ -24,7 +18,7 @@ namespace Rawy.BLL.Services
 
 
 
-		public async Task<string> CreateTokenAsync(AppUser user, UserManager<AppUser> _userManager)
+		public async Task<string?> CreateTokenAsync(AppUser user, UserManager<AppUser> _userManager)
 		{
 
 
