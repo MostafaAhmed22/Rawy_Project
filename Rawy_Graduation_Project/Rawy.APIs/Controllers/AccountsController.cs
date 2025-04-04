@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Rawy.APIs.Dtos;
 using Rawy.BLL.Interfaces;
+using Rawy.BLL.Services;
 using Rawy.DAL.Models;
 
 namespace Rawy.APIs.Controllers
@@ -15,14 +16,16 @@ namespace Rawy.APIs.Controllers
 		private readonly ITokenService _tokenService;
 		private readonly IMapper _mapper;
 		private readonly IUnitOfWork _unitOfWork;
+		private readonly GoogleAuthService _googleAuthService;
 
-		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, IUnitOfWork unitOfWork)
+		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, IUnitOfWork unitOfWork,GoogleAuthService googleAuthService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_tokenService = tokenService;
 			_mapper = mapper;
 			_unitOfWork = unitOfWork;
+			_googleAuthService = googleAuthService;
 		}
 
 		// Register
@@ -168,5 +171,36 @@ namespace Rawy.APIs.Controllers
 
 
 		}
+
+		[HttpPost("external-login")]
+		public async Task<IActionResult> ExternalLogin([FromBody] ExternalAuthDto model)
+		{
+			var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
+			if (payload == null)
+			{
+				return BadRequest(new { message = "Invalid Google token." });
+			}
+
+			var user = await _userManager.FindByEmailAsync(payload.Email);
+			if (user == null)
+			{
+				user = new AppUser
+				{
+					UserName = payload.Email,
+					Email = payload.Email
+				};
+				var result = await _userManager.CreateAsync(user);
+				if (!result.Succeeded)
+				{
+					return BadRequest(result.Errors);
+				}
+
+				await _userManager.AddToRoleAsync(user, "User"); // Assign a default role
+			}
+
+			var token = _tokenService.CreateTokenAsync(user,_userManager);
+			return Ok(new { token });
+		}
+
 	}
 }

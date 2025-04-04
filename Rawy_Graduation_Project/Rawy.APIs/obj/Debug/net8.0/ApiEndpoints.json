@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "ExternalLogin",
+    "RelativePath": "api/Accounts/external-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.ExternalAuthDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "Login",
     "RelativePath": "api/Accounts/Login",
     "HttpMethod": "POST",

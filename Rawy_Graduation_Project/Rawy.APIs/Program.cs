@@ -8,7 +8,8 @@ using Rawy.DAL.Data;
 using Rawy.DAL.Models;
 using Rawy.BLL.Repositories;
 using Rawy.BLL;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 namespace Rawy.APIs
 {
 	public class Program
@@ -34,7 +35,21 @@ namespace Rawy.APIs
 							.AddEntityFrameworkStores<RawyDBContext>()
 							.AddDefaultTokenProviders();
 
+			builder.Services.AddAuthentication(o =>
+			{
+				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+				o.DefaultForbidScheme = GoogleDefaults.AuthenticationScheme;
+				o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+			})
+				.AddGoogle(options =>
+				{
+					IConfigurationSection googleAuth = builder.Configuration.GetSection("Authentication:Google");
+					options.ClientId = googleAuth["ClientId"];
+					options.ClientSecret = googleAuth["ClientSecret"];
+				});
+
 			builder.Services.AddScoped<ITokenService, TokenService>();
+			builder.Services.AddScoped<GoogleAuthService>();
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 

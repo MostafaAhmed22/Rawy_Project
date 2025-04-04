@@ -154,3 +154,10 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\R
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\Rawy.APIs.genruntimeconfig.cache
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\ref\Rawy.APIs.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Debug\net8.0\Rawy.APIs.MvcApplicationPartsAssemblyInfo.cs
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Google.Apis.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\System.Management.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
