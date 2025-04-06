@@ -18,8 +18,10 @@ namespace Rawy.APIs.Controllers
 		private readonly IMapper _mapper;
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IGoogleAuthServices _googleAuthService;
+		private readonly IFacebookAuthServices _facebookAuthServices;
 
-		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService)
+		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper,
+								IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService,IFacebookAuthServices facebookAuthServices)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
@@ -27,6 +29,7 @@ namespace Rawy.APIs.Controllers
 			_mapper = mapper;
 			_unitOfWork = unitOfWork;
 			_googleAuthService = googleAuthService;
+			_facebookAuthServices = facebookAuthServices;
 		}
 
 		// Register
@@ -134,7 +137,7 @@ namespace Rawy.APIs.Controllers
 		[HttpPost("GoogleLogin")]
 		public async Task<IActionResult> GoogleLogin([FromBody] ExternalAuthDto model)
 		{
-			var token = await _googleAuthService.AuthenticateWithGoogleAsync(model.IdToken);
+			var token = await _googleAuthService.AuthenticateWithGoogleAsync(model.Token);
 			return Ok(token);
 			#region LogicWithoutGoogleService
 			//var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
@@ -164,6 +167,18 @@ namespace Rawy.APIs.Controllers
 			//return Ok(new { token }); 
 			#endregion
 		}
+
+
+		[HttpPost("FacebookLogin")]
+		public async Task<ActionResult<TokenDto>> FacebookLogin([FromBody] ExternalAuthDto model)
+		{
+			if (!ModelState.IsValid) return BadRequest(ModelState);
+
+			var token = await _facebookAuthServices.AuthenticateWithFacebookAsync(model.Token);
+			return Ok(token);
+		}
+
+
 
 	}
 }

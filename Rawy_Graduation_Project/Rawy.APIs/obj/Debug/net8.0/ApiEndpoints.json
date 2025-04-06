@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "FacebookLogin",
+    "RelativePath": "api/Accounts/FacebookLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.ExternalAuthDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Rawy.APIs.Dtos.TokenDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "GoogleLogin",
     "RelativePath": "api/Accounts/GoogleLogin",
     "HttpMethod": "POST",

@@ -78,6 +78,7 @@ namespace Rawy.APIs
 
 			builder.Services.AddScoped<ITokenService, TokenService>();
 			builder.Services.AddScoped<IGoogleAuthServices,GoogleAuthService>();
+			builder.Services.AddScoped<IFacebookAuthServices, FacebookAuthServices>();
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 
