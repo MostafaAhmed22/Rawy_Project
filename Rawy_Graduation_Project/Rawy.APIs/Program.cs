@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Rawy.APIs.Services.Auth;
 using Rawy.APIs.Services.Token;
 using Rawy.APIs.Services.Auth;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace Rawy.APIs
 {
     public class Program
@@ -61,7 +62,11 @@ namespace Rawy.APIs
 					options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 				});
 
-			builder.Services.AddAuthentication()
+			builder.Services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
 			  .AddFacebook(options =>
 			  {
 				  var appId = builder.Configuration["Authentication:Facebook:AppId"];
@@ -75,6 +80,8 @@ namespace Rawy.APIs
 				  options.AppId = appId;
 				  options.AppSecret = appSecret;
 			  });
+
+			builder.Services.AddHttpContextAccessor();
 
 			builder.Services.AddScoped<ITokenService, TokenService>();
 			builder.Services.AddScoped<IGoogleAuthServices,GoogleAuthService>();

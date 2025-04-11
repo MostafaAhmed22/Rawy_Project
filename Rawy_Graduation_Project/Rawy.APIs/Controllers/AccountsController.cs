@@ -7,6 +7,8 @@ using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
 using Rawy.APIs.Services.Token;
 using Rawy.APIs.Services.Auth;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace Rawy.APIs.Controllers
 {
@@ -180,5 +182,51 @@ namespace Rawy.APIs.Controllers
 
 
 
+		/// <summary>
+		/// Initiates the Facebook login process.
+		/// </summary>
+		[HttpGet("facebook-login")]
+		public IActionResult FacebookLogin()
+
+		{
+			var redirectUri = Url.Action("FacebookCallback", "Auth", null, Request.Scheme);
+			var properties = new AuthenticationProperties { RedirectUri = redirectUri };
+			return Challenge(properties, "Facebook");
+		}
+
+		/// <summary>
+		/// Handles the callback from Facebook after authentication.
+		/// </summary>
+		[HttpGet("facebook-callback")]
+		public async Task<IActionResult> FacebookCallback()
+		{
+
+			var authenticateResult = await HttpContext.AuthenticateAsync("Facebook");
+			if (!authenticateResult.Succeeded)
+			{
+				return BadRequest("Facebook authentication failed.");
+			}
+
+			// Extract user information from Facebook
+			var externalUser = authenticateResult.Principal;
+			var email = externalUser.FindFirst(ClaimTypes.Email)?.Value;
+			var name = externalUser.FindFirst(ClaimTypes.Name)?.Value;
+
+			if (string.IsNullOrEmpty(email))
+			{
+				return BadRequest("Email claim not found in Facebook response.");
+			}
+
+			// Create new Appuser
+			var user = new AppUser()
+			{
+				Email = email,
+				UserName = name //use name as username
+			};
+			// Generate a JWT token for the authenticated user
+			var token = await _tokenService.CreateTokenAsync(user, _userManager);
+
+			return Ok(new { Token = token });
+		}
 	}
 }

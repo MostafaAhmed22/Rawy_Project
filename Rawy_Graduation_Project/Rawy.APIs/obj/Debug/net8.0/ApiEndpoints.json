@@ -1,6 +1,26 @@
 [
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "FacebookCallback",
+    "RelativePath": "api/Accounts/facebook-callback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "FacebookLogin",
+    "RelativePath": "api/Accounts/facebook-login",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "FacebookLogin",
     "RelativePath": "api/Accounts/FacebookLogin",
     "HttpMethod": "POST",

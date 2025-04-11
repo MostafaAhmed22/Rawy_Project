@@ -162,3 +162,4 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\N
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\System.Management.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
