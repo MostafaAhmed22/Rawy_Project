@@ -91,6 +91,7 @@ namespace Rawy.APIs
 
 			builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
+
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper
 			#endregion

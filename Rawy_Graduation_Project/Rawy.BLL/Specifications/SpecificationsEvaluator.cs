@@ -16,10 +16,23 @@ namespace Rawy.BLL.Specifications
 		{
 			var query = baseQuery;   // _context.Set<T>
 			if(spec.Criteria is not null)
-			{
 				query = query.Where(spec.Criteria);
-				//_context.Set<T>.where(S=> S.id = ID)   spec.criteria=> lambdaExpression
+			//_context.Set<T>.where(S=> S.id = ID)   spec.criteria=> lambdaExpression
+
+			// Apply ordering
+			if (spec.OrderBy != null)
+				query = query.OrderBy(spec.OrderBy);
+
+			
+			if (spec.OrderByDesc != null)
+				query = query.OrderByDescending(spec.OrderByDesc);
+
+			// Add Pagination
+			if(spec.IsPaginationsEnabled)
+			{
+				query = query.Skip(spec.Skip).Take(spec.Take);
 			}
+			
 
 			query = spec.Includes.Aggregate(query,(currentQuery,includeExpression) => currentQuery.Include(includeExpression));
 			// loop on every include in Includes and Add It To base Query

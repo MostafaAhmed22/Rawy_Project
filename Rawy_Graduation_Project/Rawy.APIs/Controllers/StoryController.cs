@@ -26,9 +26,9 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<Story>> GetAll()
+		public async Task<ActionResult<Story>> GetAll([FromQuery] StorySpecParams specParams)
 		{
-			var spec = new StoryWithReview();
+			var spec = new StoryWithReview(specParams);
 			var Stories = await _unitOfWork.StoryRepository.GetAllWithSpecAsync(spec);
 
 			var responseDtos = Stories.Select(story => new StoryResponseDto

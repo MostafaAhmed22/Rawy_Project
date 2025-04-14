@@ -67,7 +67,7 @@ namespace Rawy.APIs.Controllers
 		#endregion
 
 
-		[HttpPost("register-writer")]
+		[HttpPost("Register")]
 		public async Task<IActionResult> RegisterWriter([FromBody] WriterDto model)
 		{
 			if (!ModelState.IsValid)
@@ -171,21 +171,21 @@ namespace Rawy.APIs.Controllers
 		}
 
 
-		[HttpPost("FacebookLogin")]
-		public async Task<ActionResult<TokenDto>> FacebookLogin([FromBody] ExternalAuthDto model)
-		{
-			if (!ModelState.IsValid) return BadRequest(ModelState);
+		//[HttpPost("FacebookLogin")]
+		//public async Task<ActionResult<TokenDto>> FacebookLogin([FromBody] ExternalAuthDto model)
+		//{
+		//	if (!ModelState.IsValid) return BadRequest(ModelState);
 
-			var token = await _facebookAuthServices.AuthenticateWithFacebookAsync(model.Token);
-			return Ok(token);
-		}
+		//	var token = await _facebookAuthServices.AuthenticateWithFacebookAsync(model.Token);
+		//	return Ok(token);
+		//}
 
 
 
 		/// <summary>
 		/// Initiates the Facebook login process.
 		/// </summary>
-		[HttpGet("facebook-login")]
+		[HttpGet("Facebook-Login")]
 		public IActionResult FacebookLogin()
 
 		{
@@ -197,7 +197,7 @@ namespace Rawy.APIs.Controllers
 		/// <summary>
 		/// Handles the callback from Facebook after authentication.
 		/// </summary>
-		[HttpGet("facebook-callback")]
+		[HttpGet("Facebook-Callback")]
 		public async Task<IActionResult> FacebookCallback()
 		{
 
@@ -218,14 +218,24 @@ namespace Rawy.APIs.Controllers
 			}
 
 			// Create new Appuser
-			var user = new AppUser()
-			{
-				Email = email,
-				UserName = name //use name as username
-			};
-			// Generate a JWT token for the authenticated user
-			var token = await _tokenService.CreateTokenAsync(user, _userManager);
 
+			var user = await _userManager.FindByEmailAsync(email);
+			if (user == null)
+			{
+				user = new AppUser
+				{
+					Email = email,
+					UserName = name
+				};
+				var result = await _userManager.CreateAsync(user);
+				if (!result.Succeeded)
+				{
+					return BadRequest("Failed to create user.");
+				}
+			}
+				// Generate a JWT token for the authenticated user
+				var token = await _tokenService.CreateTokenAsync(user, _userManager);
+			
 			return Ok(new { Token = token });
 		}
 	}

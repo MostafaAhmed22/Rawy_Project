@@ -2,7 +2,7 @@
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "FacebookCallback",
-    "RelativePath": "api/Accounts/facebook-callback",
+    "RelativePath": "api/Accounts/Facebook-Callback",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -12,38 +12,12 @@
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "FacebookLogin",
-    "RelativePath": "api/Accounts/facebook-login",
+    "RelativePath": "api/Accounts/Facebook-Login",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "FacebookLogin",
-    "RelativePath": "api/Accounts/FacebookLogin",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Rawy.APIs.Dtos.ExternalAuthDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Rawy.APIs.Dtos.TokenDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
@@ -90,7 +64,7 @@
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
     "Method": "RegisterWriter",
-    "RelativePath": "api/Accounts/register-writer",
+    "RelativePath": "api/Accounts/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -222,7 +196,28 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagesize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "Rawy.DAL.Models.Story",

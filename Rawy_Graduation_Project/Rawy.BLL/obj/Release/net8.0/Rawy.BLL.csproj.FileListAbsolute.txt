@@ -1,0 +1,16 @@
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Release\net8.0\Rawy.BLL.deps.json
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Release\net8.0\Rawy.BLL.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Release\net8.0\Rawy.BLL.pdb
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Release\net8.0\Rawy.DAL.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Release\net8.0\Rawy.DAL.pdb
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.csproj.AssemblyReference.cache
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.AssemblyInfoInputs.cache
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.AssemblyInfo.cs
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.csproj.CoreCompileInputs.cache
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.sourcelink.json
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.csproj.Up2Date
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\refint\Rawy.BLL.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\Rawy.BLL.pdb
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Release\net8.0\ref\Rawy.BLL.dll
