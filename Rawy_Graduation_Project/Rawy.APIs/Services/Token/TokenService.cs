@@ -18,7 +18,7 @@ namespace Rawy.APIs.Services.Token
 
 
 
-		public async Task<string?> CreateTokenAsync(AppUser user, UserManager<AppUser> _userManager)
+		public async Task<string?> CreateTokenAsync(AppUser user, UserManager<AppUser> _userManager, string resetToken = null)
 		{
 
 
@@ -32,11 +32,18 @@ namespace Rawy.APIs.Services.Token
 
 			};
 
+
 			var UserRoles = await _userManager.GetRolesAsync(user);
 			foreach (var Role in UserRoles)
 			{
 				AuthClaims.Add(new Claim(ClaimTypes.Role, Role));
 			}
+
+			if (!string.IsNullOrEmpty(resetToken))
+			{
+				AuthClaims.Add(new Claim("resetToken", resetToken));
+			}
+
 
 
 
@@ -54,5 +61,27 @@ namespace Rawy.APIs.Services.Token
 
 			return new JwtSecurityTokenHandler().WriteToken(token);
 		}
+
+
+		public ClaimsPrincipal GetPrincipalFromToken(string token)
+		{
+			var tokenHandler = new JwtSecurityTokenHandler();
+			var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+
+			var tokenValidationParameters = new TokenValidationParameters
+			{
+				ValidateIssuer = true,
+				ValidateAudience = true,
+				ValidateLifetime = true,
+				ValidateIssuerSigningKey = true,
+				ValidIssuer = _configuration["Jwt:Issuer"],
+				ValidAudience = _configuration["Jwt:Audience"],
+				IssuerSigningKey = new SymmetricSecurityKey(key)
+			};
+
+			return tokenHandler.ValidateToken(token, tokenValidationParameters, out _);
+		}
 	}
+
+
 }

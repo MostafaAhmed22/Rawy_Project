@@ -1,22 +1,18 @@
 [
   {
     "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "FacebookCallback",
-    "RelativePath": "api/Accounts/Facebook-Callback",
-    "HttpMethod": "GET",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/Accounts/forgot-password",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
-    "Method": "FacebookLogin",
-    "RelativePath": "api/Accounts/Facebook-Login",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.ForgetPasswordDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -72,6 +68,22 @@
       {
         "Name": "model",
         "Type": "Rawy.APIs.Dtos.WriterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Accounts/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.ResetPasswordDto",
         "IsRequired": true
       }
     ],

@@ -9,6 +9,7 @@ using Rawy.APIs.Services.Token;
 using Rawy.APIs.Services.Auth;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Rawy.APIs.Helper;
 
 namespace Rawy.APIs.Controllers
 {
@@ -21,9 +22,10 @@ namespace Rawy.APIs.Controllers
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IGoogleAuthServices _googleAuthService;
 		private readonly IFacebookAuthServices _facebookAuthServices;
+		private readonly IConfiguration _configuration;
 
 		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper,
-								IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService,IFacebookAuthServices facebookAuthServices)
+								IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService,IFacebookAuthServices facebookAuthServices, IConfiguration configuration)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
@@ -32,6 +34,7 @@ namespace Rawy.APIs.Controllers
 			_unitOfWork = unitOfWork;
 			_googleAuthService = googleAuthService;
 			_facebookAuthServices = facebookAuthServices;
+			_configuration = configuration;
 		}
 
 		// Register
@@ -182,61 +185,130 @@ namespace Rawy.APIs.Controllers
 
 
 
-		/// <summary>
 		/// Initiates the Facebook login process.
-		/// </summary>
-		[HttpGet("Facebook-Login")]
-		public IActionResult FacebookLogin()
+		
+		//[HttpGet("Facebook-Login")]
+		//public IActionResult FacebookLogin()
 
+		//{
+		//	var redirectUri = Url.Action("FacebookCallback", "Auth", null, Request.Scheme);
+		//	var properties = new AuthenticationProperties { RedirectUri = redirectUri };
+		//	return Challenge(properties, "Facebook");
+		//}
+
+		
+		/// Handles the callback from Facebook after authentication.
+		
+		//[HttpGet("Facebook-Callback")]
+		//public async Task<IActionResult> FacebookCallback()
+		//{
+
+		//	var authenticateResult = await HttpContext.AuthenticateAsync("Facebook");
+		//	if (!authenticateResult.Succeeded)
+		//	{
+		//		return BadRequest("Facebook authentication failed.");
+		//	}
+
+		//	// Extract user information from Facebook
+		//	var externalUser = authenticateResult.Principal;
+		//	var email = externalUser.FindFirst(ClaimTypes.Email)?.Value;
+		//	var name = externalUser.FindFirst(ClaimTypes.Name)?.Value;
+
+		//	if (string.IsNullOrEmpty(email))
+		//	{
+		//		return BadRequest("Email claim not found in Facebook response.");
+		//	}
+
+		//	// Create new Appuser
+
+		//	var user = await _userManager.FindByEmailAsync(email);
+		//	if (user == null)
+		//	{
+		//		user = new AppUser
+		//		{
+		//			Email = email,
+		//			UserName = name
+		//		};
+		//		var result = await _userManager.CreateAsync(user);
+		//		if (!result.Succeeded)
+		//		{
+		//			return BadRequest("Failed to create user.");
+		//		}
+		//	}
+		//		// Generate a JWT token for the authenticated user
+		//		var token = await _tokenService.CreateTokenAsync(user, _userManager);
+			
+		//	return Ok(new { Token = token });
+		//}
+
+		[HttpPost("forgot-password")]
+		public async Task<IActionResult> ForgotPassword([FromBody] ForgetPasswordDto model)
 		{
-			var redirectUri = Url.Action("FacebookCallback", "Auth", null, Request.Scheme);
-			var properties = new AuthenticationProperties { RedirectUri = redirectUri };
-			return Challenge(properties, "Facebook");
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			var user = await _userManager.FindByEmailAsync(model.Email);
+			if (user == null)
+				return Ok(new { Message = "Email doesn't exist" }); //  user doesn't exist 
+
+			// Generate password reset token
+			var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+			// Generate JWT containing the reset token
+			var jwtToken = await _tokenService.CreateTokenAsync(user, _userManager, resetToken);
+
+			// Create reset link
+			var resetLink = $"{_configuration["BaseUrl"]}/reset-password?token={jwtToken}&email={user.Email}";
+
+
+			// create new Email
+			var email = new Email
+			{
+				Subject = "Reset Your Password",
+				Body = $"Please reset your password by clicking here: <a href='{resetLink}'>Reset Password</a>",
+				Recipents = user.Email
+
+			};
+			// Send email with reset link
+			 await EmailService.SendEmailAsync(email);
+
+
+			return Ok(new { Message = "If the email exists, a reset link has been sent." });
 		}
 
-		/// <summary>
-		/// Handles the callback from Facebook after authentication.
-		/// </summary>
-		[HttpGet("Facebook-Callback")]
-		public async Task<IActionResult> FacebookCallback()
+
+		[HttpPost("reset-password")]
+		public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto model)
 		{
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
 
-			var authenticateResult = await HttpContext.AuthenticateAsync("Facebook");
-			if (!authenticateResult.Succeeded)
-			{
-				return BadRequest("Facebook authentication failed.");
-			}
-
-			// Extract user information from Facebook
-			var externalUser = authenticateResult.Principal;
-			var email = externalUser.FindFirst(ClaimTypes.Email)?.Value;
-			var name = externalUser.FindFirst(ClaimTypes.Name)?.Value;
-
-			if (string.IsNullOrEmpty(email))
-			{
-				return BadRequest("Email claim not found in Facebook response.");
-			}
-
-			// Create new Appuser
-
-			var user = await _userManager.FindByEmailAsync(email);
+			var user = await _userManager.FindByEmailAsync(model.Email);
 			if (user == null)
+				return BadRequest("Invalid request");
+
+			try
 			{
-				user = new AppUser
-				{
-					Email = email,
-					UserName = name
-				};
-				var result = await _userManager.CreateAsync(user);
-				if (!result.Succeeded)
-				{
-					return BadRequest("Failed to create user.");
-				}
+				// Validate JWT token in model
+				var principal = _tokenService.GetPrincipalFromToken(model.Token);
+				// extract reset token
+				var resetToken = principal.Claims.FirstOrDefault(c => c.Type == "resetToken")?.Value;
+
+				if (string.IsNullOrEmpty(resetToken))
+					return BadRequest("Invalid token");
+
+				// Reset password using Identity
+				var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
+
+				if (result.Succeeded) 
+					return Ok();
+
+				return BadRequest(result.Errors);
 			}
-				// Generate a JWT token for the authenticated user
-				var token = await _tokenService.CreateTokenAsync(user, _userManager);
-			
-			return Ok(new { Token = token });
+			catch
+			{
+				return BadRequest("Invalid or expired token");
+			}
 		}
 	}
 }

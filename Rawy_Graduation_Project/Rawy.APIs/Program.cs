@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Helper;
 using Rawy.BLL.Interfaces;
-using Rawy.APIs.Services;
 using Rawy.DAL.Data;
 using Rawy.DAL.Models;
 using Rawy.BLL.Repositories;
@@ -12,7 +11,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Rawy.APIs.Services.Auth;
 using Rawy.APIs.Services.Token;
-using Rawy.APIs.Services.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace Rawy.APIs
 {
