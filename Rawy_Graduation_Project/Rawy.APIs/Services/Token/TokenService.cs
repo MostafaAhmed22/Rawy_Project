@@ -52,8 +52,8 @@ namespace Rawy.APIs.Services.Token
 			var AuthKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
 
 			var token = new JwtSecurityToken(
-				issuer: _configuration["JWT:ValidIssuer"],
-				audience: _configuration["JWT:MySecureKey"],
+				issuer: _configuration["JWT:Issuer"],
+				audience: _configuration["JWT:Audience"],
 				expires: DateTime.Now.AddDays(double.Parse(_configuration["JWT:DurationInDays"])),
 				claims: AuthClaims,
 				signingCredentials: new SigningCredentials(AuthKey, SecurityAlgorithms.HmacSha256Signature)
@@ -66,7 +66,7 @@ namespace Rawy.APIs.Services.Token
 		public ClaimsPrincipal GetPrincipalFromToken(string token)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
-			var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+			var key = Encoding.UTF8.GetBytes(_configuration["JWT:Key"]) ?? throw new InvalidOperationException("JWT Key is not configured"); 
 
 			var tokenValidationParameters = new TokenValidationParameters
 			{
@@ -74,8 +74,8 @@ namespace Rawy.APIs.Services.Token
 				ValidateAudience = true,
 				ValidateLifetime = true,
 				ValidateIssuerSigningKey = true,
-				ValidIssuer = _configuration["Jwt:Issuer"],
-				ValidAudience = _configuration["Jwt:Audience"],
+				ValidIssuer = _configuration["JWT:Issuer"] ?? throw new InvalidOperationException("JWT Issuer is not configured"),
+				ValidAudience = _configuration["JWT:Audience"] ?? throw new InvalidOperationException("JWT Audience is not configured"),
 				IssuerSigningKey = new SymmetricSecurityKey(key)
 			};
 

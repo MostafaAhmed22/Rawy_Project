@@ -7,36 +7,24 @@
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\helper\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\helper\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\token\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\token\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\accountservice\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\accountservice\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\forgetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\forgetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\accountservice\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\accountservice\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\errors\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\errors\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,52 +50,62 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RegisterDto.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\RegisterDto.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\RegisterDto.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\RegisterDto.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\RegisterDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBEAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Errors\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Errors\\ApiResponse.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Errors\\ApiResponse.cs",
+              "RelativeToolTip": "Rawy.APIs\\Errors\\ApiResponse.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAwAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T14:45:42.75Z",
+              "WhenOpened": "2025-04-20T21:50:17.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\AccountService\\AccountService.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\AccountService\\AccountService.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\AccountService\\AccountService.cs",
+              "RelativeToolTip": "Rawy.APIs\\Services\\AccountService\\AccountService.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAMwG0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T21:41:42.469Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ResetPasswordDto.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\ResetPasswordDto.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\ResetPasswordDto.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\ResetPasswordDto.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\ResetPasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAfAAAAAAAAAA==",
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\AccountService\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\AccountService\\IAccountService.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\AccountService\\IAccountService.cs",
+              "RelativeToolTip": "Rawy.APIs\\Services\\AccountService\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T14:43:56.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T21:34:06.096Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\appsettings.json",
               "RelativeDocumentMoniker": "Rawy.APIs\\appsettings.json",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\appsettings.json",
               "RelativeToolTip": "Rawy.APIs\\appsettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-20T14:17:35.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T14:17:35.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Program.cs",
               "RelativeDocumentMoniker": "Rawy.APIs\\Program.cs",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Program.cs",
               "RelativeToolTip": "Rawy.APIs\\Program.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwF0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T14:17:19.579Z",
               "EditorCaption": ""
@@ -120,61 +118,9 @@
               "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\AccountsController.cs",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
               "RelativeToolTip": "Rawy.APIs\\Controllers\\AccountsController.cs",
-              "ViewState": "AgIAABkBAAAAAAAAAAAAwBgBAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T14:11:36.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Helper\\EmailService.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Helper\\EmailService.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Helper\\EmailService.cs",
-              "RelativeToolTip": "Rawy.APIs\\Helper\\EmailService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T13:48:12.916Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Token\\TokenService.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\Token\\TokenService.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Token\\TokenService.cs",
-              "RelativeToolTip": "Rawy.APIs\\Services\\Token\\TokenService.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAuwD4AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T17:29:38.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ITokenService.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Token\\ITokenService.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\Token\\ITokenService.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Token\\ITokenService.cs",
-              "RelativeToolTip": "Rawy.APIs\\Services\\Token\\ITokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T17:32:38.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ForgetPasswordDto.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\ForgetPasswordDto.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\ForgetPasswordDto.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\ForgetPasswordDto.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\ForgetPasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T14:12:33.89Z",
               "EditorCaption": ""
             }
           ]

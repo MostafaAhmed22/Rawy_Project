@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Rawy.APIs.Services.Auth;
 using Rawy.APIs.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Rawy.APIs.Services.AccountService;
 namespace Rawy.APIs
 {
     public class Program
@@ -64,30 +65,33 @@ namespace Rawy.APIs
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-			})
-			  .AddFacebook(options =>
-			  {
-				  var appId = builder.Configuration["Authentication:Facebook:AppId"];
-				  if (appId == null)
-					  throw new ArgumentException(nameof(appId));
+			});
+			#region FacebookConfiguration
+			//.AddFacebook(options =>
+			//{
+			// var appId = builder.Configuration["Authentication:Facebook:AppId"];
+			// if (appId == null)
+			//  throw new ArgumentException(nameof(appId));
 
-				  var appSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
-				  if (appSecret == null)
-					  throw new ArgumentException(nameof(appSecret));
+			// var appSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+			// if (appSecret == null)
+			//  throw new ArgumentException(nameof(appSecret));
 
-				  options.AppId = appId;
-				  options.AppSecret = appSecret;
-			  });
+			// options.AppId = appId;
+			// options.AppSecret = appSecret;
+			//}); 
+			#endregion
 
 			builder.Services.AddHttpContextAccessor();
 
 			builder.Services.AddScoped<ITokenService, TokenService>();
 			builder.Services.AddScoped<IGoogleAuthServices,GoogleAuthService>();
-			builder.Services.AddScoped<IFacebookAuthServices, FacebookAuthServices>();
+			//builder.Services.AddScoped<IFacebookAuthServices, FacebookAuthServices>();
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 
 			builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+			builder.Services.AddScoped<IAccountService, AccountService>();
 
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));

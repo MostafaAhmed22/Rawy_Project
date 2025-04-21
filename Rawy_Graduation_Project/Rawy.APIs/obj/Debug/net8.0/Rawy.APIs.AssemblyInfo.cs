@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rawy.APIs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42742e656198a75b2435c0d36471b986fa7befdc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79086d2b67002f377f0932eaaf13c291985b0eba")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rawy.APIs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rawy.APIs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

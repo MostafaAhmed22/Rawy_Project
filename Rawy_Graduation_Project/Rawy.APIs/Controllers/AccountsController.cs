@@ -10,31 +10,17 @@ using Rawy.APIs.Services.Auth;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Rawy.APIs.Helper;
+using Rawy.APIs.Services.AccountService;
 
 namespace Rawy.APIs.Controllers
 {
     public class AccountsController : BaseApiController
 	{
-		private readonly UserManager<AppUser> _userManager;
-		private readonly SignInManager<AppUser> _signInManager;
-		private readonly ITokenService _tokenService;
-		private readonly IMapper _mapper;
-		private readonly IUnitOfWork _unitOfWork;
-		private readonly IGoogleAuthServices _googleAuthService;
-		private readonly IFacebookAuthServices _facebookAuthServices;
-		private readonly IConfiguration _configuration;
+		private readonly IAccountService _accountService;
 
-		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper,
-								IUnitOfWork unitOfWork, IGoogleAuthServices googleAuthService,IFacebookAuthServices facebookAuthServices, IConfiguration configuration)
+		public AccountsController(IAccountService accountService)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_tokenService = tokenService;
-			_mapper = mapper;
-			_unitOfWork = unitOfWork;
-			_googleAuthService = googleAuthService;
-			_facebookAuthServices = facebookAuthServices;
-			_configuration = configuration;
+			_accountService = accountService;
 		}
 
 		// Register
@@ -76,73 +62,33 @@ namespace Rawy.APIs.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
-			var existinguser = await _userManager.FindByEmailAsync(model.Email);
-			if(existinguser != null )
-				return BadRequest(new { message = "Email already in use." });
-
-
-			var user = _mapper.Map<AppUser>(model);
-			//	new AppUser
-			//{
-			//	Email = model.Email,
-			//	UserName = model.username,
-			//	PhoneNumber = model.PhoneNumber
-			//};
-
-			var result = await _userManager.CreateAsync(user, model.Password);
-			if (!result.Succeeded)
-				 return BadRequest(result.Errors);
-
-
-			// Assign the WRITER role
-		//	await _userManager.AddToRoleAsync(user, "WRITER");
-
-			// Create a Writer linked to the user
-			var writer = new Writer
-			{
-				WriterId = user.Id,
-				FName = model.FirstName,
-				LName = model.LastName,
-				PreferedLanguage = model.PreferredLanguage,
-				WritingStyle = model.WritingStyle
-			};
-
-			await _unitOfWork.WriterRepository.AddAsync(writer);
-			var ReturnedUser = new UserDto()
-			{
-				UserName = user.UserName,
-				Email = user.Email,
-				Token = await _tokenService.CreateTokenAsync(user, _userManager)
-			};
-			return Ok(ReturnedUser);
+			var response = await _accountService.RegisterWriterAsync(model);
+			return StatusCode(response.StatusCode, response.Data);
 		}
 
 		// Login
 		[HttpPost("Login")]
 		public async Task<ActionResult<UserDto>> Login(LoginDto model)
 		{
-			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user is null) return Unauthorized(new ApiResponse(401));
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
 
-			var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-
-			if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
-
-
-			return Ok(new UserDto()
+			try
 			{
-				UserName = user.UserName,
-				Email = user.Email,
-				Token = await _tokenService.CreateTokenAsync(user, _userManager)
-			});
-
+				var userDto = await _accountService.LoginAsync(model);
+				return Ok(userDto);
+			}
+			catch
+			{
+				return Unauthorized(new ApiResponse(401, "Invalid credentials"));
+			}
 
 		}
 
 		[HttpPost("GoogleLogin")]
 		public async Task<IActionResult> GoogleLogin([FromBody] ExternalAuthDto model)
 		{
-			var token = await _googleAuthService.AuthenticateWithGoogleAsync(model.Token);
+			var token = await _accountService.GoogleLoginAsync(model.Token);
 			return Ok(token);
 			#region LogicWithoutGoogleService
 			//var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
@@ -247,33 +193,8 @@ namespace Rawy.APIs.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
-			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null)
-				return Ok(new { Message = "Email doesn't exist" }); //  user doesn't exist 
-
-			// Generate password reset token
-			var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-
-			// Generate JWT containing the reset token
-			var jwtToken = await _tokenService.CreateTokenAsync(user, _userManager, resetToken);
-
-			// Create reset link
-			var resetLink = $"{_configuration["BaseUrl"]}/reset-password?token={jwtToken}&email={user.Email}";
-
-
-			// create new Email
-			var email = new Email
-			{
-				Subject = "Reset Your Password",
-				Body = $"Please reset your password by clicking here: <a href='{resetLink}'>Reset Password</a>",
-				Recipents = user.Email
-
-			};
-			// Send email with reset link
-			 await EmailService.SendEmailAsync(email);
-
-
-			return Ok(new { Message = "If the email exists, a reset link has been sent." });
+			var response = await _accountService.ForgotPasswordAsync(model);
+			return StatusCode(response.StatusCode, response.Message);
 		}
 
 
@@ -283,32 +204,8 @@ namespace Rawy.APIs.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
-			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null)
-				return BadRequest("Invalid request");
-
-			try
-			{
-				// Validate JWT token in model
-				var principal = _tokenService.GetPrincipalFromToken(model.Token);
-				// extract reset token
-				var resetToken = principal.Claims.FirstOrDefault(c => c.Type == "resetToken")?.Value;
-
-				if (string.IsNullOrEmpty(resetToken))
-					return BadRequest("Invalid token");
-
-				// Reset password using Identity
-				var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
-
-				if (result.Succeeded) 
-					return Ok();
-
-				return BadRequest(result.Errors);
-			}
-			catch
-			{
-				return BadRequest("Invalid or expired token");
-			}
+			var response = await _accountService.ResetPasswordAsync(model);
+			return StatusCode(response.StatusCode, response.Message);
 		}
 	}
 }
