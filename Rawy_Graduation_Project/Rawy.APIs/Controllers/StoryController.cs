@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using Rawy.DAL.Models.StorySpec;
 
 namespace Rawy.APIs.Controllers
 {
-
+	[Authorize]
 	public class StoryController : BaseApiController
 	{
 		//private readonly IGenericRepository<Story> _storyRepo;

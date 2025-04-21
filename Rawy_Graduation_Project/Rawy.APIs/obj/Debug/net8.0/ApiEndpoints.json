@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.ForgetPasswordDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.ForgetPasswordDto",
         "IsRequired": true
       }
     ],
@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.ExternalAuthDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.ExternalAuthDto",
         "IsRequired": true
       }
     ],
@@ -41,13 +41,13 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.LoginDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.LoginDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Rawy.APIs.Dtos.UserDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -67,7 +67,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.WriterDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.WriterDto",
         "IsRequired": true
       }
     ],
@@ -83,7 +83,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.ResetPasswordDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.ResetPasswordDto",
         "IsRequired": true
       }
     ],
@@ -197,6 +197,96 @@
         "Name": "storyId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RolesController",
+    "Method": "AssignRole",
+    "RelativePath": "api/Roles/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RolesController",
+    "Method": "CreateRole",
+    "RelativePath": "api/Roles/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createRole",
+        "Type": "Rawy.APIs.Dtos.RolesDtos.CreateRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RolesController",
+    "Method": "DeleteRole",
+    "RelativePath": "api/Roles/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RolesController",
+    "Method": "EditRole",
+    "RelativePath": "api/Roles/edit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "oldName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RolesController",
+    "Method": "GetUserRoles",
+    "RelativePath": "api/Roles/user-roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

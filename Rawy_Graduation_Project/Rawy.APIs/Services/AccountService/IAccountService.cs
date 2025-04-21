@@ -1,4 +1,5 @@
 ﻿using Rawy.APIs.Dtos;
+using Rawy.APIs.Dtos.AcoountDtos;
 
 namespace Rawy.APIs.Services.AccountService
 {

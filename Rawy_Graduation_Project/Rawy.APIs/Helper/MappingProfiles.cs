@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Rawy.APIs.Dtos;
+using Rawy.APIs.Dtos.AcoountDtos;
 using Rawy.APIs.Dtos.StoryDtos;
 using Rawy.DAL.Models;
 
 namespace Rawy.APIs.Helper
 {
-	public class MappingProfiles : Profile
+    public class MappingProfiles : Profile
 	{
         public MappingProfiles()
         {

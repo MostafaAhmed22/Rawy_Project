@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\storyspec\\storywithreviewandwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\storyspec\\storywithreviewandwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\storyspec\\storyspecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\storyspec\\storyspecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,40 +35,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StoryWithReviewAndWriter.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAACjAAAAAAAAAA==",
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\RolesController.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Rawy.APIs\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAcwCYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T11:43:10.456Z",
+              "WhenOpened": "2025-04-21T15:23:47.798Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StorySpecParams.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StorySpecParams.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\StorySpec\\StorySpecParams.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StorySpecParams.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\StorySpec\\StorySpecParams.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Title": "AccountsController.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
+              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\AccountsController.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
+              "RelativeToolTip": "Rawy.APIs\\Controllers\\AccountsController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T11:26:41.894Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StoryController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\StoryController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\StoryController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAIAwwBwAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T11:07:11.107Z",
+              "WhenOpened": "2025-04-21T15:23:30.238Z",
               "EditorCaption": ""
             }
           ]

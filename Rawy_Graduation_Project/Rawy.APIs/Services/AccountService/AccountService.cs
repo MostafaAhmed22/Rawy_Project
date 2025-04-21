@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Rawy.APIs.Dtos;
+using Rawy.APIs.Dtos.AcoountDtos;
 using Rawy.APIs.Helper;
 using Rawy.APIs.Services.Auth;
 using Rawy.APIs.Services.Token;
@@ -10,7 +11,7 @@ using Rawy.DAL.Models;
 
 namespace Rawy.APIs.Services.AccountService
 {
-	public class AccountService : IAccountService
+    public class AccountService : IAccountService
 	{
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
