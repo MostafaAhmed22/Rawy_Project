@@ -9,10 +9,11 @@ namespace Rawy.DAL.Models.StorySpec
 	public class StorySpecParams
 	{
 
-		public string? search
+		private string _search;
+		public string? Search
 		{
-			get { return search; }
-			set { search = value; }
+			get => _search;
+			set => _search = value.ToLower();
 		}
 
 		private const int MaxPagesize = 5;

@@ -9,7 +9,7 @@ namespace Rawy.DAL.Models.StorySpec
 {
     public class StoryWithReview : BaseSpecifications<Story>
     {
-        public StoryWithReview(StorySpecParams specParams) : base()
+        public StoryWithReview(StorySpecParams specParams) : base(S=> (string.IsNullOrEmpty(specParams.Search) || S.Content.ToLower().Contains(specParams.Search)))
 
         {
 			Includes.Add(S => S.Writer);
