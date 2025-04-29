@@ -20,18 +20,18 @@ namespace Rawy.BLL.Specifications
 			//_context.Set<T>.where(S=> S.id = ID)   spec.criteria=> lambdaExpression
 
 			// Apply ordering
-			if (spec.OrderBy != null)
-				query = query.OrderBy(spec.OrderBy);
+			//if (spec.OrderBy != null)
+			//	query = query.OrderBy(spec.OrderBy);
 
 			
-			if (spec.OrderByDesc != null)
-				query = query.OrderByDescending(spec.OrderByDesc);
+			//if (spec.OrderByDesc != null)
+			//	query = query.OrderByDescending(spec.OrderByDesc);
 
-			// Add Pagination
-			if(spec.IsPaginationsEnabled)
-			{
-				query = query.Skip(spec.Skip).Take(spec.Take);
-			}
+			//// Add Pagination
+			//if(spec.IsPaginationsEnabled)
+			//{
+			//	query = query.Skip(spec.Skip).Take(spec.Take);
+			//}
 			
 
 			query = spec.Includes.Aggregate(query,(currentQuery,includeExpression) => currentQuery.Include(includeExpression));

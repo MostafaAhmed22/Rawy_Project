@@ -67,7 +67,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Rawy.APIs.Dtos.AcoountDtos.WriterDto",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.RegisterDto",
         "IsRequired": true
       }
     ],
@@ -303,21 +303,6 @@
         "Name": "Search",
         "Type": "System.String",
         "IsRequired": false
-      },
-      {
-        "Name": "PageIndex",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Pagesize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Sort",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -453,7 +438,7 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
-    "Method": "GetWriterById",
+    "Method": "GetProfileById",
     "RelativePath": "api/Writer/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -479,6 +464,38 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "FollowWriter",
+    "RelativePath": "api/Writer/follow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "followeeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "UnfollowEmployee",
+    "RelativePath": "api/Writer/unfollow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "followeeId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

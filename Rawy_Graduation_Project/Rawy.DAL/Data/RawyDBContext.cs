@@ -21,20 +21,7 @@ namespace Rawy.DAL.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-            modelBuilder.Entity<WriterFollow>()
-                .HasKey(ef => new { ef.FollowerId, ef.FollowedId }); // Composite Key
-
-            modelBuilder.Entity<WriterFollow>()
-                .HasOne(ef => ef.Follower)
-                .WithMany(e => e.Following)
-                .HasForeignKey(ef => ef.FollowerId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WriterFollow>()
-                .HasOne(ef => ef.Followed)
-                .WithMany(e => e.Followers)
-                .HasForeignKey(ef => ef.FollowedId)
-                .OnDelete(DeleteBehavior.Restrict);
+            
 
             //modelBuilder.ApplyConfiguration(new StoryConfigurations());
             //modelBuilder.ApplyConfiguration(new WriterConfigurations());
@@ -47,6 +34,7 @@ namespace Rawy.DAL.Data
 		public DbSet<Writer> Writers { get; set; }
         public DbSet<Comment> Comments { get; set; }
 		public DbSet<Rating> Ratings { get; set; }
+		public DbSet<WriterFollow> WriterFollows { get; set; }
 
 	}
 }

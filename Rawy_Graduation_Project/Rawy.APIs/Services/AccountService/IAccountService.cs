@@ -5,7 +5,7 @@ namespace Rawy.APIs.Services.AccountService
 {
     public interface IAccountService
     {
-        Task<ApiResponse> RegisterWriterAsync(WriterDto model);
+        Task<ApiResponse> RegisterWriterAsync(RegisterDto model);
         Task<UserDto> LoginAsync(LoginDto model);
         Task<TokenDto> GoogleLoginAsync(string token);
         Task<ApiResponse> ForgotPasswordAsync(ForgetPasswordDto model);

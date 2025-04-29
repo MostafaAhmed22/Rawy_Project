@@ -4778,24 +4778,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\t\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\222\\My projects Elhal\\Gradulation\\project_Repo\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Rawy.APIs.csproj",
+      "projectUniqueName": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Rawy.APIs.csproj",
       "projectName": "Rawy.APIs",
-      "projectPath": "D:\\222\\My projects Elhal\\Gradulation\\project_Repo\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Rawy.APIs.csproj",
-      "packagesPath": "C:\\Users\\t\\.nuget\\packages\\",
-      "outputPath": "D:\\222\\My projects Elhal\\Gradulation\\project_Repo\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\obj\\",
+      "projectPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Rawy.APIs.csproj",
+      "packagesPath": "C:\\Users\\Mostafa Ahmed\\.nuget\\packages\\",
+      "outputPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\t\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Mostafa Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4810,8 +4805,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\222\\My projects Elhal\\Gradulation\\project_Repo\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Rawy.BLL.csproj": {
-              "projectPath": "D:\\222\\My projects Elhal\\Gradulation\\project_Repo\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Rawy.BLL.csproj"
+            "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Rawy.BLL.csproj": {
+              "projectPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Rawy.BLL.csproj"
             }
           }
         }
@@ -4824,9 +4819,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -4882,7 +4876,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

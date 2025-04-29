@@ -155,26 +155,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Rawy.DAL.Models.Admin", b =>
-                {
-                    b.Property<int>("AdminId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("AdminId");
-
-                    b.ToTable("Admins");
-                });
-
             modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
                 {
                     b.Property<int>("Id")
@@ -362,17 +342,27 @@ namespace Rawy.DAL.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("PreferedLanguage")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("WritingStyle")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.HasKey("WriterId");
 
                     b.ToTable("Writers", (string)null);
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
+                {
+                    b.Property<int>("FollowerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FolloweeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FollowedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("FollowerId", "FolloweeId");
+
+                    b.HasIndex("FolloweeId");
+
+                    b.ToTable("WriterFollows");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -424,17 +414,6 @@ namespace Rawy.DAL.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.Admin", b =>
-                {
-                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
-                        .WithOne("Admin")
-                        .HasForeignKey("Rawy.DAL.Models.Admin", "AdminId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Comment", b =>
@@ -497,11 +476,27 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
+            modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
                 {
-                    b.Navigation("Admin")
+                    b.HasOne("Rawy.DAL.Models.Writer", "Followee")
+                        .WithMany("Followers")
+                        .HasForeignKey("FolloweeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Rawy.DAL.Models.Writer", "Follower")
+                        .WithMany("Followings")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Followee");
+
+                    b.Navigation("Follower");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
+                {
                     b.Navigation("Writer")
                         .IsRequired();
                 });
@@ -516,6 +511,10 @@ namespace Rawy.DAL.Data.Migrations
             modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Followers");
+
+                    b.Navigation("Followings");
 
                     b.Navigation("Ratings");
 

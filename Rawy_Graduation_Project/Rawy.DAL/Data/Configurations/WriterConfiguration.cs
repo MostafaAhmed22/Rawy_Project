@@ -31,11 +31,7 @@ namespace Rawy.DAL.Data.Configurations
 				   .HasMaxLength(50)
 				   .IsRequired();
 
-			builder.Property(w => w.PreferedLanguage)
-				   .HasMaxLength(20);
-
-			builder.Property(w => w.WritingStyle)
-				   .HasMaxLength(100);
+		
 
 			// relationship with Story
 			builder.HasMany(w => w.Stories)

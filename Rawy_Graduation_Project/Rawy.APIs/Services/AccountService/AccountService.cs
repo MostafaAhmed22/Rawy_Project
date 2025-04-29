@@ -35,7 +35,7 @@ namespace Rawy.APIs.Services.AccountService
 			_configuration = configuration;
 		}
 
-		public async Task<ApiResponse> RegisterWriterAsync(WriterDto model)
+		public async Task<ApiResponse> RegisterWriterAsync(RegisterDto model)
 		{
 			var existingUser = await _userManager.FindByEmailAsync(model.Email);
 			if (existingUser != null)
@@ -53,8 +53,7 @@ namespace Rawy.APIs.Services.AccountService
 				WriterId = user.Id,
 				FName = model.FirstName,
 				LName = model.LastName,
-				PreferedLanguage = model.PreferredLanguage,
-				WritingStyle = model.WritingStyle
+				
 			};
 
 			await _unitOfWork.WriterRepository.AddAsync(writer);

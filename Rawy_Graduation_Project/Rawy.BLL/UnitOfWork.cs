@@ -16,8 +16,9 @@ namespace Rawy.BLL
 		private IWriterRepository writerRepository;
 		private IRatingRepository ratingRepository;
 		private ICommentRepository commentRepository;
+		private IFollowRepository followRepository;
 
-        public UnitOfWork(RawyDBContext context)
+		public UnitOfWork(RawyDBContext context)
         {
 
 			_context = context;
@@ -25,7 +26,7 @@ namespace Rawy.BLL
 			writerRepository = new WriterRepository(_context);
 			ratingRepository = new RatingRepository(_context);
 			commentRepository = new CommentRepository(_context);
-
+			followRepository  = new FollowRepository(_context);
 
 		}
         public IStoryRepository StoryRepository => storyRepository;
@@ -35,6 +36,8 @@ namespace Rawy.BLL
 
 		public IRatingRepository RatingRepository => ratingRepository;
 		public ICommentRepository CommentRepository => commentRepository;
+
+		public IFollowRepository FollowRepository => followRepository;
 
 		public void Dispose()
 		{

@@ -16,12 +16,11 @@ namespace Rawy.DAL.Models
 		public string LName { get; set; }
 
         // الموظفين اللي بيتابعهم
-        public ICollection<WriterFollow> Following { get; set; }
+        public ICollection<WriterFollow> Followings { get; set; }
 
         // الموظفين اللي بيتابعوه
         public ICollection<WriterFollow> Followers { get; set; }
-        public string? PreferedLanguage { get; set; }
-		public string? WritingStyle { get; set; }
+      
 		// Comments
 		public ICollection<Comment> Comments { get; set; }
 

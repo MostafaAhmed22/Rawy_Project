@@ -20,7 +20,7 @@ namespace Rawy.APIs.Helper
 
 			CreateMap<UpdateStoryDto, Story>().ReverseMap();
 
-			CreateMap<WriterDto, AppUser>().ReverseMap();
+			CreateMap<RegisterDto, AppUser>().ReverseMap();
 			CreateMap<CommentDto,Comment>().ReverseMap();
 			CreateMap<RatingDto, Rating>().ReverseMap();
 		}

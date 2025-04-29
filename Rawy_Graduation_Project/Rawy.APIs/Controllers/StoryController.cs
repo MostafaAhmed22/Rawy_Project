@@ -12,7 +12,7 @@ using Rawy.DAL.Models.StorySpec;
 
 namespace Rawy.APIs.Controllers
 {
-	[Authorize]
+	
 	public class StoryController : BaseApiController
 	{
 		//private readonly IGenericRepository<Story> _storyRepo;

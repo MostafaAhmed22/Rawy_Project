@@ -74,25 +74,6 @@ namespace Rawy.DAL.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Admins",
-                columns: table => new
-                {
-                    AdminId = table.Column<int>(type: "int", nullable: false),
-                    FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Admins", x => x.AdminId);
-                    table.ForeignKey(
-                        name: "FK_Admins_AspNetUsers_AdminId",
-                        column: x => x.AdminId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -183,9 +164,7 @@ namespace Rawy.DAL.Data.Migrations
                 {
                     WriterId = table.Column<int>(type: "int", nullable: false),
                     FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PreferedLanguage = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    WritingStyle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -219,6 +198,31 @@ namespace Rawy.DAL.Data.Migrations
                         principalTable: "Writers",
                         principalColumn: "WriterId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WriterFollows",
+                columns: table => new
+                {
+                    FollowerId = table.Column<int>(type: "int", nullable: false),
+                    FolloweeId = table.Column<int>(type: "int", nullable: false),
+                    FollowedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WriterFollows", x => new { x.FollowerId, x.FolloweeId });
+                    table.ForeignKey(
+                        name: "FK_WriterFollows_Writers_FolloweeId",
+                        column: x => x.FolloweeId,
+                        principalTable: "Writers",
+                        principalColumn: "WriterId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_WriterFollows_Writers_FollowerId",
+                        column: x => x.FollowerId,
+                        principalTable: "Writers",
+                        principalColumn: "WriterId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -341,14 +345,16 @@ namespace Rawy.DAL.Data.Migrations
                 name: "IX_Stories_WriterId",
                 table: "Stories",
                 column: "WriterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WriterFollows_FolloweeId",
+                table: "WriterFollows",
+                column: "FolloweeId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Admins");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -369,6 +375,9 @@ namespace Rawy.DAL.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ratings");
+
+            migrationBuilder.DropTable(
+                name: "WriterFollows");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

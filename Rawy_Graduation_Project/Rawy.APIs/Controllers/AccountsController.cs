@@ -58,7 +58,7 @@ namespace Rawy.APIs.Controllers
 
 
 		[HttpPost("Register")]
-		public async Task<IActionResult> RegisterWriter([FromBody] WriterDto model)
+		public async Task<IActionResult> RegisterWriter([FromBody] RegisterDto model)
 		{
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
