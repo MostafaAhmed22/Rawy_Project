@@ -21,9 +21,24 @@ namespace Rawy.DAL.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//modelBuilder.ApplyConfiguration(new StoryConfigurations());
-			//modelBuilder.ApplyConfiguration(new WriterConfigurations());
-			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<WriterFollow>()
+                .HasKey(ef => new { ef.FollowerId, ef.FollowedId }); // Composite Key
+
+            modelBuilder.Entity<WriterFollow>()
+                .HasOne(ef => ef.Follower)
+                .WithMany(e => e.Following)
+                .HasForeignKey(ef => ef.FollowerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<WriterFollow>()
+                .HasOne(ef => ef.Followed)
+                .WithMany(e => e.Followers)
+                .HasForeignKey(ef => ef.FollowedId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.ApplyConfiguration(new StoryConfigurations());
+            //modelBuilder.ApplyConfiguration(new WriterConfigurations());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
 			base.OnModelCreating(modelBuilder);
 		}

@@ -14,3 +14,19 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Ra
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\refint\Rawy.BLL.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.pdb
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\ref\Rawy.BLL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Debug\net8.0\Rawy.BLL.deps.json
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Debug\net8.0\Rawy.BLL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Debug\net8.0\Rawy.BLL.pdb
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Debug\net8.0\Rawy.DAL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\bin\Debug\net8.0\Rawy.DAL.pdb
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.csproj.AssemblyReference.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.AssemblyInfoInputs.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.AssemblyInfo.cs
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.csproj.CoreCompileInputs.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.sourcelink.json
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.csproj.Up2Date
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\refint\Rawy.BLL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\Rawy.BLL.pdb
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.BLL\obj\Debug\net8.0\ref\Rawy.BLL.dll

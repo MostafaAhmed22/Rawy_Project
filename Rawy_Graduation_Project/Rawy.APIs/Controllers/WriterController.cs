@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Dtos;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
@@ -50,5 +51,67 @@ namespace Rawy.APIs.Controllers
 
 			return Ok(new { message = "Writer deleted successfully" });
 		}
-	}
+
+        //[HttpPost("follow")]
+        //public async Task<IActionResult> FollowEmployee(int followerId, int followedId)
+        //{
+        //    if (followerId == followedId)
+        //    {
+        //        return BadRequest("You can't follow yourself.");
+        //    }
+            
+        //    var follower = await _unitOfWork.WriterRepository.GetByIdAsync(followerId);
+        //    var followed = await _unitOfWork.WriterRepository.GetByIdAsync(followedId);
+
+        //    //var follower = await _context.Writers.FindAsync(followerId);
+        //    //var followed = await _context.Writers.FindAsync(followedId);
+
+        //    if (follower == null || followed == null)
+        //    {
+        //        return NotFound("Employee not found.");
+        //    }
+
+        //    var existingFollow = await _context.WriterFollows
+        //        .FirstOrDefaultAsync(x => x.FollowerId == followerId && x.FollowedId == followedId);
+
+        //    if (existingFollow != null)
+        //    {
+        //        return BadRequest("Already following this employee.");
+        //    }
+
+        //    var follow = new WriterFollow
+        //    {
+        //        FollowerId = followerId,
+        //        FollowedId = followedId
+        //    };
+
+        //    _context.EmployeeFollows.Add(follow);
+        //    await _context.SaveChangesAsync();
+
+        //    return Ok("Followed successfully.");
+        //}
+
+        //[HttpPost("unfollow")]
+        //public async Task<IActionResult> UnfollowEmployee(int followerId, int followedId)
+        //{
+        //    if (followerId == followedId)
+        //    {
+        //        return BadRequest("You can't unfollow yourself.");
+        //    }
+
+        //    var follow = await _context.WriterFollows
+        //        .FirstOrDefaultAsync(x => x.FollowerId == followerId && x.FollowedId == followedId);
+
+        //    if (follow == null)
+        //    {
+        //        return NotFound("Follow relationship does not exist.");
+        //    }
+
+        //    _context.WriterFollows.Remove(follow);
+        //    await _context.SaveChangesAsync();
+
+        //    return Ok("Unfollowed successfully.");
+        //}
+
+    }
 }

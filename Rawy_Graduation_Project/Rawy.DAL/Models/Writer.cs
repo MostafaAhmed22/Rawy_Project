@@ -14,6 +14,12 @@ namespace Rawy.DAL.Models
 		public int WriterId { get; set; }
 		public string FName { get; set; }
 		public string LName { get; set; }
+
+        // الموظفين اللي بيتابعهم
+        public ICollection<WriterFollow> Following { get; set; }
+
+        // الموظفين اللي بيتابعوه
+        public ICollection<WriterFollow> Followers { get; set; }
         public string? PreferedLanguage { get; set; }
 		public string? WritingStyle { get; set; }
 		// Comments

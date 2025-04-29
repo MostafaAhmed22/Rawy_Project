@@ -11,3 +11,16 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Ra
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\refint\Rawy.DAL.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.pdb
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\ref\Rawy.DAL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\bin\Debug\net8.0\Rawy.DAL.deps.json
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\bin\Debug\net8.0\Rawy.DAL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\bin\Debug\net8.0\Rawy.DAL.pdb
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.csproj.AssemblyReference.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.AssemblyInfoInputs.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.AssemblyInfo.cs
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.csproj.CoreCompileInputs.cache
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.sourcelink.json
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\refint\Rawy.DAL.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\Rawy.DAL.pdb
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.DAL\obj\Debug\net8.0\ref\Rawy.DAL.dll
