@@ -32,6 +32,10 @@ namespace Rawy.DAL.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -50,6 +54,20 @@ namespace Rawy.DAL.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Writers",
+                columns: table => new
+                {
+                    WriterId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Writers", x => x.WriterId);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,25 +177,6 @@ namespace Rawy.DAL.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Writers",
-                columns: table => new
-                {
-                    WriterId = table.Column<int>(type: "int", nullable: false),
-                    FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Writers", x => x.WriterId);
-                    table.ForeignKey(
-                        name: "FK_Writers_AspNetUsers_WriterId",
-                        column: x => x.WriterId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Stories",
                 columns: table => new
                 {
@@ -187,16 +186,16 @@ namespace Rawy.DAL.Data.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    WriterId = table.Column<int>(type: "int", nullable: false)
+                    AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Stories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Stories_Writers_WriterId",
-                        column: x => x.WriterId,
-                        principalTable: "Writers",
-                        principalColumn: "WriterId",
+                        name: "FK_Stories_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -212,16 +211,16 @@ namespace Rawy.DAL.Data.Migrations
                 {
                     table.PrimaryKey("PK_WriterFollows", x => new { x.FollowerId, x.FolloweeId });
                     table.ForeignKey(
-                        name: "FK_WriterFollows_Writers_FolloweeId",
+                        name: "FK_WriterFollows_AspNetUsers_FolloweeId",
                         column: x => x.FolloweeId,
-                        principalTable: "Writers",
-                        principalColumn: "WriterId",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_WriterFollows_Writers_FollowerId",
+                        name: "FK_WriterFollows_AspNetUsers_FollowerId",
                         column: x => x.FollowerId,
-                        principalTable: "Writers",
-                        principalColumn: "WriterId",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -233,24 +232,24 @@ namespace Rawy.DAL.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    WriterId = table.Column<int>(type: "int", nullable: false),
+                    AppUserId = table.Column<int>(type: "int", nullable: false),
                     StoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Comments_Stories_StoryId",
                         column: x => x.StoryId,
                         principalTable: "Stories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_Writers_WriterId",
-                        column: x => x.WriterId,
-                        principalTable: "Writers",
-                        principalColumn: "WriterId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -261,24 +260,24 @@ namespace Rawy.DAL.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Score = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    WriterId = table.Column<int>(type: "int", nullable: false),
+                    AppUserId = table.Column<int>(type: "int", nullable: false),
                     StoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Ratings_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Ratings_Stories_StoryId",
                         column: x => x.StoryId,
                         principalTable: "Stories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Writers_WriterId",
-                        column: x => x.WriterId,
-                        principalTable: "Writers",
-                        principalColumn: "WriterId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -321,14 +320,20 @@ namespace Rawy.DAL.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_AppUserId",
+                table: "Comments",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_StoryId",
                 table: "Comments",
                 column: "StoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_WriterId",
-                table: "Comments",
-                column: "WriterId");
+                name: "IX_Ratings_AppUserId_StoryId",
+                table: "Ratings",
+                columns: new[] { "AppUserId", "StoryId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_StoryId",
@@ -336,15 +341,9 @@ namespace Rawy.DAL.Data.Migrations
                 column: "StoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ratings_WriterId_StoryId",
-                table: "Ratings",
-                columns: new[] { "WriterId", "StoryId" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stories_WriterId",
+                name: "IX_Stories_AppUserId",
                 table: "Stories",
-                column: "WriterId");
+                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WriterFollows_FolloweeId",
@@ -380,13 +379,13 @@ namespace Rawy.DAL.Data.Migrations
                 name: "WriterFollows");
 
             migrationBuilder.DropTable(
+                name: "Writers");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Stories");
-
-            migrationBuilder.DropTable(
-                name: "Writers");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

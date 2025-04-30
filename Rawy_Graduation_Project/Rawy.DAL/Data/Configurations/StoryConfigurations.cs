@@ -36,9 +36,9 @@ namespace Rawy.DAL.Data.Configurations
 			//	.OnDelete(DeleteBehavior.ClientSetNull);
 
 			// Foreign Key Relationship with Writer
-			builder.HasOne(s => s.Writer)
+			builder.HasOne(s => s.AppUser)
 				.WithMany(w => w.Stories)
-				.HasForeignKey(s => s.WriterId)
+				.HasForeignKey(s => s.AppUserId)
 				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}

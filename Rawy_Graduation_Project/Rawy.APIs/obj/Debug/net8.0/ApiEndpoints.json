@@ -171,8 +171,8 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "GetAverageRating",
-    "RelativePath": "api/Rating/{storyId}/average-rating",
+    "Method": "GetRating",
+    "RelativePath": "api/Rating/{storyId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -187,8 +187,8 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "GetRating",
-    "RelativePath": "api/Rating/{storyId}/rating",
+    "Method": "GetAverageRating",
+    "RelativePath": "api/Rating/average-rating/{storyId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -438,22 +438,6 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
-    "Method": "GetProfileById",
-    "RelativePath": "api/Writer/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.WriterController",
     "Method": "DeleteWriter",
     "RelativePath": "api/Writer/{id}",
     "HttpMethod": "DELETE",
@@ -480,6 +464,22 @@
         "Name": "followeeId",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "GetProfileById",
+    "RelativePath": "api/Writer/GetProfile/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

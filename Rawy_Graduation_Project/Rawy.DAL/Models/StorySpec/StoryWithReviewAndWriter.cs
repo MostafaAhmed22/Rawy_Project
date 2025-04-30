@@ -12,8 +12,9 @@ namespace Rawy.DAL.Models.StorySpec
         public StoryWithReview(StorySpecParams specParams) : base(S=> (string.IsNullOrEmpty(specParams.Search) || S.Content.ToLower().Contains(specParams.Search)))
 
         {
-			Includes.Add(S => S.Writer);
-            Includes.Add(S => S.Comments);
+			Includes.Add(S => S.AppUser);
+			//Includes.Add(S => S.Writer);
+			Includes.Add(S => S.Comments);
             Includes.Add(S => S.Ratings);
 
 			// Apply sorting based on the 'sort' parameter
@@ -47,7 +48,8 @@ namespace Rawy.DAL.Models.StorySpec
 
         public StoryWithReview(int id) : base(S=> S.Id == id)
         {
-			Includes.Add(S => S.Writer);
+			Includes.Add(S => S.AppUser);
+		//	Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
 			Includes.Add(S => S.Ratings);
 		}

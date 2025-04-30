@@ -25,7 +25,7 @@ namespace Rawy.DAL.Data.Configurations
 				.HasDefaultValueSql("GETDATE()");
 
 
-			builder.HasIndex(r => new { r.WriterId, r.StoryId })
+			builder.HasIndex(r => new { r.AppUserId, r.StoryId })
 		   .IsUnique(); // Ensures one Writer can rate a Story only once
 
 			// Relationship with Story (Each rating belongs to a single story)
@@ -35,9 +35,9 @@ namespace Rawy.DAL.Data.Configurations
 				.OnDelete(DeleteBehavior.Cascade); // Cascade delete when Story is deleted
 
 			// Relationship with Writer (Each rating is given by one writer)
-			builder.HasOne(r => r.Writer)
+			builder.HasOne(r => r.AppUser)
 				.WithMany(w => w.Ratings)
-				.HasForeignKey(r => r.WriterId)
+				.HasForeignKey(r => r.AppUserId)
 				.OnDelete(DeleteBehavior.Restrict); // Prevent writer deletion if ratings exist
 		}
 	}

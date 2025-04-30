@@ -13,7 +13,8 @@ namespace Rawy.BLL
 	{
 		private readonly RawyDBContext _context;
 		private IStoryRepository storyRepository;
-		private IWriterRepository writerRepository;
+		private IUserRepository userRepository;
+		//private IWriterRepository writerRepository;
 		private IRatingRepository ratingRepository;
 		private ICommentRepository commentRepository;
 		private IFollowRepository followRepository;
@@ -23,7 +24,8 @@ namespace Rawy.BLL
 
 			_context = context;
 			storyRepository = new StoryRepository(_context);
-			writerRepository = new WriterRepository(_context);
+			//writerRepository = new WriterRepository(_context);
+			userRepository = new UserRepository(_context);
 			ratingRepository = new RatingRepository(_context);
 			commentRepository = new CommentRepository(_context);
 			followRepository  = new FollowRepository(_context);
@@ -31,13 +33,15 @@ namespace Rawy.BLL
 		}
         public IStoryRepository StoryRepository => storyRepository;
 
-		public IWriterRepository WriterRepository => writerRepository;
-
+		//public IWriterRepository WriterRepository => writerRepository;
+		
 
 		public IRatingRepository RatingRepository => ratingRepository;
 		public ICommentRepository CommentRepository => commentRepository;
 
 		public IFollowRepository FollowRepository => followRepository;
+
+		public IUserRepository UseerRepository => userRepository;
 
 		public void Dispose()
 		{

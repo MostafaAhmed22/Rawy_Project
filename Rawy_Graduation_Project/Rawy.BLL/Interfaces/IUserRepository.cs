@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Interfaces
 {
-	public interface IWriterRepository : IGenericRepository<Writer>
+	public interface IUserRepository : IGenericRepository<AppUser>
 	{
 	}
 }

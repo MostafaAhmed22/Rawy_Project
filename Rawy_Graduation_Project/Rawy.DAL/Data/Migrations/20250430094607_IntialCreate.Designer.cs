@@ -12,7 +12,7 @@ using Rawy.DAL.Data;
 namespace Rawy.DAL.Data.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250429164223_IntialCreate")]
+    [Migration("20250430094607_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -169,6 +169,9 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Bio")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -179,6 +182,14 @@ namespace Rawy.DAL.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -202,6 +213,9 @@ namespace Rawy.DAL.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -234,6 +248,9 @@ namespace Rawy.DAL.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -247,14 +264,11 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<int>("StoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("StoryId");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("WriterId");
+                    b.HasIndex("StoryId");
 
                     b.ToTable("Comments");
                 });
@@ -266,6 +280,9 @@ namespace Rawy.DAL.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -280,14 +297,11 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<int>("StoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("StoryId");
 
-                    b.HasIndex("WriterId", "StoryId")
+                    b.HasIndex("AppUserId", "StoryId")
                         .IsUnique();
 
                     b.ToTable("Ratings");
@@ -300,6 +314,9 @@ namespace Rawy.DAL.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -320,12 +337,9 @@ namespace Rawy.DAL.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("WriterId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("WriterId");
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Stories");
                 });
@@ -333,21 +347,22 @@ namespace Rawy.DAL.Data.Migrations
             modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
                 {
                     b.Property<int>("WriterId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WriterId"));
 
                     b.Property<string>("FName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("WriterId");
 
-                    b.ToTable("Writers", (string)null);
+                    b.ToTable("Writers");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
@@ -421,58 +436,47 @@ namespace Rawy.DAL.Data.Migrations
 
             modelBuilder.Entity("Rawy.DAL.Models.Comment", b =>
                 {
+                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Rawy.DAL.Models.Story", "Story")
                         .WithMany("Comments")
                         .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
-                        .WithMany("Comments")
-                        .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.Navigation("AppUser");
 
                     b.Navigation("Story");
-
-                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Rating", b =>
                 {
+                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
+                        .WithMany("Ratings")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Rawy.DAL.Models.Story", "Story")
                         .WithMany("Ratings")
                         .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
-                        .WithMany("Ratings")
-                        .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.Navigation("AppUser");
 
                     b.Navigation("Story");
-
-                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
-                    b.HasOne("Rawy.DAL.Models.Writer", "Writer")
-                        .WithMany("Stories")
-                        .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Writer");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
-                {
                     b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
-                        .WithOne("Writer")
-                        .HasForeignKey("Rawy.DAL.Models.Writer", "WriterId")
+                        .WithMany("Stories")
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -481,13 +485,13 @@ namespace Rawy.DAL.Data.Migrations
 
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
                 {
-                    b.HasOne("Rawy.DAL.Models.Writer", "Followee")
+                    b.HasOne("Rawy.DAL.Models.AppUser", "Followee")
                         .WithMany("Followers")
                         .HasForeignKey("FolloweeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Rawy.DAL.Models.Writer", "Follower")
+                    b.HasOne("Rawy.DAL.Models.AppUser", "Follower")
                         .WithMany("Followings")
                         .HasForeignKey("FollowerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -500,19 +504,6 @@ namespace Rawy.DAL.Data.Migrations
 
             modelBuilder.Entity("Rawy.DAL.Models.AppUser", b =>
                 {
-                    b.Navigation("Writer")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
-                {
-                    b.Navigation("Comments");
-
-                    b.Navigation("Ratings");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.Writer", b =>
-                {
                     b.Navigation("Comments");
 
                     b.Navigation("Followers");
@@ -522,6 +513,13 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Ratings");
 
                     b.Navigation("Stories");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

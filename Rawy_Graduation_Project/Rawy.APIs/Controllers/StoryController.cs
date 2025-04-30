@@ -39,8 +39,8 @@ namespace Rawy.APIs.Controllers
 				Content = story.Content,
 				Category = story.Category,
 				CreatedAt = story.CreatedAt,
-				WriterId = story.WriterId,
-				WriterName = $"{story.Writer.FName} {story.Writer.LName}",
+				WriterId = story.AppUserId,
+				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
 				AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result // Ensure async handling in a real case
 				
 			}).ToList();
@@ -67,8 +67,8 @@ namespace Rawy.APIs.Controllers
 				Content = story.Content,
 				Category = story.Category,
 				CreatedAt = story.CreatedAt,
-				WriterId = story.WriterId,
-				WriterName = $"{story.Writer.FName} {story.Writer.LName}",
+				WriterId = story.AppUserId,
+				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
 				AverageRating = averageScore
 			};
 
@@ -86,7 +86,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest(ModelState);
 
 			//  Validate WriterId
-			if (_story.WriterId == 0)
+			if (_story.AppUserId == 0)
 				return BadRequest("WriterId is required.");
 
 			//  Ensure Title and Content Are Not Empty

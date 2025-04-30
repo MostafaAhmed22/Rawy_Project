@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Rawy.BLL.Repositories
 {
-	public class WriterRepository : GenericRepository<Writer>,IWriterRepository
+	public class UserRepository/*WriterRepository*/ : GenericRepository<AppUser>,IUserRepository//IWriterRepository
 	{
-        public WriterRepository(RawyDBContext context) : base(context)
+        public UserRepository/*WriterRepository*/(RawyDBContext context) : base(context)
 		{
             
         }

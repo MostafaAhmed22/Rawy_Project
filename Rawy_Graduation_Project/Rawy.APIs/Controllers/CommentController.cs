@@ -48,7 +48,7 @@ namespace Rawy.APIs.Controllers
 			{
 				Id = c.Id,
 				Content = c.Content,
-				WriterName = $"{c.Writer.FName} {c.Writer.LName}", // Avoid circular reference
+				WriterName = $"{c.AppUser.FirstName} {c.AppUser.LastName}", // Avoid circular reference
 				StoryTitle = c.Story.Title // Avoid circular reference
 			}).ToList();
 

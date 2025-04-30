@@ -25,7 +25,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		// Get Writer By ID
-		[HttpGet("{id}")]
+		[HttpGet("GetProfile/{id}")]
 		public async Task<IActionResult> GetProfileById(int id)
 		{
 			//var writer = await _unitOfWork.WriterRepository.GetByIdAsync(id);
@@ -34,16 +34,17 @@ namespace Rawy.APIs.Controllers
 
 
 			var spec = new WriterWithStoriesSpec(id);
-			var writer = await _unitOfWork.WriterRepository.GetByIdWithSpecAsync(spec);
+			var writer = await _unitOfWork.UseerRepository.GetByIdWithSpecAsync(spec);
 
 			if (writer == null)
 				return NotFound(new ApiResponse(404));
 
 			var dto = new WriterProfileDto
 			{
-				Email = writer.AppUser.Email,
-				FName = writer.FName,
-				LName = writer.LName,
+				Email = writer.Email,
+				FName = writer.FirstName,
+				LName = writer.LastName,
+				PhoneNumber = writer.PhoneNumber,
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
 				Stories = writer.Stories.Select(s => new StoryDto
@@ -63,19 +64,29 @@ namespace Rawy.APIs.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetAllWriters()
 		{
-			var writers = await _unitOfWork.WriterRepository.GetAllAsync();
-			return Ok(writers);
+			var writers = await _unitOfWork.UseerRepository.GetAllAsync();
+
+			var Users = writers.Select(writer => new WriterDto
+			{
+				Id = writer.Id,
+				Email = writer.Email,
+				FirstName = writer.FirstName,
+				LastName = writer.LastName,
+				PhoneNumber = writer.PhoneNumber
+
+			}).ToList();
+			return Ok(Users);
 		}
 
-		[HttpDelete("{id}")]
+			[HttpDelete("{id}")]
 		//[Authorize(Roles = "ADMIN")]
 		public async Task<IActionResult> DeleteWriter(int id)
 		{
-			var writer = await _unitOfWork.WriterRepository.GetByIdAsync(id);
+			var writer = await _unitOfWork.UseerRepository.GetByIdAsync(id);
 			if (writer == null)
 				return NotFound(new { message = "Writer not found" });
 
-			_unitOfWork.WriterRepository.DeleteAsync(writer.WriterId);
+			_unitOfWork.UseerRepository.DeleteAsync(writer.Id);
 
 
 			return Ok(new { message = "Writer deleted successfully" });
@@ -97,18 +108,18 @@ namespace Rawy.APIs.Controllers
 
 			var userEmail = User.FindFirstValue(ClaimTypes.Email);
 			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.WriterRepository.GetByIdAsync(appUser.Id);
+			var follower = await _unitOfWork.UseerRepository.GetByIdAsync(appUser.Id);
 
-			var followee = await _unitOfWork.WriterRepository.GetByIdAsync(followeeId);
+			var followee = await _unitOfWork.UseerRepository.GetByIdAsync(followeeId);
 
 
 			//    if (followee == null || followed == null)
-			if (followee == null || follower.WriterId == followee.WriterId)
+			if (followee == null || follower.Id == followee.Id)
 				return BadRequest("Invalid follow request");
 
 
 			var existingFollow = await _unitOfWork.FollowRepository.FindAsync(
-				f => f.FollowerId == follower.WriterId && f.FolloweeId == followee.WriterId);
+				f => f.FollowerId == follower.Id && f.FolloweeId == followee.Id);
 
 			if (existingFollow != null)
 			{
@@ -117,8 +128,8 @@ namespace Rawy.APIs.Controllers
 
 			var follow = new WriterFollow
 			{
-				FollowerId = follower.WriterId,
-				FolloweeId = followee.WriterId
+				FollowerId = follower.Id,
+				FolloweeId = followee.Id
 			};
 
 
@@ -154,13 +165,13 @@ namespace Rawy.APIs.Controllers
 
 			var userEmail = User.FindFirstValue(ClaimTypes.Email);
 			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.WriterRepository.GetByIdAsync(appUser.Id);
+			var follower = await _unitOfWork.UseerRepository.GetByIdAsync(appUser.Id);
 
-			var followee = await _unitOfWork.WriterRepository.GetByIdAsync(followeeId);
+			var followee = await _unitOfWork.UseerRepository.GetByIdAsync(followeeId);
 
 
 			var follow = await _unitOfWork.FollowRepository.FindAsync(
-				f => f.FollowerId == follower.WriterId && f.FolloweeId == followeeId);
+				f => f.FollowerId == follower.Id && f.FolloweeId == followeeId);
 
 			if (follow == null)
 				return NotFound("You are not following this user");

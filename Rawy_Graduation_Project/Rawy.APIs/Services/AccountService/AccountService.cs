@@ -48,15 +48,15 @@ namespace Rawy.APIs.Services.AccountService
 			if (!result.Succeeded)
 				return new ApiResponse(400, errors);
 
-			var writer = new Writer
-			{
-				WriterId = user.Id,
-				FName = model.FirstName,
-				LName = model.LastName,
+			//var writer = new Writer
+			//{
+			//	WriterId = user.Id,
+			//	FName = model.FirstName,
+			//	LName = model.LastName,
 				
-			};
+			//};
 
-			await _unitOfWork.WriterRepository.AddAsync(writer);
+			//await _unitOfWork.WriterRepository.AddAsync(writer);
 
 			return new ApiResponse(200, "Success", new UserDto
 			{

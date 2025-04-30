@@ -48,7 +48,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		//  Get All Rating for a Story
-		[HttpGet("{storyId}/rating")]
+		[HttpGet("{storyId}")]
 		public async Task<IActionResult> GetRating(int storyId)
 		{
 
@@ -60,7 +60,7 @@ namespace Rawy.APIs.Controllers
 			{
 				Id = c.Id,
 				Score = c.Score,
-				WriterName = $"{c.Writer.FName} {c.Writer.LName}", // Avoid circular reference
+				WriterName = $"{c.AppUser.FirstName}   {c.AppUser.LastName}", // Avoid circular reference
 				StoryTitle = c.Story.Title // Avoid circular reference
 			}).ToList();
 
@@ -72,7 +72,7 @@ namespace Rawy.APIs.Controllers
 
 
 		// Get AverageRating
-		[HttpGet("{storyId}/average-rating")]
+		[HttpGet("average-rating/{storyId}")]
 		public async Task<IActionResult> GetAverageRating(int storyId)
 		{
 			var story = await _unitOfWork.StoryRepository.GetByIdAsync(storyId);

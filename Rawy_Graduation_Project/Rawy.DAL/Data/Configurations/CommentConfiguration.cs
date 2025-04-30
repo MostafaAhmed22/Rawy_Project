@@ -30,9 +30,9 @@ namespace Rawy.DAL.Data.Configurations
 				.OnDelete(DeleteBehavior.Cascade);
 
 			// Relationship with Writer (Each comment is written by one writer)
-			builder.HasOne(c => c.Writer)
+			builder.HasOne(c => c.AppUser)
 				.WithMany(w => w.Comments)
-				.HasForeignKey(c => c.WriterId)
+				.HasForeignKey(c => c.AppUserId)
 				.OnDelete(DeleteBehavior.Restrict); // Prevent writer deletion if ratings exist
 
 		}

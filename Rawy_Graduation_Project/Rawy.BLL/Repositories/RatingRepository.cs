@@ -40,7 +40,7 @@ namespace Rawy.BLL.Repositories
 		{
 			// Check if the writer has already rated this story
 			var existingRating = await _context.Ratings
-				.FirstOrDefaultAsync(r => r.WriterId == rating.WriterId && r.StoryId == rating.StoryId);
+				.FirstOrDefaultAsync(r => r.AppUserId == rating.AppUserId && r.StoryId == rating.StoryId);
 
 			if (existingRating != null)
 			{
