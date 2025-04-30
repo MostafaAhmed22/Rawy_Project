@@ -16,7 +16,9 @@ namespace Rawy.DAL.Models
 
 		public string? Bio { get; set; }
 		public string? ProfilePictureUrl { get; set; }
-	//	public string? ProfilePicturePublicId { get; set; }
+
+		public string? ProfilePicturePublicId { get; set; }
+		//	public string? ProfilePicturePublicId { get; set; }
 		// Comments
 		public ICollection<WriterFollow> Followings { get; set; }
 

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.StoryDtos;
+using Rawy.APIs.Services.Photo;
 using Rawy.BLL;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
@@ -17,24 +19,22 @@ namespace Rawy.APIs.Controllers
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly UserManager<AppUser> _userManager;
+		private readonly IPhotoService _photoService;
 
-		public WriterController(IUnitOfWork unitOfWork, UserManager<AppUser> userManager)
+		public WriterController(IUnitOfWork unitOfWork, UserManager<AppUser> userManager,IPhotoService photoService)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
+			_photoService = photoService;
 		}
 
 		// Get Writer By ID
 		[HttpGet("GetProfile/{id}")]
 		public async Task<IActionResult> GetProfileById(int id)
 		{
-			//var writer = await _unitOfWork.WriterRepository.GetByIdAsync(id);
-			//if (writer == null)
-			//	return NotFound(new ApiResponse(404));
-
 
 			var spec = new WriterWithStoriesSpec(id);
-			var writer = await _unitOfWork.UseerRepository.GetByIdWithSpecAsync(spec);
+			var writer = await _unitOfWork.UserRepository.GetByIdWithSpecAsync(spec);
 
 			if (writer == null)
 				return NotFound(new ApiResponse(404));
@@ -45,6 +45,8 @@ namespace Rawy.APIs.Controllers
 				FName = writer.FirstName,
 				LName = writer.LastName,
 				PhoneNumber = writer.PhoneNumber,
+				PhotoUrl = writer.ProfilePictureUrl,
+				PhotoPublicId = writer.ProfilePicturePublicId,
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
 				Stories = writer.Stories.Select(s => new StoryDto
@@ -59,12 +61,10 @@ namespace Rawy.APIs.Controllers
 		}
 
 
-
-
 		[HttpGet]
 		public async Task<IActionResult> GetAllWriters()
 		{
-			var writers = await _unitOfWork.UseerRepository.GetAllAsync();
+			var writers = await _unitOfWork.UserRepository.GetAllAsync();
 
 			var Users = writers.Select(writer => new WriterDto
 			{
@@ -82,11 +82,11 @@ namespace Rawy.APIs.Controllers
 		//[Authorize(Roles = "ADMIN")]
 		public async Task<IActionResult> DeleteWriter(int id)
 		{
-			var writer = await _unitOfWork.UseerRepository.GetByIdAsync(id);
+			var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
 			if (writer == null)
 				return NotFound(new { message = "Writer not found" });
 
-			_unitOfWork.UseerRepository.DeleteAsync(writer.Id);
+			_unitOfWork.UserRepository.DeleteAsync(writer.Id);
 
 
 			return Ok(new { message = "Writer deleted successfully" });
@@ -108,9 +108,9 @@ namespace Rawy.APIs.Controllers
 
 			var userEmail = User.FindFirstValue(ClaimTypes.Email);
 			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.UseerRepository.GetByIdAsync(appUser.Id);
+			var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
 
-			var followee = await _unitOfWork.UseerRepository.GetByIdAsync(followeeId);
+			var followee = await _unitOfWork.UserRepository.GetByIdAsync(followeeId);
 
 
 			//    if (followee == null || followed == null)
@@ -165,9 +165,9 @@ namespace Rawy.APIs.Controllers
 
 			var userEmail = User.FindFirstValue(ClaimTypes.Email);
 			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.UseerRepository.GetByIdAsync(appUser.Id);
+			var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
 
-			var followee = await _unitOfWork.UseerRepository.GetByIdAsync(followeeId);
+			var followee = await _unitOfWork.UserRepository.GetByIdAsync(followeeId);
 
 
 			var follow = await _unitOfWork.FollowRepository.FindAsync(
@@ -181,6 +181,56 @@ namespace Rawy.APIs.Controllers
 
 			return Ok("Unfollowed successfully");
 
+		}
+
+		[HttpPost("upload-photo")]
+		public async Task<IActionResult> UploadPhoto(int id,IFormFile file)
+		{
+
+			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
+			//var writer = await _userManager.FindByEmailAsync(userEmail);
+			var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
+
+			if (writer == null) return NotFound("Writer not found");
+
+			//  1. Delete existing photo if it exists
+			if (!string.IsNullOrEmpty(writer.ProfilePicturePublicId))
+			{
+					var deleteResult = await _photoService.DeletePhotoAsync(writer.ProfilePicturePublicId);
+					if (deleteResult.Result != "ok")
+						return BadRequest("Failed to delete existing photo.");
+			}
+
+			// 2. Upload new photo
+			var uploadResult = await _photoService.UploadPhotoAsync(file);
+
+			if (uploadResult.Error != null)
+				return BadRequest(uploadResult.Error.Message);
+			writer.ProfilePictureUrl = uploadResult.SecureUrl.ToString();
+			writer.ProfilePicturePublicId = uploadResult.PublicId;
+			_unitOfWork.UserRepository.UpdateAsync(writer);
+			
+
+			return Ok(new { photoUrl = writer.ProfilePictureUrl,PublicId = writer.ProfilePicturePublicId });
+		}
+
+		[HttpDelete("delete-photo")]
+		public async Task<IActionResult> DeletePhoto(int id)
+		{
+			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
+			//var writer = await _userManager.FindByEmailAsync(userEmail);
+			var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
+			if (writer == null || string.IsNullOrEmpty(writer.ProfilePicturePublicId))
+				return NotFound("No photo to delete");
+
+			var result = await _photoService.DeletePhotoAsync(writer.ProfilePicturePublicId);
+			if (result.Result != "ok") return BadRequest("Failed to delete photo");
+
+			writer.ProfilePictureUrl = null;
+			writer.ProfilePicturePublicId = null;
+			_unitOfWork.UserRepository.UpdateAsync(writer);
+
+			return Ok("Photo deleted successfully");
 		}
 	}
 }

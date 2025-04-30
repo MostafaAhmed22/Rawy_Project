@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Rawy.APIs.Services.AccountService;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Rawy.APIs.Services.Photo;
+using CloudinaryDotNet;
 namespace Rawy.APIs
 {
     public class Program
@@ -35,6 +37,11 @@ namespace Rawy.APIs
 			{
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 			});
+
+			// Cloudinary Configuration
+			builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+
+			builder.Services.AddScoped<IPhotoService,PhotoService>();
 
 			builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 							.AddEntityFrameworkStores<RawyDBContext>()

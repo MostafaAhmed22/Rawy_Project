@@ -8,6 +8,7 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\CloudinaryDotNet.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Google.Apis.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Google.Apis.Auth.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Google.Apis.Core.dll

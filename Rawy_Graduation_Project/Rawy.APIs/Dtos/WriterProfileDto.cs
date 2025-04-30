@@ -8,7 +8,8 @@ namespace Rawy.APIs.Dtos
 		public string LName { get; set; }
 		public string Email { get; set; }
 		public string PhoneNumber { get; set; }
-
+		public string? PhotoUrl { get; set; }
+		public string? PhotoPublicId { get; set; }
 		public int FollowersCount { get; set; }
 		public int FollowingsCount { get; set; }
 

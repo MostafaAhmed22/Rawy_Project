@@ -41,7 +41,7 @@ namespace Rawy.BLL
 
 		public IFollowRepository FollowRepository => followRepository;
 
-		public IUserRepository UseerRepository => userRepository;
+		public IUserRepository UserRepository => userRepository;
 
 		public void Dispose()
 		{

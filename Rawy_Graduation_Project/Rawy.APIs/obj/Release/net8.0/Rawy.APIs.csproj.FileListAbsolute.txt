@@ -163,3 +163,4 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\Rawy.APIs.pdb
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\Rawy.APIs.genruntimeconfig.cache
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\ref\Rawy.APIs.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Release\net8.0\CloudinaryDotNet.dll

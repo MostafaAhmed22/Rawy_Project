@@ -454,6 +454,22 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "DeletePhoto",
+    "RelativePath": "api/Writer/delete-photo",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
     "Method": "FollowWriter",
     "RelativePath": "api/Writer/follow",
     "HttpMethod": "POST",
@@ -495,6 +511,27 @@
       {
         "Name": "followeeId",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "UploadPhoto",
+    "RelativePath": "api/Writer/upload-photo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
