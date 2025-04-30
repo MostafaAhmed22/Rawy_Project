@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rawy.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7816b0f54bbea673ee7305279952e3a4ccfadfa7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bf0b93089e8a3edd548e1257089ce5743f851a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rawy.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rawy.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
