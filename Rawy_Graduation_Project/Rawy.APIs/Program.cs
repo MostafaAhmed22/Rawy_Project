@@ -126,7 +126,7 @@ namespace Rawy.APIs
 				{
 					config.AllowAnyHeader();
 					config.AllowAnyMethod();
-					config.WithOrigins(builder.Configuration["FronEndUrl"]);
+					config.WithOrigins("http://localhost:4200");
 				});
 
 			});
@@ -160,7 +160,7 @@ namespace Rawy.APIs
 
 			// Configure the HTTP request pipeline.
 
-			app.UseMiddleware<ExceptionHandlerMiddleware>();
+		//	app.UseMiddleware<ExceptionHandlerMiddleware>();
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();

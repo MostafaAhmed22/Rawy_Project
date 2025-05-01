@@ -36,7 +36,9 @@ namespace Rawy.APIs.Controllers
 			{
 				Id = story.Id,
 				Title = story.Title,
-				Content = story.Content,
+				Content = story.Content.Length > 200
+							? story.Content.Substring(0, 200) + "..."
+							: story.Content,
 				Category = story.Category,
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
