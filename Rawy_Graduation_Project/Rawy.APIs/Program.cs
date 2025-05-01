@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Rawy.APIs.Services.Photo;
 using CloudinaryDotNet;
+using Microsoft.AspNetCore.Diagnostics;
 namespace Rawy.APIs
 {
     public class Program
@@ -118,6 +119,17 @@ namespace Rawy.APIs
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper
+
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("MyPolicy", config =>
+				{
+					config.AllowAnyHeader();
+					config.AllowAnyMethod();
+					config.WithOrigins(builder.Configuration["FronEndUrl"]);
+				});
+
+			});
 			#endregion
 
 			var app = builder.Build();
@@ -147,6 +159,8 @@ namespace Rawy.APIs
 			#endregion
 
 			// Configure the HTTP request pipeline.
+
+			app.UseMiddleware<ExceptionHandlerMiddleware>();
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
@@ -154,6 +168,9 @@ namespace Rawy.APIs
 			}
 
 			app.UseHttpsRedirection();
+			app.UseStaticFiles();
+			
+			app.UseCors("MyPolicy");
 
 			app.UseAuthentication();
 			app.UseAuthorization();

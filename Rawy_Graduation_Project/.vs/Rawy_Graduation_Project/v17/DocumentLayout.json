@@ -7,56 +7,8 @@
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\writerprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\writerprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\photo\\photoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\photo\\photoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\services\\photo\\iphotoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\services\\photo\\iphotoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\dtos\\uploaduserpicturedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\dtos\\uploaduserpicturedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,86 +37,8 @@
               "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WriterController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\WriterController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\WriterController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\WriterController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\WriterController.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAuwOkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:06:47.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IPhotoService.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Photo\\IPhotoService.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\Photo\\IPhotoService.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Photo\\IPhotoService.cs",
-              "RelativeToolTip": "Rawy.APIs\\Services\\Photo\\IPhotoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T21:35:52.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "Rawy.BLL\\UnitOfWork.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\UnitOfWork.cs",
-              "RelativeToolTip": "Rawy.BLL\\UnitOfWork.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAA9wDAAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:10:35.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WriterProfileDto.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\WriterProfileDto.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\WriterProfileDto.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\WriterProfileDto.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\WriterProfileDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:06:42.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PhotoService.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Photo\\PhotoService.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Services\\Photo\\PhotoService.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Services\\Photo\\PhotoService.cs",
-              "RelativeToolTip": "Rawy.APIs\\Services\\Photo\\PhotoService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowCEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:45:29.971Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "Rawy.BLL\\Interfaces\\IUnitOfWork.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IUnitOfWork.cs",
-              "RelativeToolTip": "Rawy.BLL\\Interfaces\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:10:08.106Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -174,100 +48,22 @@
               "RelativeDocumentMoniker": "Rawy.APIs\\appsettings.json",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\appsettings.json",
               "RelativeToolTip": "Rawy.APIs\\appsettings.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-30T17:29:53.126Z",
+              "WhenOpened": "2025-05-01T13:48:51.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Program.cs",
               "RelativeDocumentMoniker": "Rawy.APIs\\Program.cs",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Program.cs",
               "RelativeToolTip": "Rawy.APIs\\Program.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAgwCkAAABqAAAAAAAAAA==",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAgwKsAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:39:09.45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "Rawy.BLL\\Repositories\\GenericRepository.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\GenericRepository.cs",
-              "RelativeToolTip": "Rawy.BLL\\Repositories\\GenericRepository.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAcwEUAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:13:15.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AccountsController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\AccountsController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\AccountsController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\AccountsController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA8wEMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:45:51.414Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20250430184721_AddProfilePicture.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs",
-              "RelativeToolTip": "Rawy.DAL\\Data\\Migrations\\20250430184721_AddProfilePicture.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:47:21.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\AppUser.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\AppUser.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\AppUser.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\AppUser.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBMAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:23:02.527Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UploadUserPictureDTO.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\UploadUserPictureDTO.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Dtos\\UploadUserPictureDTO.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Dtos\\UploadUserPictureDTO.cs",
-              "RelativeToolTip": "Rawy.APIs\\Dtos\\UploadUserPictureDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:00:16.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CloudinarySettings.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\CloudinarySettings.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\CloudinarySettings.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\CloudinarySettings.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\CloudinarySettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T17:42:43.607Z",
+              "WhenOpened": "2025-05-01T13:36:00.029Z",
               "EditorCaption": ""
             }
           ]
