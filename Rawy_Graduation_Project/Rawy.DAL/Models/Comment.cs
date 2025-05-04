@@ -11,6 +11,7 @@ namespace Rawy.DAL.Models
 	//	public string Id { get; set; }// = Guid.NewGuid().ToString();
 		public string Content { get; set; }
 		public DateTime CreatedAt { get; set; }
+		public DateTime UpdatedAt { get; set; }
 
 		// Relationships
 		//public int WriterId { get; set; }

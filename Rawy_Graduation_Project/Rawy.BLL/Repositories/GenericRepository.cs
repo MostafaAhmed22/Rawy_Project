@@ -37,7 +37,7 @@ namespace Rawy.BLL.Repositories
 		public async Task AddAsync(T entity)
 		{
 			_context.Set<T>().Add(entity);
-			await _context.SaveChangesAsync();
+			//await _context.SaveChangesAsync();
 		}
 
 		public async Task DeleteAsync(int id)
@@ -46,7 +46,7 @@ namespace Rawy.BLL.Repositories
 			if (entity != null)
 			{
 				_context.Set<T>().Remove(entity);
-				await _context.SaveChangesAsync();
+				//await _context.SaveChangesAsync();
 			}
 
 			
@@ -56,7 +56,7 @@ namespace Rawy.BLL.Repositories
 		public async Task UpdateAsync(T entity)
 		{
 			_context.Set<T>().Update(entity);
-			await _context.SaveChangesAsync();
+			
 		}
 
 		public async Task<IEnumerable<T>> GetAllAsync()

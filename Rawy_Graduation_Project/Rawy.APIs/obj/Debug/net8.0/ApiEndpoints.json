@@ -98,8 +98,24 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "dto",
+        "Type": "Rawy.APIs.Dtos.CommentDto.AddCommentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.CommentController",
+    "Method": "EditComment",
+    "RelativePath": "api/Comment",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
         "Name": "commentDto",
-        "Type": "Rawy.APIs.Dtos.CommentDto",
+        "Type": "Rawy.APIs.Dtos.CommentDto.CommentUpdateDto",
         "IsRequired": true
       }
     ],
@@ -117,6 +133,11 @@
         "Name": "commentId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -301,6 +322,21 @@
     "Parameters": [
       {
         "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagesize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
         "Type": "System.String",
         "IsRequired": false
       }

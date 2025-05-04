@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.AcoountDtos;
+using Rawy.APIs.Dtos.CommentDto;
 using Rawy.APIs.Dtos.StoryDtos;
 using Rawy.DAL.Models;
 
@@ -22,7 +23,7 @@ namespace Rawy.APIs.Helper
 			CreateMap<UpdateStoryDto, Story>().ReverseMap();
 
 			CreateMap<RegisterDto, AppUser>().ReverseMap();
-			CreateMap<CommentDto,Comment>().ReverseMap();
+			CreateMap<AddCommentDto,Comment>().ReverseMap();
 			CreateMap<RatingDto, Rating>().ReverseMap();
 		}
     }

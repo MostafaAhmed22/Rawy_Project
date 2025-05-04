@@ -27,10 +27,13 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.ObjectPool.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -55,6 +58,7 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Management.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
+D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\obj\Release\net8.0\PubTmp\Out\System.Security.Permissions.dll

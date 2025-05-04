@@ -18,6 +18,9 @@ using System.Text;
 using Rawy.APIs.Services.Photo;
 using CloudinaryDotNet;
 using Microsoft.AspNetCore.Diagnostics;
+using Rawy.DAL.Models.Hubs;
+using Rawy.APIs.Services.CommentService;
+using Rawy.APIs.Services.StoryService;
 namespace Rawy.APIs
 {
     public class Program
@@ -115,10 +118,14 @@ namespace Rawy.APIs
 
 			builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 			builder.Services.AddScoped<IAccountService, AccountService>();
-
+			builder.Services.AddScoped<ICommentService, CommentService>();
+			builder.Services.AddScoped<IStoryService, StoryService>();
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper
+
+			builder.Services.AddSignalR();
+
 
 			builder.Services.AddCors(options =>
 			{
@@ -126,7 +133,10 @@ namespace Rawy.APIs
 				{
 					config.AllowAnyHeader();
 					config.AllowAnyMethod();
-					config.WithOrigins("http://localhost:4200");
+					config.AllowAnyOrigin();
+					//config.WithOrigins("http://localhost:4200");
+					//(builder.Configuration["FronEndUrl"]);
+
 				});
 
 			});
@@ -177,6 +187,7 @@ namespace Rawy.APIs
 
 
 			app.MapControllers();
+			app.MapHub<PostHub>("/posthub");
 
 			app.Run();
 		}

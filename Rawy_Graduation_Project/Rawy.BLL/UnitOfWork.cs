@@ -43,6 +43,11 @@ namespace Rawy.BLL
 
 		public IUserRepository UserRepository => userRepository;
 
+		public int Complete()
+		{
+			return _context.SaveChanges();
+		}
+
 		public void Dispose()
 		{
 			_context.Dispose();

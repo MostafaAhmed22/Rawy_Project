@@ -16,14 +16,14 @@ namespace Rawy.DAL.Models.StorySpec
 			set => _search = value.ToLower();
 		}
 
-		//private const int MaxPagesize = 5;
-		//public int PageIndex { get; set; } = 1;
-  //      private int pagesize = 5;
-		//public int Pagesize
-		//{
-		//	get { return pagesize; }
-		//	set { pagesize = value > MaxPagesize ? MaxPagesize : value; }
-		//}
-		//public string? Sort { get; set; }
+		private const int MaxPagesize = 5;
+		public int PageIndex { get; set; } = 1;
+		private int pagesize = 5;
+		public int Pagesize
+		{
+			get { return pagesize; }
+			set { pagesize = value > MaxPagesize ? MaxPagesize : value; }
+		}
+		public string? Sort { get; set; }
 	}
 }

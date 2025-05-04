@@ -134,6 +134,7 @@ namespace Rawy.APIs.Controllers
 
 
 			await _unitOfWork.FollowRepository.AddAsync(follow);
+			var added = _unitOfWork.Complete();
 
 
 			return Ok("Followed successfully");
@@ -177,6 +178,7 @@ namespace Rawy.APIs.Controllers
 				return NotFound("You are not following this user");
 
 			await _unitOfWork.FollowRepository.Delete(follow);
+			var deleted = _unitOfWork.Complete();
 
 
 			return Ok("Unfollowed successfully");
@@ -209,7 +211,8 @@ namespace Rawy.APIs.Controllers
 			writer.ProfilePictureUrl = uploadResult.SecureUrl.ToString();
 			writer.ProfilePicturePublicId = uploadResult.PublicId;
 			_unitOfWork.UserRepository.UpdateAsync(writer);
-			
+			var Updated = _unitOfWork.Complete();
+
 
 			return Ok(new { photoUrl = writer.ProfilePictureUrl,PublicId = writer.ProfilePicturePublicId });
 		}
@@ -229,6 +232,7 @@ namespace Rawy.APIs.Controllers
 			writer.ProfilePictureUrl = null;
 			writer.ProfilePicturePublicId = null;
 			_unitOfWork.UserRepository.UpdateAsync(writer);
+			var Updated = _unitOfWork.Complete();
 
 			return Ok("Photo deleted successfully");
 		}

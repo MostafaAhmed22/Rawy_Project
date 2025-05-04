@@ -1,76 +1,63 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rawy.APIs.Dtos;
+using Rawy.APIs.Dtos.CommentDto;
 using Rawy.APIs.Dtos.StoryDtos;
+using Rawy.APIs.Services.CommentService;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
 using Rawy.DAL.Models.StorySpec;
+using System.Security.Claims;
 
 namespace Rawy.APIs.Controllers
 {
 
-	public class CommentController : BaseApiController
+    public class CommentController : BaseApiController
 	{
-		private readonly IUnitOfWork _unitOfWork;
-		private readonly IMapper _mapper;
+		private readonly ICommentService _commentService;
 
-		public CommentController(IUnitOfWork unitOfWork, IMapper mapper)
+		public CommentController(ICommentService commentService)
 		{
-			_unitOfWork = unitOfWork;
-			_mapper = mapper;
+			_commentService = commentService;
 		}
+
 
 		//  Add Comment to Story
 		[HttpPost]
-		public async Task<IActionResult> AddComment([FromBody] CommentDto commentDto)
+		public async Task<IActionResult> AddComment([FromBody] AddCommentDto dto)
 		{
-			if (commentDto == null) return BadRequest("Invalid comment data.");
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			var result = await _commentService.AddCommentAsync(dto, dto.AppUserId);
 
-			var comment = _mapper.Map<Comment>(commentDto);
-			comment.CreatedAt = DateTime.Now;
-
-			await _unitOfWork.CommentRepository.AddAsync(comment);
-
-			return Ok("Comment added successfully.");
+			return Ok(result);
+			//return Ok("Comment added successfully.");
 		}
 
 		//  Get All Comments for a Story
 		[HttpGet("{storyId}")]
 		public async Task<IActionResult> GetComments(int storyId)
 		{
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			var result = await _commentService.GetCommentsByStoryIdAsync(storyId);
+			return Ok(result);
 
-			var spec = new CommentsOfStorySpec(storyId);
+		}
 
-			var comments = await _unitOfWork.CommentRepository.GetCommentsByStoryIdAsync(spec);
-
-			var commentDtos = comments.Select(c => new CommentResponseDto
-			{
-				Id = c.Id,
-				Content = c.Content,
-				WriterName = $"{c.AppUser.FirstName} {c.AppUser.LastName}", // Avoid circular reference
-				StoryTitle = c.Story.Title // Avoid circular reference
-			}).ToList();
-
-			return Ok(commentDtos);
-
+		[HttpPut]
+		public async Task<IActionResult> EditComment([FromBody] CommentUpdateDto commentDto)
+		{
+			
+			var result = await _commentService.UpdateCommentAsync(commentDto);
+			return Ok(result);
 		}
 
 
 		// Delete Comment
 		[HttpDelete("{commentId}")]
-		public async Task<IActionResult> DeleteComment(int commentId)
+		public async Task<IActionResult> DeleteComment(int commentId,int userId)
 		{
-			var comment = await _unitOfWork.CommentRepository.GetByIdAsync(commentId);
-			if (comment == null)
-			{
-				return NotFound("Comment not found.");
-			}
-
-			await _unitOfWork.CommentRepository.DeleteAsync(commentId);
-			
-
-			return Ok(new { message = "Comment deleted successfully." });
+			var result = await _commentService.DeleteCommentAsync(commentId, userId);
+			return Ok(result);
 		}
 	}
 }

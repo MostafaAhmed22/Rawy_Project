@@ -60,7 +60,7 @@ namespace Rawy.APIs.Controllers
 			{
 				Id = c.Id,
 				Score = c.Score,
-				WriterName = $"{c.AppUser.FirstName}   {c.AppUser.LastName}", // Avoid circular reference
+				WriterName = $"{c.AppUser.FirstName} {c.AppUser.LastName}", // Avoid circular reference
 				StoryTitle = c.Story.Title // Avoid circular reference
 			}).ToList();
 
@@ -101,6 +101,7 @@ namespace Rawy.APIs.Controllers
 			}
 
 			await _unitOfWork.RatingRepository.DeleteAsync(ratingId);
+			var deleted = _unitOfWork.Complete();
 
 
 			return Ok(new { message = "Rating deleted successfully." });

@@ -14,5 +14,6 @@ namespace Rawy.BLL.Interfaces
 		public IRatingRepository RatingRepository { get; }
         public ICommentRepository CommentRepository { get;  }
 		public IFollowRepository FollowRepository { get; }
+		int Complete();
 	}
 }
