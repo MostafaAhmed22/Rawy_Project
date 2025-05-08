@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Rawy.APIs.Dtos;
+using Rawy.APIs.Dtos.CommentDto;
 using Rawy.APIs.Dtos.StoryDtos;
 using Rawy.APIs.Services.StoryService;
 using Rawy.BLL.Interfaces;
@@ -77,6 +78,15 @@ namespace Rawy.APIs.Controllers
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
 				AverageRating = averageScore
+				//Comments = story.Comments?.Select(c => new CommentResponseDto
+				//{
+				//	Id = c.Id,
+				//	Content = c.Content,
+				////	CreatedAt = c.CreatedAt,
+				//	AppUserId = c.WriterId,
+				//	WriterName = c.Writer.UserName,
+				//	WriterProfilePicture = c.Writer.ProfilePictureUrl
+				//}).ToList()
 			};
 
 			return Ok(responseDto);

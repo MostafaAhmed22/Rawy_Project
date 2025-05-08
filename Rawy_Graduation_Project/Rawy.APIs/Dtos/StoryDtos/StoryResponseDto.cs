@@ -16,5 +16,7 @@ namespace Rawy.APIs.Dtos.StoryDtos
 
 		//  Story Average Rating
 		public double? AverageRating { get; set; }
+
+		public ICollection<Comment> Comments { get; set; }
 	}
 }

@@ -9,6 +9,8 @@ namespace Rawy.APIs.Services.AccountService
         Task<UserDto> LoginAsync(LoginDto model);
         Task<TokenDto> GoogleLoginAsync(string token);
         Task<ApiResponse> ForgotPasswordAsync(ForgetPasswordDto model);
-        Task<ApiResponse> ResetPasswordAsync(ResetPasswordDto model);
+        Task<bool> VerifyResetCodeAsync(string code);
+
+		Task<ApiResponse> ResetPasswordAsync(ResetPasswordDto model);
     }
 }

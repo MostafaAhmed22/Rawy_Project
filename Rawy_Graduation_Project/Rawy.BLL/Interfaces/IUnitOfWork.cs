@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rawy.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Rawy.BLL.Interfaces
 		public IRatingRepository RatingRepository { get; }
         public ICommentRepository CommentRepository { get;  }
 		public IFollowRepository FollowRepository { get; }
+		public IResetPasswordRepository ResetPasswordRepository { get; }
 		int Complete();
 	}
 }

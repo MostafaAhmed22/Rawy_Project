@@ -179,7 +179,9 @@ namespace Rawy.APIs
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-			
+
+			app.UseRouting();
+			app.UseMiddleware<CrossOriginPolicyMiddleware>();
 			app.UseCors("MyPolicy");
 
 			app.UseAuthentication();

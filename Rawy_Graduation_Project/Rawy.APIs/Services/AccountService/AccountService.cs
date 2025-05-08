@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.AcoountDtos;
 using Rawy.APIs.Helper;
@@ -92,46 +93,84 @@ namespace Rawy.APIs.Services.AccountService
 		public async Task<ApiResponse> ForgotPasswordAsync(ForgetPasswordDto model)
 		{
 			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null) return new ApiResponse(200, "Email doesn't exist");
+			if (user == null) return new ApiResponse(404, "Email doesn't exist");
+			var code = new Random().Next(100000, 999999).ToString();
+			var resetCode = new ResetPassword
+			{
+				Email = model.Email,
+				Code = code,
+				CreatedAt = DateTime.UtcNow
+			};
 
-			var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-			var jwtToken = await _tokenService.CreateTokenAsync(user, _userManager, resetToken);
-			var resetLink = $"{_configuration["BaseUrl"]}/reset-password?token={jwtToken}&email={user.Email}";
+			await _unitOfWork.ResetPasswordRepository.AddAsync(resetCode);
+			_unitOfWork.Complete();
 
 			var email = new Email
 			{
 				Subject = "Reset Your Password",
-				Body = $"Please reset your password by clicking here: <a href='{resetLink}'>Reset Password</a>",
+				Body = code,
 				Recipents = user.Email
 			};
 
 			await EmailService.SendEmailAsync(email);
-			return new ApiResponse(200, "Reset link sent if email exists.");
+			return new ApiResponse(200, "Reset code sent to email");
 		}
 
 		public async Task<ApiResponse> ResetPasswordAsync(ResetPasswordDto model)
 		{
+
+			var resetEntry = await _unitOfWork.ResetPasswordRepository
+			.GetFirstOrDefaultAsync(r => r.Email == model.Email);
+
+			//if (resetEntry == null || resetEntry.Expiration < DateTime.UtcNow)
+			//	return new ApiResponse(400, "Invalid or expired code");
+
 			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null) return new ApiResponse(400, "Invalid request");
+			if (user == null) return new ApiResponse(404, "User not found");
 
-			try
-			{
-				var principal = _tokenService.GetPrincipalFromToken(model.Token);
-				var resetToken = principal.Claims.FirstOrDefault(c => c.Type == "resetToken")?.Value;
-				if (string.IsNullOrEmpty(resetToken)) return new ApiResponse(400, "Invalid token");
+			var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+			var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
 
-				var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
+			var errors = string.Join(" | ", result.Errors.Select(e => e.Description));
+			if (!result.Succeeded)
+				return new ApiResponse(400, errors);
 
-				var errors = string.Join(" | ", result.Errors.Select(e => e.Description));
-				if (!result.Succeeded)
-					return new ApiResponse(400, errors);
+			await _unitOfWork.ResetPasswordRepository.Delete(resetEntry);
+			 _unitOfWork.Complete();
 
-				return new ApiResponse(200, "Password reset successful.");
-			}
-			catch
-			{
-				return new ApiResponse(400, "Invalid or expired token");
-			}
+			return new ApiResponse(200, "Password reset successful");
+
+			#region LinkReset
+			//try
+			//{
+			//	var principal = _tokenService.GetPrincipalFromToken(model.Token);
+			//	var resetToken = principal.Claims.FirstOrDefault(c => c.Type == "resetToken")?.Value;
+			//	if (string.IsNullOrEmpty(resetToken)) return new ApiResponse(400, "Invalid token");
+
+			//	var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
+
+			//	var errors = string.Join(" | ", result.Errors.Select(e => e.Description));
+			//	if (!result.Succeeded)
+			//		return new ApiResponse(400, errors);
+
+			//	return new ApiResponse(200, "Password reset successful.");
+			//}
+			//catch
+			//{
+			//	return new ApiResponse(400, "Invalid or expired token");
+			////} 
+			#endregion
+		}
+
+		public async Task<bool> VerifyResetCodeAsync(string code)
+		{
+			var resetEntry = await _unitOfWork.ResetPasswordRepository
+			.GetFirstOrDefaultAsync(r => r.Code == code);
+
+			if (resetEntry == null || resetEntry.IsExpired())
+				return false;
+
+			return true;
 		}
 	}
 }

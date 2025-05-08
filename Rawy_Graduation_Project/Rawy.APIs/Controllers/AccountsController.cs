@@ -64,7 +64,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest(ModelState);
 
 			var response = await _accountService.RegisterWriterAsync(model);
-			return StatusCode(response.StatusCode, response.Data);
+			return StatusCode(response.StatusCode, response.Message);
 		}
 
 		// Login
@@ -196,6 +196,16 @@ namespace Rawy.APIs.Controllers
 
 			var response = await _accountService.ForgotPasswordAsync(model);
 			return StatusCode(response.StatusCode, response.Message);
+		}
+
+
+		[HttpPost("verify-reset-code")]
+		public async Task<IActionResult> VerifyCode([FromBody] VerifyCodeDto model
+			)
+		{
+			var isValid = await _accountService.VerifyResetCodeAsync(model.Code);
+
+			return isValid ? Ok("Code is valid.") : BadRequest("Invalid or expired code.");
 		}
 
 

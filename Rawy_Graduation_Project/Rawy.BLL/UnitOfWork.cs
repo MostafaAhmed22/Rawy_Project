@@ -18,6 +18,7 @@ namespace Rawy.BLL
 		private IRatingRepository ratingRepository;
 		private ICommentRepository commentRepository;
 		private IFollowRepository followRepository;
+		private IResetPasswordRepository resetPasswordRepository;
 
 		public UnitOfWork(RawyDBContext context)
         {
@@ -29,6 +30,7 @@ namespace Rawy.BLL
 			ratingRepository = new RatingRepository(_context);
 			commentRepository = new CommentRepository(_context);
 			followRepository  = new FollowRepository(_context);
+			resetPasswordRepository = new ResetPasswordRepository(_context);	
 
 		}
         public IStoryRepository StoryRepository => storyRepository;
@@ -42,6 +44,8 @@ namespace Rawy.BLL
 		public IFollowRepository FollowRepository => followRepository;
 
 		public IUserRepository UserRepository => userRepository;
+
+		public IResetPasswordRepository ResetPasswordRepository => resetPasswordRepository;
 
 		public int Complete()
 		{

@@ -90,6 +90,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Rawy.APIs.Controllers.AccountsController",
+    "Method": "VerifyCode",
+    "RelativePath": "api/Accounts/verify-reset-code",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Rawy.APIs.Dtos.AcoountDtos.VerifyCodeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Rawy.APIs.Controllers.CommentController",
     "Method": "AddComment",
     "RelativePath": "api/Comment",
