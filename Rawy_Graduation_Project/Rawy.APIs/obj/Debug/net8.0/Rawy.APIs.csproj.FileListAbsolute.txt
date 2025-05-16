@@ -337,3 +337,8 @@ D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\M
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 D:\Graduation2\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\CloudinaryDotNet.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\222\My projects Elhal\Gradulation\project_Repo\Rawy_Project\Rawy_Graduation_Project\Rawy.APIs\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

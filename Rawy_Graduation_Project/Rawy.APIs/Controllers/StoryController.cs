@@ -10,6 +10,7 @@ using Rawy.APIs.Dtos.CommentDto;
 using Rawy.APIs.Dtos.StoryDtos;
 using Rawy.APIs.Services.StoryService;
 using Rawy.BLL.Interfaces;
+using Rawy.DAL.Data;
 using Rawy.DAL.Models;
 using Rawy.DAL.Models.Hubs;
 using Rawy.DAL.Models.StorySpec;
@@ -24,12 +25,14 @@ namespace Rawy.APIs.Controllers
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
 		private readonly IHubContext<PostHub> _hubContext;
-		public StoryController(IUnitOfWork unitOfWork, IMapper mapper, IHubContext<PostHub> hubContext)
+		private readonly RawyDBContext _context;
+		public StoryController(IUnitOfWork unitOfWork, IMapper mapper, IHubContext<PostHub> hubContext,RawyDBContext context)
 		{
 			//_storyRepo = StoryRepo;
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
 			_hubContext = hubContext;
+			_context = context;
 		}
 		[HttpGet]
 
@@ -186,35 +189,76 @@ namespace Rawy.APIs.Controllers
 
 		}
 
-
-
-
-		#region StoryService
-		//[HttpPost]
-		//public async Task<ActionResult<Story>> AddStory(AddStoryDto _story)
+		//[HttpPost("Save")]
+		//public async Task<IActionResult> SaveStories(int userId, int storyId)
 		//{
-		//	var story = _storyService.AddStory(_story);
-		//	return Ok(story);
+  //          var user = await _context.AppUsers.FindAsync(userId);
+  //          var story = await _context.Stories.FindAsync(storyId);
+
+  //          if (user is null || story is null)
+  //              return BadRequest("Invalid user or story.");
+
+  //          var alreadySaved = await _context.SavedStories
+  //          .AnyAsync(ss => ss.UserId == userId && ss.StoryId == storyId);
+
+  //          if (alreadySaved)
+  //              return BadRequest("This story is already saved by the user.");
+
+  //          var savedStory = new SavedStory
+  //          {
+  //              UserId = userId,
+  //              StoryId = storyId,
+  //              SavedAt = DateTime.Now
+  //          };
+
+  //          _context.SavedStories.Add(savedStory);
+  //          await _context.SaveChangesAsync();
+
+  //          return Ok("Story saved successfully.");
 		//}
 
+  //      [HttpDelete("Unsave")]
+  //      public async Task<IActionResult> UnsaveStory(int userId, int storyId)
+  //      {
+  //          var savedStory = await _context.SavedStories
+  //              .FirstOrDefaultAsync(ss => ss.UserId == userId && ss.StoryId == storyId);
 
-		//[HttpPut("{id}")]
-		//public async Task<ActionResult<Story>> UpdateStory(int id, UpdateStoryDto storyDto, int userId)
-		//{
-		//	//var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-		//	var story = _storyService.UpdateStory(id, storyDto, userId);
-		//	return Ok(story);
+  //          if (savedStory == null)
+  //              return NotFound("This story is not saved by the user.");
 
-		//}
+  //          _context.SavedStories.Remove(savedStory);
+  //          await _context.SaveChangesAsync();
 
-		//[HttpDelete]
-		//public async Task<ActionResult<Story>> DeleteStory(int id)
-		//{
-		//	var story = _storyService.DeleteStory(id);
-		//	return Ok(story);
+  //          return Ok("Story unsaved successfully.");
+  //      }
 
-		//}
-		#endregion
 
-	}
+        #region StoryService
+        //[HttpPost]
+        //public async Task<ActionResult<Story>> AddStory(AddStoryDto _story)
+        //{
+        //	var story = _storyService.AddStory(_story);
+        //	return Ok(story);
+        //}
+
+
+        //[HttpPut("{id}")]
+        //public async Task<ActionResult<Story>> UpdateStory(int id, UpdateStoryDto storyDto, int userId)
+        //{
+        //	//var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        //	var story = _storyService.UpdateStory(id, storyDto, userId);
+        //	return Ok(story);
+
+        //}
+
+        //[HttpDelete]
+        //public async Task<ActionResult<Story>> DeleteStory(int id)
+        //{
+        //	var story = _storyService.DeleteStory(id);
+        //	return Ok(story);
+
+        //}
+        #endregion
+
+    }
 }

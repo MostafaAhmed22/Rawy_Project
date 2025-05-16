@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Rawy.DAL.Models.Hubs;
 using Rawy.APIs.Services.CommentService;
 using Rawy.APIs.Services.StoryService;
+using Microsoft.Extensions.Options;
 namespace Rawy.APIs
 {
     public class Program
@@ -57,22 +58,23 @@ namespace Rawy.APIs
 				o.DefaultForbidScheme = GoogleDefaults.AuthenticationScheme;
 				o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 			}).AddCookie()
-			  .AddGoogle(options =>
-				{
-					var ClientId = builder.Configuration["Authentication:Google:ClientId"];
-					if(ClientId == null)
-						throw new ArgumentException(nameof(ClientId));
+			.AddGoogle(options =>
+			{
+				var ClientId = builder.Configuration["Authentication:Google:ClientId"];
+				if (ClientId == null)
+					throw new ArgumentException(nameof(ClientId));
 
-					var ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-					if (ClientSecret == null)
-						throw new ArgumentException(nameof(ClientSecret));
+				var ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+				if (ClientSecret == null)
+					throw new ArgumentException(nameof(ClientSecret));
 
 
 				//	IConfigurationSection googleAuth = builder.Configuration.GetSection("Authentication:Google");
-					options.ClientId = ClientId;
-					options.ClientSecret = ClientSecret;
-					options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-				});
+				options.ClientId = ClientId;
+				options.ClientSecret = ClientSecret;
+				//options.CallbackPath = "/api/Accounts/signin-google"; // íÌÈ Ãä íÊØÇÈÞ ãÚ Redirect URI Ýí Google Console
+				options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+			});
 
 			builder.Services.AddAuthentication(options =>
 			{
@@ -126,20 +128,28 @@ namespace Rawy.APIs
 
 			builder.Services.AddSignalR();
 
-
 			builder.Services.AddCors(options =>
-			{
-				options.AddPolicy("MyPolicy", config =>
-				{
-					config.AllowAnyHeader();
-					config.AllowAnyMethod();
-					config.AllowAnyOrigin();
-					//config.WithOrigins("http://localhost:4200");
-					//(builder.Configuration["FronEndUrl"]);
+            options.AddDefaultPolicy(builder =>
+                builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+					.AllowAnyOrigin()
+				)
+			);
 
-				});
+   //         builder.Services.AddCors(options =>
+			//{
+			//	options.AddPolicy("MyPolicy", config =>
+			//	{
+			//		config.AllowAnyHeader();
+			//		config.AllowAnyMethod();
+			//		config.AllowAnyOrigin();
+			//		//config.WithOrigins("http://localhost:4200");
+			//		//(builder.Configuration["FronEndUrl"]);
 
-			});
+			//	});
+
+			//});
 			#endregion
 
 			var app = builder.Build();

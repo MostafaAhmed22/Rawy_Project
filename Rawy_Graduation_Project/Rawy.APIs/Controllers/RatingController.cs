@@ -9,7 +9,6 @@ using Rawy.DAL.Models;
 
 namespace Rawy.APIs.Controllers
 {
-
 	public class RatingController : BaseApiController
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -66,8 +65,6 @@ namespace Rawy.APIs.Controllers
 
 			return Ok(ratingDtos);
 
-
-
 		}
 
 
@@ -88,7 +85,6 @@ namespace Rawy.APIs.Controllers
 				AverageRating = averageScore
 			});
 		}
-
 
 		// Delete Rating
 		[HttpDelete("{ratingId}")]

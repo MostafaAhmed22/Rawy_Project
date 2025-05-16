@@ -30,7 +30,8 @@ namespace Rawy.DAL.Models
 
 		public int AppUserId { get; set; }
 		public AppUser AppUser { get; set; }
+        public ICollection<SavedStory> SavedByUsers { get; set; }
 
-	}
+    }
 
 }

@@ -12,6 +12,7 @@ using System.Security.Claims;
 using Rawy.APIs.Helper;
 using Rawy.APIs.Services.AccountService;
 using Rawy.APIs.Dtos.AcoountDtos;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace Rawy.APIs.Controllers
 {
@@ -66,9 +67,8 @@ namespace Rawy.APIs.Controllers
 			var response = await _accountService.RegisterWriterAsync(model);
 			return StatusCode(response.StatusCode, response.Message);
 		}
-
-		// Login
-		[HttpPost("Login")]
+        
+	    [HttpPost("Login")]
 		public async Task<ActionResult<UserDto>> Login(LoginDto model)
 		{
 			if (!ModelState.IsValid)
@@ -86,109 +86,144 @@ namespace Rawy.APIs.Controllers
 
 		}
 
-		[HttpPost("GoogleLogin")]
-		public async Task<IActionResult> GoogleLogin([FromBody] ExternalAuthDto model)
-		{
-			var token = await _accountService.GoogleLoginAsync(model.Token);
-			return Ok(token);
-			#region LogicWithoutGoogleService
-			//var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
-			//if (payload == null)
-			//{
-			//	return BadRequest(new { message = "Invalid Google token." });
-			//}
+        //Google
+        //[HttpGet("login")]
+        //public IActionResult Login()
+        //{
+        //    // بدء عملية المصادقة مع Google
+        //    return Challenge(new AuthenticationProperties
+        //    {
+        //        RedirectUri = "/api/Accounts/callback" // المسار الذي سيتم إعادة التوجيه إليه بعد تسجيل الدخول
+        //    }, GoogleDefaults.AuthenticationScheme);
+        //}
 
-			//var user = await _userManager.FindByEmailAsync(payload.Email);
-			//if (user == null)
-			//{
-			//	user = new AppUser
-			//	{
-			//		UserName = payload.Email,
-			//		Email = payload.Email
-			//	};
-			//	var result = await _userManager.CreateAsync(user);
-			//	if (!result.Succeeded)
-			//	{
-			//		return BadRequest(result.Errors);
-			//	}
+        //[HttpGet("callback")]
+        //public async Task<IActionResult> Callback()
+        //{
+        //    // التحقق من نتيجة المصادقة
+        //    var authenticateResult = await HttpContext.AuthenticateAsync();
 
-			//	await _userManager.AddToRoleAsync(user, "User"); // Assign a default role
-			//}
+        //    if (!authenticateResult.Succeeded)
+        //    {
+        //        return Unauthorized("فشل تسجيل الدخول.");
+        //    }
 
-			//var token = _tokenService.CreateTokenAsync(user,_userManager);
-			//return Ok(new { token }); 
-			#endregion
-		}
+        //    // استخراج بيانات المستخدم
+        //    var claims = authenticateResult.Principal?.Claims;
+        //    var userInfo = new
+        //    {
+        //        Name = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
+        //        Email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+        //        Id = claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value
+        //    };
+
+        //    // يمكنك هنا إنشاء JWT Token أو إرجاع بيانات المستخدم
+        //    return Ok(new { Message = "تم تسجيل الدخول بنجاح", User = userInfo });
+        //}
+        #region Mostafa Google
+        [HttpPost("GoogleLogin")]
+        public async Task<IActionResult> GoogleLogin([FromBody] ExternalAuthDto model)
+        {
+            var token = await _accountService.GoogleLoginAsync(model.Token);
+            return Ok(token);
+            #region LogicWithoutGoogleService
+            //var payload = await _googleAuthService.VerifyGoogleTokenAsync(model.IdToken);
+            //if (payload == null)
+            //{
+            //	return BadRequest(new { message = "Invalid Google token." });
+            //}
+
+            //var user = await _userManager.FindByEmailAsync(payload.Email);
+            //if (user == null)
+            //{
+            //	user = new AppUser
+            //	{
+            //		UserName = payload.Email,
+            //		Email = payload.Email
+            //	};
+            //	var result = await _userManager.CreateAsync(user);
+            //	if (!result.Succeeded)
+            //	{
+            //		return BadRequest(result.Errors);
+            //	}
+
+            //	await _userManager.AddToRoleAsync(user, "User"); // Assign a default role
+            //}
+
+            //var token = _tokenService.CreateTokenAsync(user,_userManager);
+            //return Ok(new { token }); 
+            #endregion
+        }
+        #endregion
+
+        //[HttpPost("FacebookLogin")]
+        //public async Task<ActionResult<TokenDto>> FacebookLogin([FromBody] ExternalAuthDto model)
+        //{
+        //	if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        //	var token = await _facebookAuthServices.AuthenticateWithFacebookAsync(model.Token);
+        //	return Ok(token);
+        //}
 
 
-		//[HttpPost("FacebookLogin")]
-		//public async Task<ActionResult<TokenDto>> FacebookLogin([FromBody] ExternalAuthDto model)
-		//{
-		//	if (!ModelState.IsValid) return BadRequest(ModelState);
 
-		//	var token = await _facebookAuthServices.AuthenticateWithFacebookAsync(model.Token);
-		//	return Ok(token);
-		//}
+        /// Initiates the Facebook login process.
+
+        //[HttpGet("Facebook-Login")]
+        //public IActionResult FacebookLogin()
+
+        //{
+        //	var redirectUri = Url.Action("FacebookCallback", "Auth", null, Request.Scheme);
+        //	var properties = new AuthenticationProperties { RedirectUri = redirectUri };
+        //	return Challenge(properties, "Facebook");
+        //}
 
 
+        /// Handles the callback from Facebook after authentication.
 
-		/// Initiates the Facebook login process.
-		
-		//[HttpGet("Facebook-Login")]
-		//public IActionResult FacebookLogin()
+        //[HttpGet("Facebook-Callback")]
+        //public async Task<IActionResult> FacebookCallback()
+        //{
 
-		//{
-		//	var redirectUri = Url.Action("FacebookCallback", "Auth", null, Request.Scheme);
-		//	var properties = new AuthenticationProperties { RedirectUri = redirectUri };
-		//	return Challenge(properties, "Facebook");
-		//}
+        //	var authenticateResult = await HttpContext.AuthenticateAsync("Facebook");
+        //	if (!authenticateResult.Succeeded)
+        //	{
+        //		return BadRequest("Facebook authentication failed.");
+        //	}
 
-		
-		/// Handles the callback from Facebook after authentication.
-		
-		//[HttpGet("Facebook-Callback")]
-		//public async Task<IActionResult> FacebookCallback()
-		//{
+        //	// Extract user information from Facebook
+        //	var externalUser = authenticateResult.Principal;
+        //	var email = externalUser.FindFirst(ClaimTypes.Email)?.Value;
+        //	var name = externalUser.FindFirst(ClaimTypes.Name)?.Value;
 
-		//	var authenticateResult = await HttpContext.AuthenticateAsync("Facebook");
-		//	if (!authenticateResult.Succeeded)
-		//	{
-		//		return BadRequest("Facebook authentication failed.");
-		//	}
+        //	if (string.IsNullOrEmpty(email))
+        //	{
+        //		return BadRequest("Email claim not found in Facebook response.");
+        //	}
 
-		//	// Extract user information from Facebook
-		//	var externalUser = authenticateResult.Principal;
-		//	var email = externalUser.FindFirst(ClaimTypes.Email)?.Value;
-		//	var name = externalUser.FindFirst(ClaimTypes.Name)?.Value;
+        //	// Create new Appuser
 
-		//	if (string.IsNullOrEmpty(email))
-		//	{
-		//		return BadRequest("Email claim not found in Facebook response.");
-		//	}
+        //	var user = await _userManager.FindByEmailAsync(email);
+        //	if (user == null)
+        //	{
+        //		user = new AppUser
+        //		{
+        //			Email = email,
+        //			UserName = name
+        //		};
+        //		var result = await _userManager.CreateAsync(user);
+        //		if (!result.Succeeded)
+        //		{
+        //			return BadRequest("Failed to create user.");
+        //		}
+        //	}
+        //		// Generate a JWT token for the authenticated user
+        //		var token = await _tokenService.CreateTokenAsync(user, _userManager);
 
-		//	// Create new Appuser
+        //	return Ok(new { Token = token });
+        //}
 
-		//	var user = await _userManager.FindByEmailAsync(email);
-		//	if (user == null)
-		//	{
-		//		user = new AppUser
-		//		{
-		//			Email = email,
-		//			UserName = name
-		//		};
-		//		var result = await _userManager.CreateAsync(user);
-		//		if (!result.Succeeded)
-		//		{
-		//			return BadRequest("Failed to create user.");
-		//		}
-		//	}
-		//		// Generate a JWT token for the authenticated user
-		//		var token = await _tokenService.CreateTokenAsync(user, _userManager);
-			
-		//	return Ok(new { Token = token });
-		//}
-
-		[HttpPost("forgot-password")]
+        [HttpPost("forgot-password")]
 		public async Task<IActionResult> ForgotPassword([FromBody] ForgetPasswordDto model)
 		{
 			if (!ModelState.IsValid)

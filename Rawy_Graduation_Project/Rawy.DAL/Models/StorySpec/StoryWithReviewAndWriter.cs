@@ -10,7 +10,7 @@ namespace Rawy.DAL.Models.StorySpec
     public class StoryWithReview : BaseSpecifications<Story>
     {
         public StoryWithReview(StorySpecParams specParams) : base(S=> (string.IsNullOrEmpty(specParams.Search) || S.Category.ToLower().Contains(specParams.Search))) // Search based on Category not content
-
+		
         {
 			Includes.Add(S => S.AppUser);
 			//Includes.Add(S => S.Writer);
