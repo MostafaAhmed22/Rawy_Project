@@ -479,6 +479,48 @@
     ]
   },
   {
+    "ContainingType": "Rawy.APIs.Controllers.StoryController",
+    "Method": "SaveStories",
+    "RelativePath": "api/Story/Save",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "storyId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.StoryController",
+    "Method": "UnsaveStory",
+    "RelativePath": "api/Story/Unsave",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "storyId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
     "Method": "GetAllWriters",
     "RelativePath": "api/Writer",

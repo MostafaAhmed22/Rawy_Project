@@ -337,6 +337,24 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("PasswordResetCodes");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.SavedStory", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SavedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserId", "StoryId");
+
+                    b.HasIndex("StoryId");
+
+                    b.ToTable("savedStories");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.Property<int>("Id")
@@ -484,6 +502,25 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Story");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.SavedStory", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.Story", "Story")
+                        .WithMany("SavedByUsers")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Rawy.DAL.Models.AppUser", "User")
+                        .WithMany("SavedStories")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Story");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
@@ -524,6 +561,8 @@ namespace Rawy.DAL.Data.Migrations
 
                     b.Navigation("Ratings");
 
+                    b.Navigation("SavedStories");
+
                     b.Navigation("Stories");
                 });
 
@@ -532,6 +571,8 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Ratings");
+
+                    b.Navigation("SavedByUsers");
                 });
 #pragma warning restore 612, 618
         }

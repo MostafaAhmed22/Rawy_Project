@@ -16,6 +16,7 @@ namespace Rawy.BLL.Interfaces
         public ICommentRepository CommentRepository { get;  }
 		public IFollowRepository FollowRepository { get; }
 		public IResetPasswordRepository ResetPasswordRepository { get; }
+		public ISavedStoryRepository SavedStoryRepository { get; }
 		int Complete();
 	}
 }
