@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.AcoountDtos;
 using Rawy.APIs.Dtos.CommentDto;
 using Rawy.APIs.Dtos.StoryDtos;
+using Rawy.APIs.Dtos.WriterDtos;
 using Rawy.DAL.Models;
 
 namespace Rawy.APIs.Helper

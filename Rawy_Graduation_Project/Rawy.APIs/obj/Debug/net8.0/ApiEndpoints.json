@@ -487,11 +487,6 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "storyId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -507,11 +502,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
       {
         "Name": "storyId",
         "Type": "System.Int32",

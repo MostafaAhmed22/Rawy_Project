@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Rawy.DAL.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialCreate : Migration
+    public partial class AllUpdates : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,6 +36,7 @@ namespace Rawy.DAL.Data.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfilePictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePicturePublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -57,17 +58,19 @@ namespace Rawy.DAL.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Writers",
+                name: "PasswordResetCodes",
                 columns: table => new
                 {
-                    WriterId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Expiration = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Writers", x => x.WriterId);
+                    table.PrimaryKey("PK_PasswordResetCodes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,6 +189,7 @@ namespace Rawy.DAL.Data.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -232,6 +236,7 @@ namespace Rawy.DAL.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: false),
                     StoryId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -278,6 +283,31 @@ namespace Rawy.DAL.Data.Migrations
                         principalTable: "Stories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "savedStories",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    StoryId = table.Column<int>(type: "int", nullable: false),
+                    SavedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_savedStories", x => new { x.UserId, x.StoryId });
+                    table.ForeignKey(
+                        name: "FK_savedStories_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_savedStories_Stories_StoryId",
+                        column: x => x.StoryId,
+                        principalTable: "Stories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -341,6 +371,11 @@ namespace Rawy.DAL.Data.Migrations
                 column: "StoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_savedStories_StoryId",
+                table: "savedStories",
+                column: "StoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Stories_AppUserId",
                 table: "Stories",
                 column: "AppUserId");
@@ -373,13 +408,16 @@ namespace Rawy.DAL.Data.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
+                name: "PasswordResetCodes");
+
+            migrationBuilder.DropTable(
                 name: "Ratings");
 
             migrationBuilder.DropTable(
-                name: "WriterFollows");
+                name: "savedStories");
 
             migrationBuilder.DropTable(
-                name: "Writers");
+                name: "WriterFollows");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

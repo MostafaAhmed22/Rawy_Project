@@ -122,6 +122,7 @@ namespace Rawy.APIs
 			builder.Services.AddScoped<IAccountService, AccountService>();
 			builder.Services.AddScoped<ICommentService, CommentService>();
 			builder.Services.AddScoped<IStoryService, StoryService>();
+			builder.Services.AddHttpContextAccessor();
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper

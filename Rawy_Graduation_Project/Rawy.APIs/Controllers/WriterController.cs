@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rawy.APIs.Dtos;
 using Rawy.APIs.Dtos.StoryDtos;
+using Rawy.APIs.Dtos.WriterDtos;
 using Rawy.APIs.Services.Photo;
 using Rawy.BLL;
 using Rawy.BLL.Interfaces;

@@ -15,7 +15,8 @@ namespace Rawy.DAL.Models.StorySpec
 			Includes.Add(S => S.AppUser);
 			//Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
-            Includes.Add(S => S.Ratings);
+		//	Includes.Add(nameof(S=> );
+			Includes.Add(S => S.Ratings);
 
 			//Apply sorting based on the 'sort' parameter
 			if (!string.IsNullOrEmpty(specParams.Sort))

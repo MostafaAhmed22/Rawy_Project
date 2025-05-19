@@ -27,7 +27,7 @@ namespace Rawy.APIs.Services.Token
 			//Payload
 			// Private Claims
 			var AuthClaims = new List<Claim>(){
-				//new Claim(ClaimTypes.GivenName ,user.FName),
+				new Claim(ClaimTypes.NameIdentifier ,user.Id.ToString()),
 				new Claim(ClaimTypes.Email ,user.Email)
 
 			};

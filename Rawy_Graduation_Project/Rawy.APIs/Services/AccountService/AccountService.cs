@@ -61,6 +61,7 @@ namespace Rawy.APIs.Services.AccountService
 
 			return new ApiResponse(200, "Success", new UserDto
 			{
+			//	UserId = user.Id,
 				Email = user.Email,
 				UserName = user.UserName,
 				Token = await _tokenService.CreateTokenAsync(user, _userManager)
@@ -78,6 +79,7 @@ namespace Rawy.APIs.Services.AccountService
 
 			return new UserDto
 			{
+				//UserId = user.Id,
 				Email = user.Email,
 				UserName = user.UserName,
 				Token = await _tokenService.CreateTokenAsync(user, _userManager)

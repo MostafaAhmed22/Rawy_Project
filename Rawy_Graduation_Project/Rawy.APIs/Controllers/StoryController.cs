@@ -26,13 +26,15 @@ namespace Rawy.APIs.Controllers
 		private readonly IMapper _mapper;
 		private readonly IHubContext<PostHub> _hubContext;
 		private readonly RawyDBContext _context;
-		public StoryController(IUnitOfWork unitOfWork, IMapper mapper, IHubContext<PostHub> hubContext,RawyDBContext context)
+		private readonly IHttpContextAccessor _httpContextAccessor ;
+		public StoryController(IUnitOfWork unitOfWork, IMapper mapper, IHubContext<PostHub> hubContext,RawyDBContext context, IHttpContextAccessor httpContextAccessor)
 		{
 			//_storyRepo = StoryRepo;
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
 			_hubContext = hubContext;
 			_context = context;
+			_httpContextAccessor = httpContextAccessor;
 		}
 		[HttpGet]
 
@@ -52,7 +54,8 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result // Ensure async handling in a real case
+				AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+				CommentCount = story.Comments?.Count ?? 0
 
 			}).ToList();
 
@@ -71,7 +74,7 @@ namespace Rawy.APIs.Controllers
 
 			var averageScore = await _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(id);
 
-			var responseDto = new StoryResponseDto
+			var responseDto = new StoryByIdDto
 			{
 				Id = story.Id,
 				Title = story.Title,
@@ -80,16 +83,15 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = averageScore
-				//Comments = story.Comments?.Select(c => new CommentResponseDto
-				//{
-				//	Id = c.Id,
-				//	Content = c.Content,
-				////	CreatedAt = c.CreatedAt,
-				//	AppUserId = c.WriterId,
-				//	WriterName = c.Writer.UserName,
-				//	WriterProfilePicture = c.Writer.ProfilePictureUrl
-				//}).ToList()
+				AverageRating = averageScore,
+				Comments = story.Comments?.Select(c => new StoryCommentDto
+				{
+					Id = c.Id,
+					Content = c.Content,
+					WriterId = c.AppUserId,
+					WriterName = $"{c.AppUser?.FirstName} {c.AppUser?.LastName}",
+					CreatedAt = c.CreatedAt
+				}).ToList()
 			};
 
 			return Ok(responseDto);
@@ -105,9 +107,20 @@ namespace Rawy.APIs.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
-			//  Validate WriterId
-			if (_story.AppUserId == 0)
+
+
+			//  var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+			//Validate WriterId
+			if (userId == 0)   
 				return BadRequest("WriterId is required.");
+			//if (_story.AppUserId == 0)
+			//	return BadRequest("WriterId is required.");
 
 			//  Ensure Title and Content Are Not Empty
 			if (string.IsNullOrWhiteSpace(_story.Title))
@@ -117,6 +130,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest("Story content cannot be empty.");
 
 			var story = _mapper.Map<Story>(_story);
+			story.AppUserId = userId;
 			await _unitOfWork.StoryRepository.AddAsync(story);
 			var added = _unitOfWork.Complete();
 
@@ -190,8 +204,10 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpPost("Save")]
-		public async Task<IActionResult> SaveStories(int userId, int storyId)
+		public async Task<IActionResult> SaveStories( int storyId)
 		{
+			var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
 			var user = await _unitOfWork.UserRepository.GetByIdAsync(userId);
 			var story = await _unitOfWork.StoryRepository.GetByIdAsync(storyId);
 
@@ -218,8 +234,10 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpDelete("Unsave")]
-		public async Task<IActionResult> UnsaveStory(int userId, int storyId)
+		public async Task<IActionResult> UnsaveStory( int storyId)
 		{
+			var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
 			var savedStory = await _context.savedStories
 				.FirstOrDefaultAsync(ss => ss.UserId == userId && ss.StoryId == storyId);
 

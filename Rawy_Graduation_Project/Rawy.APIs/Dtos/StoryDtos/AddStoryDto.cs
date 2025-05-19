@@ -8,12 +8,8 @@ namespace Rawy.APIs.Dtos.StoryDtos
 		public string Content { get; set; }
 		public string Category { get; set; }
 
-		public int AppUserId { get; set; }
+	//	public int AppUserId { get; set; }
 		
-
-		// Choises of Story
-		//	public ICollection<StoryChoise>? Choises { get; set; }
-
 		
 	}
 }

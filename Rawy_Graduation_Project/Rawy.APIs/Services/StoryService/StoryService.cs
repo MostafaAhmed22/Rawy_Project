@@ -31,8 +31,8 @@ namespace Rawy.APIs.Services.StoryService
 				return new ApiResponse(400, "Story data is required.");
 
 			//  Validate WriterId
-			if (_story.AppUserId == 0)
-				return new ApiResponse(400, "WriterId is required.");
+			//if (_story.AppUserId == 0)
+			//	return new ApiResponse(400, "WriterId is required.");
 
 			//  Ensure Title and Content Are Not Empty
 			if (string.IsNullOrWhiteSpace(_story.Title))

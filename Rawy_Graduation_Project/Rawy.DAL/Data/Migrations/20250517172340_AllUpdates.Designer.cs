@@ -12,8 +12,8 @@ using Rawy.DAL.Data;
 namespace Rawy.DAL.Data.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250503094627_RefacftorCommentTable")]
-    partial class RefacftorCommentTable
+    [Migration("20250517172340_AllUpdates")]
+    partial class AllUpdates
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -313,6 +313,51 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("Ratings");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.ResetPassword", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Expiration")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PasswordResetCodes");
+                });
+
+            modelBuilder.Entity("Rawy.DAL.Models.SavedStory", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SavedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserId", "StoryId");
+
+                    b.HasIndex("StoryId");
+
+                    b.ToTable("savedStories");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.Property<int>("Id")
@@ -342,6 +387,9 @@ namespace Rawy.DAL.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -457,6 +505,25 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Story");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.SavedStory", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.Story", "Story")
+                        .WithMany("SavedByUsers")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Rawy.DAL.Models.AppUser", "User")
+                        .WithMany("SavedStories")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Story");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
                 {
                     b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
@@ -497,6 +564,8 @@ namespace Rawy.DAL.Data.Migrations
 
                     b.Navigation("Ratings");
 
+                    b.Navigation("SavedStories");
+
                     b.Navigation("Stories");
                 });
 
@@ -505,6 +574,8 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Ratings");
+
+                    b.Navigation("SavedByUsers");
                 });
 #pragma warning restore 612, 618
         }
