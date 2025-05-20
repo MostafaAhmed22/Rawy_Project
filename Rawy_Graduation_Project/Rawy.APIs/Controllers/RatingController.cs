@@ -6,6 +6,7 @@ using Rawy.APIs.Dtos;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models.StorySpec;
 using Rawy.DAL.Models;
+using System.Security.Claims;
 
 namespace Rawy.APIs.Controllers
 {
@@ -13,11 +14,13 @@ namespace Rawy.APIs.Controllers
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
-
-		public RatingController(IUnitOfWork unitOfWork, IMapper mapper)
+		private readonly IHttpContextAccessor _httpContextAccessor;
+		
+		public RatingController(IUnitOfWork unitOfWork, IMapper mapper,IHttpContextAccessor httpContextAccessor)
 		{
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
+			_httpContextAccessor = httpContextAccessor;
 		}
 
 		//  Add rate to Story
@@ -27,8 +30,17 @@ namespace Rawy.APIs.Controllers
 			try
 			{
 				if (RatingtDto == null) return BadRequest("Invalid Rating data.");
+				
+				// Extarct UserId From Token
+				var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+				if (userIdClaim == null)
+					return Unauthorized("User is not authenticated");
+
+				var userId = int.Parse(userIdClaim.Value);
 
 				var rating = _mapper.Map<Rating>(RatingtDto);
+				rating.AppUserId = userId;
 				
 
 				await _unitOfWork.RatingRepository.AddRatingAsync(rating);

@@ -21,12 +21,14 @@ namespace Rawy.APIs.Controllers
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly UserManager<AppUser> _userManager;
 		private readonly IPhotoService _photoService;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-		public WriterController(IUnitOfWork unitOfWork, UserManager<AppUser> userManager,IPhotoService photoService)
+		public WriterController(IUnitOfWork unitOfWork, UserManager<AppUser> userManager,IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
 			_photoService = photoService;
+			_httpContextAccessor = httpContextAccessor;
 		}
 
 		// Get Writer By ID
@@ -35,6 +37,44 @@ namespace Rawy.APIs.Controllers
 		{
 
 			var spec = new WriterWithStoriesSpec(id);
+			var writer = await _unitOfWork.UserRepository.GetByIdWithSpecAsync(spec);
+
+			if (writer == null)
+				return NotFound(new ApiResponse(404));
+
+			var dto = new WriterProfileDto
+			{
+				Email = writer.Email,
+				FName = writer.FirstName,
+				LName = writer.LastName,
+				PhoneNumber = writer.PhoneNumber,
+				PhotoUrl = writer.ProfilePictureUrl,
+				PhotoPublicId = writer.ProfilePicturePublicId,
+				FollowersCount = writer.Followers?.Count ?? 0,
+				FollowingsCount = writer.Followings?.Count ?? 0,
+				Stories = writer.Stories.Select(s => new StoryDto
+				{
+					Title = s.Title,
+					Content = s.Content,
+					CreatedAt = s.CreatedAt
+				}).ToList()
+			};
+
+			return Ok(dto);
+		}
+
+
+		[HttpGet("GetProfile")]
+		public async Task<IActionResult> GetProfileByToken()
+		{
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+
+			var spec = new WriterWithStoriesSpec(userId);
 			var writer = await _unitOfWork.UserRepository.GetByIdWithSpecAsync(spec);
 
 			if (writer == null)
@@ -107,9 +147,19 @@ namespace Rawy.APIs.Controllers
 			//    //var follower = await _context.Writers.FindAsync(followerId);
 			//    //var followed = await _context.Writers.FindAsync(followedId);
 
-			var userEmail = User.FindFirstValue(ClaimTypes.Email);
-			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
+			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
+
+			//var appUser = await _userManager.FindByEmailAsync(userEmail);
+			//var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
+
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+
+			var follower = await _unitOfWork.UserRepository.GetByIdAsync(userId);
 
 			var followee = await _unitOfWork.UserRepository.GetByIdAsync(followeeId);
 
@@ -142,7 +192,7 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpPost("unfollow")]
-		public async Task<IActionResult> UnfollowEmployee(int followeeId)
+		public async Task<IActionResult> Unfollow(int followeeId)
 		{
 			#region MyRegion
 			//    if (followerId == followedId)
@@ -165,9 +215,17 @@ namespace Rawy.APIs.Controllers
 			//} 
 			#endregion
 
-			var userEmail = User.FindFirstValue(ClaimTypes.Email);
-			var appUser = await _userManager.FindByEmailAsync(userEmail);
-			var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
+			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
+			//var appUser = await _userManager.FindByEmailAsync(userEmail);
+			//var follower = await _unitOfWork.UserRepository.GetByIdAsync(appUser.Id);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+
+			var follower = await _unitOfWork.UserRepository.GetByIdAsync(userId);
 
 			var followee = await _unitOfWork.UserRepository.GetByIdAsync(followeeId);
 
@@ -187,12 +245,17 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpPost("upload-photo")]
-		public async Task<IActionResult> UploadPhoto(int id,IFormFile file)
+		public async Task<IActionResult> UploadPhoto(IFormFile file)
 		{
 
-			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
-			//var writer = await _userManager.FindByEmailAsync(userEmail);
-			var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+
+			var writer = await _unitOfWork.UserRepository.GetByIdAsync(userId);
 
 			if (writer == null) return NotFound("Writer not found");
 
@@ -219,11 +282,17 @@ namespace Rawy.APIs.Controllers
 		}
 
 		[HttpDelete("delete-photo")]
-		public async Task<IActionResult> DeletePhoto(int id)
+		public async Task<IActionResult> DeletePhoto()
 		{
-			//var userEmail = User.FindFirstValue(ClaimTypes.Email);
-			//var writer = await _userManager.FindByEmailAsync(userEmail);
-			var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+			
+			var writer = await _unitOfWork.UserRepository.GetByIdAsync(userId);
+			//var writer = await _unitOfWork.UserRepository.GetByIdAsync(id);
 			if (writer == null || string.IsNullOrEmpty(writer.ProfilePicturePublicId))
 				return NotFound("No photo to delete");
 

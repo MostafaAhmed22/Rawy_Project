@@ -149,11 +149,6 @@
         "Name": "commentId",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -543,13 +538,7 @@
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -570,6 +559,16 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
+    "Method": "GetProfileByToken",
+    "RelativePath": "api/Writer/GetProfile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.WriterController",
     "Method": "GetProfileById",
     "RelativePath": "api/Writer/GetProfile/{id}",
     "HttpMethod": "GET",
@@ -586,7 +585,7 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.WriterController",
-    "Method": "UnfollowEmployee",
+    "Method": "Unfollow",
     "RelativePath": "api/Writer/unfollow",
     "HttpMethod": "POST",
     "IsController": true,

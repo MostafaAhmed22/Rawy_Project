@@ -15,10 +15,12 @@ namespace Rawy.APIs.Controllers
     public class CommentController : BaseApiController
 	{
 		private readonly ICommentService _commentService;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-		public CommentController(ICommentService commentService)
+		public CommentController(ICommentService commentService, IHttpContextAccessor httpContextAccessor)
 		{
 			_commentService = commentService;
+			_httpContextAccessor = httpContextAccessor;
 		}
 
 
@@ -26,8 +28,13 @@ namespace Rawy.APIs.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddComment([FromBody] AddCommentDto dto)
 		{
-			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-			var result = await _commentService.AddCommentAsync(dto, dto.AppUserId);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+			var result = await _commentService.AddCommentAsync(dto, userId);
 
 			return Ok(result);
 			//return Ok("Comment added successfully.");
@@ -54,8 +61,14 @@ namespace Rawy.APIs.Controllers
 
 		// Delete Comment
 		[HttpDelete("{commentId}")]
-		public async Task<IActionResult> DeleteComment(int commentId,int userId)
+		public async Task<IActionResult> DeleteComment(int commentId)
 		{
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
 			var result = await _commentService.DeleteCommentAsync(commentId, userId);
 			return Ok(result);
 		}

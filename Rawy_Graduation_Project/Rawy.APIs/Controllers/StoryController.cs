@@ -251,6 +251,32 @@ namespace Rawy.APIs.Controllers
 		}
 
 
+		//[HttpGet]
+
+		//public async Task<ActionResult<Story>> GetSavedStories([FromQuery] StorySpecParams specParams)
+		//{
+		//	var spec = new StoryWithReview(specParams);
+		//	var Stories = await _unitOfWork.SavedStoryRepository.GetAllWithSpecAsync(spec);
+
+		//	var responseDtos = Stories.Select(story => new StoryResponseDto
+		//	{
+		//		Id = story.Id,
+		//		Title = story.Title,
+		//		Content = story.Content.Length > 200
+		//					? story.Content.Substring(0, 200) + "..."
+		//					: story.Content,
+		//		Category = story.Category,
+		//		CreatedAt = story.CreatedAt,
+		//		WriterId = story.AppUserId,
+		//		WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
+		//		AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+		//		CommentCount = story.Comments?.Count ?? 0
+
+		//	}).ToList();
+
+		//	return Ok(responseDtos);
+		//}
+
 		#region StoryService
 		//[HttpPost]
 		//public async Task<ActionResult<Story>> AddStory(AddStoryDto _story)
