@@ -30,6 +30,8 @@ namespace Rawy.DAL.Models
 
 		//Rating 
 		public ICollection<Rating> Ratings { get; set; }
+
+		public ICollection<StoryLike> StoryLikes { get; set; }
 		public ICollection<Story> Stories { get; set; }
 		public ICollection<SavedStory> SavedStories { get; set; }
     }

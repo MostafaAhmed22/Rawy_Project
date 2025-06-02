@@ -41,13 +41,13 @@ namespace Rawy.APIs.Services.CommentService
 			return new ApiResponse(201, "Comment added successfully.", new {CommentId = comment.Id});
 		}
 
-		public async Task<ApiResponse> UpdateCommentAsync(CommentUpdateDto dto)
+		public async Task<ApiResponse> UpdateCommentAsync(CommentUpdateDto dto,int userId)
 		{
 			var comment = await _unitOfWork.CommentRepository.GetByIdAsync(dto.CommentId);
 			if (comment == null)
 				return new ApiResponse(404, "Comment not found.");
 
-			if (comment.AppUserId != dto.UsertId)
+			if (comment.AppUserId != userId)
 				return new ApiResponse(401, "You are not authorized to update this comment.");
 
 			if (string.IsNullOrWhiteSpace(dto.Content))

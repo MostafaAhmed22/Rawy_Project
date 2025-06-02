@@ -53,8 +53,13 @@ namespace Rawy.APIs.Controllers
 		[HttpPut]
 		public async Task<IActionResult> EditComment([FromBody] CommentUpdateDto commentDto)
 		{
-			
-			var result = await _commentService.UpdateCommentAsync(commentDto);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			var userId = int.Parse(userIdClaim.Value);
+			var result = await _commentService.UpdateCommentAsync(commentDto, userId);
 			return Ok(result);
 		}
 

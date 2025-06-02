@@ -22,6 +22,7 @@ using Rawy.DAL.Models.Hubs;
 using Rawy.APIs.Services.CommentService;
 using Rawy.APIs.Services.StoryService;
 using Microsoft.Extensions.Options;
+using Rawy.APIs.Services.StoryLikeService;
 namespace Rawy.APIs
 {
     public class Program
@@ -122,6 +123,7 @@ namespace Rawy.APIs
 			builder.Services.AddScoped<IAccountService, AccountService>();
 			builder.Services.AddScoped<ICommentService, CommentService>();
 			builder.Services.AddScoped<IStoryService, StoryService>();
+			builder.Services.AddScoped<IStoryLikeService, StoryLikeService>();
 			builder.Services.AddHttpContextAccessor();
 
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
@@ -157,25 +159,25 @@ namespace Rawy.APIs
 
 
 			#region AutoMigration
-			using var Scope = app.Services.CreateScope();
+			//using var Scope = app.Services.CreateScope();
 
-			var Services = Scope.ServiceProvider;
+			//var Services = Scope.ServiceProvider;
 
-			var _Context = Services.GetRequiredService<RawyDBContext>();
-			// Ask CLR To Creating Object From HakawyDBContext
+			//var _Context = Services.GetRequiredService<RawyDBContext>();
+			//// Ask CLR To Creating Object From HakawyDBContext
 
-			var loggerFactory = Services.GetRequiredService<ILoggerFactory>();
+			//var loggerFactory = Services.GetRequiredService<ILoggerFactory>();
 
-			try
-			{
-				_Context.Database.MigrateAsync(); // Update  Database
-			}
-			catch (Exception ex)
-			{
-				var logger = loggerFactory.CreateLogger<Program>();
-				logger.LogError(ex, "an error has been occured during appling migrations");
+			//try
+			//{
+			//	_Context.Database.MigrateAsync(); // Update  Database
+			//}
+			//catch (Exception ex)
+			//{
+			//	var logger = loggerFactory.CreateLogger<Program>();
+			//	logger.LogError(ex, "an error has been occured during appling migrations");
 
-			}
+			//}
 
 			#endregion
 

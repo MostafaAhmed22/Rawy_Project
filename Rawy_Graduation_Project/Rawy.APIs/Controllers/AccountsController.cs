@@ -65,7 +65,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest(ModelState);
 
 			var response = await _accountService.RegisterWriterAsync(model);
-			return StatusCode(response.StatusCode, response.Message);
+			return StatusCode(response.StatusCode,response.Data);
 		}
         
 	    [HttpPost("Login")]

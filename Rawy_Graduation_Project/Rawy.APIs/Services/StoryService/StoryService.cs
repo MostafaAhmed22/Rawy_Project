@@ -86,7 +86,7 @@ namespace Rawy.APIs.Services.StoryService
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result // Ensure async handling in a real case
+				//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result // Ensure async handling in a real case
 
 			}).ToList();
 
@@ -112,7 +112,7 @@ namespace Rawy.APIs.Services.StoryService
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = averageScore
+				//AverageRating = averageScore
 			};
 			return responseDto;
 		}

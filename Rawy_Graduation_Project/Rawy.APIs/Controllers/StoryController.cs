@@ -54,7 +54,9 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+				//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+				LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,	
+				DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 				CommentCount = story.Comments?.Count ?? 0
 
 			}).ToList();
@@ -83,7 +85,9 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				AverageRating = averageScore,
+				//AverageRating = averageScore,
+				LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+				DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 				Comments = story.Comments?.Select(c => new StoryCommentDto
 				{
 					Id = c.Id,

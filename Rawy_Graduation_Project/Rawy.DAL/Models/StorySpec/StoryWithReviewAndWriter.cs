@@ -15,29 +15,29 @@ namespace Rawy.DAL.Models.StorySpec
 			Includes.Add(S => S.AppUser);
 			//Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
-		//	Includes.Add(nameof(S=> );
-			Includes.Add(S => S.Ratings);
+			//Includes.Add(S => S.Ratings);
+			Includes.Add(S => S.StoryLikes);
 
 			//Apply sorting based on the 'sort' parameter
-			if (!string.IsNullOrEmpty(specParams.Sort))
-			{
-				//switch (specParams.Sort.ToLower())
-				//{
-				//	case "rateasc":
-				//		AddOrderBy(S => S.Ratings.Average(r => (double?)r.Score) ?? 0);
-				//		break;
-				//	case "ratedesc":
-				//		AddOrderByDescending(S => S.Ratings.Average(r => (double?)r.Score) ?? 0);
-				//		break;
-				//	default:
-				//		AddOrderByDescending(S => S.CreatedAt);
-				//		break;
-				//}
-			}
-			else
-			{
-				AddOrderByDescending(s => s.CreatedAt); // Fallback default
-			}
+			//if (!string.IsNullOrEmpty(specParams.Sort))
+			//{
+			//	//switch (specParams.Sort.ToLower())
+			//	//{
+			//	//	case "rateasc":
+			//	//		AddOrderBy(S => S.Ratings.Average(r => (double?)r.Score) ?? 0);
+			//	//		break;
+			//	//	case "ratedesc":
+			//	//		AddOrderByDescending(S => S.Ratings.Average(r => (double?)r.Score) ?? 0);
+			//	//		break;
+			//	//	default:
+			//	//		AddOrderByDescending(S => S.CreatedAt);
+			//	//		break;
+			//	//}
+			//}
+			//else
+			//{
+			//	AddOrderByDescending(s => s.CreatedAt); // Fallback default
+			//}
 
 
 			//Pagination
@@ -52,7 +52,8 @@ namespace Rawy.DAL.Models.StorySpec
 			Includes.Add(S => S.AppUser);
 		//	Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
-			Includes.Add(S => S.Ratings);
+			//Includes.Add(S => S.Ratings);
+			Includes.Add(S => S.StoryLikes);
 		}
     }
 }

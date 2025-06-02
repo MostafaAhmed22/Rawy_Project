@@ -258,6 +258,33 @@ namespace Rawy.DAL.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Likes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsLike = table.Column<bool>(type: "bit", nullable: false),
+                    AppUserId = table.Column<int>(type: "int", nullable: false),
+                    StoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Likes_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_Stories_StoryId",
+                        column: x => x.StoryId,
+                        principalTable: "Stories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ratings",
                 columns: table => new
                 {
@@ -360,6 +387,17 @@ namespace Rawy.DAL.Data.Migrations
                 column: "StoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Likes_AppUserId_StoryId",
+                table: "Likes",
+                columns: new[] { "AppUserId", "StoryId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_StoryId",
+                table: "Likes",
+                column: "StoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ratings_AppUserId_StoryId",
                 table: "Ratings",
                 columns: new[] { "AppUserId", "StoryId" },
@@ -406,6 +444,9 @@ namespace Rawy.DAL.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Likes");
 
             migrationBuilder.DropTable(
                 name: "PasswordResetCodes");

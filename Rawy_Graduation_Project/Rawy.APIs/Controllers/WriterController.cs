@@ -44,6 +44,7 @@ namespace Rawy.APIs.Controllers
 
 			var dto = new WriterProfileDto
 			{
+				Id = writer.Id,
 				Email = writer.Email,
 				FName = writer.FirstName,
 				LName = writer.LastName,
@@ -54,9 +55,14 @@ namespace Rawy.APIs.Controllers
 				FollowingsCount = writer.Followings?.Count ?? 0,
 				Stories = writer.Stories.Select(s => new StoryDto
 				{
+					Id = s.Id,
 					Title = s.Title,
-					Content = s.Content,
-					CreatedAt = s.CreatedAt
+					Content = s.Content.Length > 200
+							? s.Content.Substring(0, 200) + "..."
+							: s.Content,
+					CreatedAt = s.CreatedAt,
+					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(s.Id).Result, // Ensure async handling in a real case
+					CommentCount = s.Comments?.Count ?? 0
 				}).ToList()
 			};
 
@@ -69,8 +75,8 @@ namespace Rawy.APIs.Controllers
 		{
 			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
 
-			if (userIdClaim == null)
-				return Unauthorized("User is not authenticated");
+			if (userIdClaim == null)	
+				return Unauthorized(new { message = "User is not authenticated" });
 
 			var userId = int.Parse(userIdClaim.Value);
 
@@ -82,6 +88,7 @@ namespace Rawy.APIs.Controllers
 
 			var dto = new WriterProfileDto
 			{
+				Id = writer.Id,
 				Email = writer.Email,
 				FName = writer.FirstName,
 				LName = writer.LastName,
@@ -92,9 +99,14 @@ namespace Rawy.APIs.Controllers
 				FollowingsCount = writer.Followings?.Count ?? 0,
 				Stories = writer.Stories.Select(s => new StoryDto
 				{
+					Id = s.Id,
 					Title = s.Title,
-					Content = s.Content,
-					CreatedAt = s.CreatedAt
+					Content = s.Content.Length > 200
+							? s.Content.Substring(0, 200) + "..."
+							: s.Content,
+					CreatedAt = s.CreatedAt,
+					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(s.Id).Result, // Ensure async handling in a real case
+					CommentCount = s.Comments?.Count ?? 0
 				}).ToList()
 			};
 
@@ -242,6 +254,25 @@ namespace Rawy.APIs.Controllers
 
 			return Ok("Unfollowed successfully");
 
+		}
+
+		[HttpGet("is-following/{targetUserId}")]
+		public async Task<IActionResult> IsFollowing(int targetUserId)
+		{
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
+
+			if (!int.TryParse(userIdClaim.Value, out var userId))
+				return BadRequest("Invalid user ID");
+
+			var existingFollow = await _unitOfWork.FollowRepository.FindAsync(
+				f => f.FollowerId == userId && f.FolloweeId == targetUserId);
+
+			bool isFollowing = existingFollow != null;
+
+			return Ok(new { isFollowing });
 		}
 
 		[HttpPost("upload-photo")]

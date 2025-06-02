@@ -395,6 +395,33 @@ namespace Rawy.DAL.Data.Migrations
                     b.ToTable("Stories");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.StoryLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsLike")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("StoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StoryId");
+
+                    b.HasIndex("AppUserId", "StoryId")
+                        .IsUnique();
+
+                    b.ToTable("Likes");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
                 {
                     b.Property<int>("FollowerId")
@@ -532,6 +559,25 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("Rawy.DAL.Models.StoryLike", b =>
+                {
+                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
+                        .WithMany("StoryLikes")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Rawy.DAL.Models.Story", "Story")
+                        .WithMany("StoryLikes")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Story");
+                });
+
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
                 {
                     b.HasOne("Rawy.DAL.Models.AppUser", "Followee")
@@ -564,6 +610,8 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("SavedStories");
 
                     b.Navigation("Stories");
+
+                    b.Navigation("StoryLikes");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
@@ -573,6 +621,8 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Ratings");
 
                     b.Navigation("SavedByUsers");
+
+                    b.Navigation("StoryLikes");
                 });
 #pragma warning restore 612, 618
         }

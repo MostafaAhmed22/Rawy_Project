@@ -15,7 +15,9 @@ namespace Rawy.APIs.Dtos.StoryDtos
 		public string WriterName { get; set; }
 
 		//  Story Average Rating
-		public double? AverageRating { get; set; }
+		//public double? AverageRating { get; set; }
+		public int LikestCount { get; set; } // num of LikestCount
+		public int DisLikeCount { get; set; } // num of DisLikeCount 
 
 		public List<StoryCommentDto> Comments { get; set; }
 	}
