@@ -43,7 +43,6 @@ namespace Rawy.APIs.Controllers
 			var spec = new StoryWithReview(specParams);
 			var Stories = await _unitOfWork.StoryRepository.GetAllWithSpecAsync(spec);
 
-
 			var responseDtos = Stories.Select(story => new StoryResponseDto
 			{
 				Id = story.Id,
@@ -55,11 +54,9 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				PhotoUrl = story.AppUser.ProfilePictureUrl,
-				PhotoPublicId = story.AppUser.ProfilePicturePublicId,
 				//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
 				LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,	
-			//	DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
+				DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 				CommentCount = story.Comments?.Count ?? 0
 
 			}).ToList();
@@ -77,7 +74,7 @@ namespace Rawy.APIs.Controllers
 				return NotFound(new ApiResponse(404));
 			}
 
-			var LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result;
+			var averageScore = await _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(id);
 
 			var responseDto = new StoryByIdDto
 			{
@@ -88,11 +85,9 @@ namespace Rawy.APIs.Controllers
 				CreatedAt = story.CreatedAt,
 				WriterId = story.AppUserId,
 				WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
-				PhotoUrl = story.AppUser.ProfilePictureUrl,
-				PhotoPublicId = story.AppUser.ProfilePicturePublicId,
 				//AverageRating = averageScore,
-				LikestCount = LikestCount,
-				//DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
+				LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+				DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 				Comments = story.Comments?.Select(c => new StoryCommentDto
 				{
 					Id = c.Id,
@@ -237,7 +232,6 @@ namespace Rawy.APIs.Controllers
 			};
 
 			await _unitOfWork.SavedStoryRepository.AddAsync(savedStory);
-			var saved = _unitOfWork.Complete();
 			//await _context.SaveChangesAsync();
 
 			return Ok("Story saved successfully.");
@@ -254,49 +248,38 @@ namespace Rawy.APIs.Controllers
 			if (savedStory == null)
 				return NotFound("This story is not saved by the user.");
 
-
-
-			await _unitOfWork.SavedStoryRepository.Delete(savedStory);
-			var deleted = _unitOfWork.Complete();
+			_context.savedStories.Remove(savedStory);
+			await _context.SaveChangesAsync();
 
 			return Ok("Story unsaved successfully.");
 		}
 
 
-		[HttpGet("savedStories")]
-		public async Task<ActionResult<IEnumerable<SavedStory>>> GetMySavedStories()
-		{
-			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+		//[HttpGet]
 
-			if (userIdClaim == null)
-				return Unauthorized("User is not authenticated");
+		//public async Task<ActionResult<Story>> GetSavedStories([FromQuery] StorySpecParams specParams)
+		//{
+		//	var spec = new StoryWithReview(specParams);
+		//	var Stories = await _unitOfWork.SavedStoryRepository.GetAllWithSpecAsync(spec);
 
-			var userId = int.Parse(userIdClaim.Value);
+		//	var responseDtos = Stories.Select(story => new StoryResponseDto
+		//	{
+		//		Id = story.Id,
+		//		Title = story.Title,
+		//		Content = story.Content.Length > 200
+		//					? story.Content.Substring(0, 200) + "..."
+		//					: story.Content,
+		//		Category = story.Category,
+		//		CreatedAt = story.CreatedAt,
+		//		WriterId = story.AppUserId,
+		//		WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
+		//		AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+		//		CommentCount = story.Comments?.Count ?? 0
 
-			var spec = new SavedStoryWithUserSpec(userId);
-			var savedStories = await _unitOfWork.SavedStoryRepository.GetAllWithSpecAsync(spec);
-			var responseDtos = savedStories.Select(story => new StoryResponseDto
-			{
-				Id = story.StoryId,
-				Title = story.Story.Title,
-				Content = story.Story.Content.Length > 200
-				? story.Story.Content.Substring(0, 200) + "..."
-				: story.Story.Content,
-				Category = story.Story.Category,
-				CreatedAt = story.Story.CreatedAt,
-				WriterId = story.UserId,
-				WriterName = $"{story.User.FirstName} {story.User.LastName}",
-				PhotoUrl = story.User.ProfilePictureUrl,
-				PhotoPublicId = story.User.ProfilePicturePublicId,
-				//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
-				LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.StoryId).Result,
-				//	DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
-				CommentCount = story.Story.Comments?.Count ?? 0
+		//	}).ToList();
 
-			}).ToList();
-
-			return Ok(responseDtos);
-		}
+		//	return Ok(responseDtos);
+		//}
 
 		#region StoryService
 		//[HttpPost]

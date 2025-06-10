@@ -26,14 +26,14 @@ namespace Rawy.APIs.Controllers
 
 		//  Add Comment to Story
 		[HttpPost]
-		public async Task<IActionResult> AddComment([FromBody] AddCommentDto dto,int userId)
+		public async Task<IActionResult> AddComment([FromBody] AddCommentDto dto)
 		{
-			//var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+			var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
 
-			//if (userIdClaim == null)
-			//	return Unauthorized("User is not authenticated");
+			if (userIdClaim == null)
+				return Unauthorized("User is not authenticated");
 
-			//var userId = int.Parse(userIdClaim.Value);
+			var userId = int.Parse(userIdClaim.Value);
 			var result = await _commentService.AddCommentAsync(dto, userId);
 
 			return Ok(result);
