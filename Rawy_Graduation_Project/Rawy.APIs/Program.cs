@@ -23,6 +23,7 @@ using Rawy.APIs.Services.CommentService;
 using Rawy.APIs.Services.StoryService;
 using Microsoft.Extensions.Options;
 using Rawy.APIs.Services.StoryLikeService;
+using System.Text.Json.Serialization;
 namespace Rawy.APIs
 {
     public class Program
@@ -42,6 +43,11 @@ namespace Rawy.APIs
 			builder.Services.AddDbContext<RawyDBContext>(options =>
 			{
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+			});
+			builder.Services.AddControllers()
+				.AddJsonOptions(options =>
+			{
+				options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 			});
 
 			// Cloudinary Configuration

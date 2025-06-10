@@ -35,6 +35,7 @@ namespace Rawy.BLL.Specifications
 			
 
 			query = spec.Includes.Aggregate(query,(currentQuery,includeExpression) => currentQuery.Include(includeExpression));
+			query = spec.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
 			// loop on every include in Includes and Add It To base Query
 			return query;
 

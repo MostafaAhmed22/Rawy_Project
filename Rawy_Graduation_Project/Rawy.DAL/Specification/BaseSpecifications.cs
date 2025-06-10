@@ -12,6 +12,8 @@ namespace Rawy.DAL.Specification
 	{
 		public Expression<Func<T, bool>> Criteria { get; set; } = null;
 		public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
+
+		public List<string> IncludeStrings { get; set; } = new();
 		public Expression<Func<T, object>> OrderBy { get; set; } = null;
 		public Expression<Func<T, object>> OrderByDesc { get; set; } = null;
 		public int Take { get; set; }
@@ -33,6 +35,10 @@ namespace Rawy.DAL.Specification
 		// _context.Story.include( S => S.Writer).include(S=> S.Choices)
 		// _context.Story.Where(S=> S.Id == id)
 
+		public void AddInclude(string includeString)
+		{
+			IncludeStrings.Add(includeString);
+		}
 		public void AddOrderBy(Expression<Func<T, object>> orderByExpression)
 		{
 			OrderBy = orderByExpression;

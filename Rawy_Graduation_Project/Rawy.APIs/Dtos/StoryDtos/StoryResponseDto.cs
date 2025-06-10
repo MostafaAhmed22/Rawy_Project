@@ -14,11 +14,13 @@ namespace Rawy.APIs.Dtos.StoryDtos
 		// Writer Details
 		public int WriterId { get; set; }
 		public string WriterName { get; set; }
+		public string PhotoUrl { get; set; }
+		public string PhotoPublicId { get; set; }
 
 		//  Story Average Rating
 		//public double? AverageRating { get; set; }
 		public int LikestCount { get; set; } // num of LikestCount
-		public int DisLikeCount { get; set; } // num of DisLikeCount 
+	//	public int DisLikeCount { get; set; } // num of DisLikeCount 
 		public int CommentCount { get; set; } // num of comments
     }
 }

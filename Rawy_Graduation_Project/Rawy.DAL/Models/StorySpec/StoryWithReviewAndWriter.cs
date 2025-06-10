@@ -49,11 +49,14 @@ namespace Rawy.DAL.Models.StorySpec
 
         public StoryWithReview(int id) : base(S=> S.Id == id)
         {
+			
 			Includes.Add(S => S.AppUser);
 		//	Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
+			AddInclude("Comments.AppUser");
 			//Includes.Add(S => S.Ratings);
 			Includes.Add(S => S.StoryLikes);
 		}
+		
     }
 }
