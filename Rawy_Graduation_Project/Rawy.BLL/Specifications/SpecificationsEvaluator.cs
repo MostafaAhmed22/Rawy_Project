@@ -23,7 +23,7 @@ namespace Rawy.BLL.Specifications
 			//if (spec.OrderBy != null)
 			//	query = query.OrderBy(spec.OrderBy);
 
-			
+
 			//if (spec.OrderByDesc != null)
 			//	query = query.OrderByDescending(spec.OrderByDesc);
 
@@ -32,10 +32,12 @@ namespace Rawy.BLL.Specifications
 			//{
 			//	query = query.Skip(spec.Skip).Take(spec.Take);
 			//}
-			
+
 
 			query = spec.Includes.Aggregate(query,(currentQuery,includeExpression) => currentQuery.Include(includeExpression));
 			// loop on every include in Includes and Add It To base Query
+			query = spec.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
+
 			return query;
 
 		}

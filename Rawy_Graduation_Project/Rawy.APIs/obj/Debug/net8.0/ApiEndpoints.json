@@ -202,70 +202,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "AddRate",
-    "RelativePath": "api/Rating",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "RatingtDto",
-        "Type": "Rawy.APIs.Dtos.StoryDtos.RatingDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "DeleteRating",
-    "RelativePath": "api/Rating/{ratingId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ratingId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "GetRating",
-    "RelativePath": "api/Rating/{storyId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "storyId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Rawy.APIs.Controllers.RatingController",
-    "Method": "GetAverageRating",
-    "RelativePath": "api/Rating/average-rating/{storyId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "storyId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Rawy.APIs.Controllers.RolesController",
     "Method": "AssignRole",
     "RelativePath": "api/Roles/assign",
@@ -505,6 +441,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.StoryController",
+    "Method": "GetMySavedStories",
+    "RelativePath": "api/Story/savedStories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Rawy.DAL.Models.SavedStory, Rawy.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.StoryController",

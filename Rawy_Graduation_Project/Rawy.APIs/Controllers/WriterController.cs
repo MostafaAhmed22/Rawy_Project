@@ -53,16 +53,25 @@ namespace Rawy.APIs.Controllers
 				PhotoPublicId = writer.ProfilePicturePublicId,
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
-				Stories = writer.Stories.Select(s => new StoryDto
+				
+				Stories = writer.Stories.Select(story => new StoryResponseDto
 				{
-					Id = s.Id,
-					Title = s.Title,
-					Content = s.Content.Length > 200
-							? s.Content.Substring(0, 200) + "..."
-							: s.Content,
-					CreatedAt = s.CreatedAt,
-					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(s.Id).Result, // Ensure async handling in a real case
-					CommentCount = s.Comments?.Count ?? 0
+					Id = story.Id,
+					Title = story.Title,
+					Content = story.Content.Length > 200
+							? story.Content.Substring(0, 200) + "..."
+							: story.Content,
+					Category = story.Category,
+					CreatedAt = story.CreatedAt,
+					WriterId = story.AppUserId,
+					WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
+					PhotoUrl = story.AppUser.ProfilePictureUrl,
+					PhotoPublicId = story.AppUser.ProfilePicturePublicId,
+					//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+					LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+					//DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
+					CommentCount = story.Comments?.Count ?? 0
+
 				}).ToList()
 			};
 
@@ -97,16 +106,25 @@ namespace Rawy.APIs.Controllers
 				PhotoPublicId = writer.ProfilePicturePublicId,
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
-				Stories = writer.Stories.Select(s => new StoryDto
+
+				Stories = writer.Stories.Select(story => new StoryResponseDto
 				{
-					Id = s.Id,
-					Title = s.Title,
-					Content = s.Content.Length > 200
-							? s.Content.Substring(0, 200) + "..."
-							: s.Content,
-					CreatedAt = s.CreatedAt,
-					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(s.Id).Result, // Ensure async handling in a real case
-					CommentCount = s.Comments?.Count ?? 0
+					Id = story.Id,
+					Title = story.Title,
+					Content = story.Content.Length > 200
+							? story.Content.Substring(0, 200) + "..."
+							: story.Content,
+					Category = story.Category,
+					CreatedAt = story.CreatedAt,
+					WriterId = story.AppUserId,
+					WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
+					PhotoUrl = story.AppUser.ProfilePictureUrl,
+					PhotoPublicId = story.AppUser.ProfilePicturePublicId,
+					//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+					LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+					//DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
+					CommentCount = story.Comments?.Count ?? 0
+
 				}).ToList()
 			};
 

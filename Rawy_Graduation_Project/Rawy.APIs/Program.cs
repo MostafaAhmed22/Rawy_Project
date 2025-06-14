@@ -20,9 +20,9 @@ using CloudinaryDotNet;
 using Microsoft.AspNetCore.Diagnostics;
 using Rawy.DAL.Models.Hubs;
 using Rawy.APIs.Services.CommentService;
-using Rawy.APIs.Services.StoryService;
 using Microsoft.Extensions.Options;
 using Rawy.APIs.Services.StoryLikeService;
+using System.Text.Json.Serialization;
 namespace Rawy.APIs
 {
     public class Program
@@ -42,6 +42,11 @@ namespace Rawy.APIs
 			builder.Services.AddDbContext<RawyDBContext>(options =>
 			{
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+			});
+			builder.Services.AddControllers()
+				   .AddJsonOptions(options =>
+			{
+					options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 			});
 
 			// Cloudinary Configuration
@@ -122,7 +127,6 @@ namespace Rawy.APIs
 			builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 			builder.Services.AddScoped<IAccountService, AccountService>();
 			builder.Services.AddScoped<ICommentService, CommentService>();
-			builder.Services.AddScoped<IStoryService, StoryService>();
 			builder.Services.AddScoped<IStoryLikeService, StoryLikeService>();
 			builder.Services.AddHttpContextAccessor();
 

@@ -15,7 +15,7 @@ namespace Rawy.BLL
 		private IStoryRepository storyRepository;
 		private IUserRepository userRepository;
 		private IStoryLikeRepository storyLikeRepository;
-		private IRatingRepository ratingRepository;
+		//private IRatingRepository ratingRepository;
 		private ICommentRepository commentRepository;
 		private IFollowRepository followRepository;
 		private IResetPasswordRepository resetPasswordRepository;
@@ -28,7 +28,7 @@ namespace Rawy.BLL
 			storyRepository = new StoryRepository(_context);
 			storyLikeRepository = new StoryLikeRepository(_context);
 			userRepository = new UserRepository(_context);
-			ratingRepository = new RatingRepository(_context);
+		//	ratingRepository = new RatingRepository(_context);
 			commentRepository = new CommentRepository(_context);
 			followRepository  = new FollowRepository(_context);
 			resetPasswordRepository = new ResetPasswordRepository(_context);
@@ -40,7 +40,7 @@ namespace Rawy.BLL
 		//public IWriterRepository WriterRepository => writerRepository;
 		
 
-		public IRatingRepository RatingRepository => ratingRepository;
+	//	public IRatingRepository RatingRepository => ratingRepository;
 		public ICommentRepository CommentRepository => commentRepository;
 
 		public IFollowRepository FollowRepository => followRepository;

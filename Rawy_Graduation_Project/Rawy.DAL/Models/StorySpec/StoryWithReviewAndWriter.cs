@@ -13,8 +13,10 @@ namespace Rawy.DAL.Models.StorySpec
 		
         {
 			Includes.Add(S => S.AppUser);
-			//Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
+
+			AddInclude("Comments.AppUser");
+
 			//Includes.Add(S => S.Ratings);
 			Includes.Add(S => S.StoryLikes);
 
@@ -30,7 +32,7 @@ namespace Rawy.DAL.Models.StorySpec
 			//	//		AddOrderByDescending(S => S.Ratings.Average(r => (double?)r.Score) ?? 0);
 			//	//		break;
 			//	//	default:
-			//	//		AddOrderByDescending(S => S.CreatedAt);
+				//	AddOrderByDescending(S => S.CreatedAt);
 			//	//		break;
 			//	//}
 			//}
@@ -52,6 +54,7 @@ namespace Rawy.DAL.Models.StorySpec
 			Includes.Add(S => S.AppUser);
 		//	Includes.Add(S => S.Writer);
 			Includes.Add(S => S.Comments);
+			AddInclude("Comments.AppUser");
 			//Includes.Add(S => S.Ratings);
 			Includes.Add(S => S.StoryLikes);
 		}

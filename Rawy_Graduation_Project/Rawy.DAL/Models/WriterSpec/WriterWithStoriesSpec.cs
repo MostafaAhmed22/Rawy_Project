@@ -17,6 +17,7 @@ namespace Rawy.DAL.Models.WriterSpec
 			Includes.Add(w => w.Stories);
 			Includes.Add(w => w.Followers);
 			Includes.Add(w => w.Followings);
+			AddInclude("Stories.Comments");
 		}
 	
 

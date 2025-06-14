@@ -1,6 +1,6 @@
-﻿namespace Rawy.APIs.Services.RatingService
-{
-	public interface IRatingService
-	{
-	}
-}
+﻿//namespace Rawy.APIs.Services.RatingService
+//{
+//	public interface IRatingService
+//	{
+//	}
+//}

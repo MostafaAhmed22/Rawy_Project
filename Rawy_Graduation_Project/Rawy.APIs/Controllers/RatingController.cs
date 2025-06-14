@@ -1,118 +1,118 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Rawy.APIs.Dtos.StoryDtos;
-using Rawy.APIs.Dtos;
-using Rawy.BLL.Interfaces;
-using Rawy.DAL.Models.StorySpec;
-using Rawy.DAL.Models;
-using System.Security.Claims;
+﻿//using AutoMapper;
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Mvc;
+//using Rawy.APIs.Dtos.StoryDtos;
+//using Rawy.APIs.Dtos;
+//using Rawy.BLL.Interfaces;
+//using Rawy.DAL.Models.StorySpec;
+//using Rawy.DAL.Models;
+//using System.Security.Claims;
 
-namespace Rawy.APIs.Controllers
-{
-	public class RatingController : BaseApiController
-	{
-		private readonly IUnitOfWork _unitOfWork;
-		private readonly IMapper _mapper;
-		private readonly IHttpContextAccessor _httpContextAccessor;
+//namespace Rawy.APIs.Controllers
+//{
+//	public class RatingController : BaseApiController
+//	{
+//		private readonly IUnitOfWork _unitOfWork;
+//		private readonly IMapper _mapper;
+//		private readonly IHttpContextAccessor _httpContextAccessor;
 		
-		public RatingController(IUnitOfWork unitOfWork, IMapper mapper,IHttpContextAccessor httpContextAccessor)
-		{
-			_unitOfWork = unitOfWork;
-			_mapper = mapper;
-			_httpContextAccessor = httpContextAccessor;
-		}
+//		public RatingController(IUnitOfWork unitOfWork, IMapper mapper,IHttpContextAccessor httpContextAccessor)
+//		{
+//			_unitOfWork = unitOfWork;
+//			_mapper = mapper;
+//			_httpContextAccessor = httpContextAccessor;
+//		}
 
-		//  Add rate to Story
-		[HttpPost]
-		public async Task<IActionResult> AddRate([FromBody] RatingDto RatingtDto)
-		{
-			try
-			{
-				if (RatingtDto == null) return BadRequest("Invalid Rating data.");
+//		//  Add rate to Story
+//		[HttpPost]
+//		public async Task<IActionResult> AddRate([FromBody] RatingDto RatingtDto)
+//		{
+//			try
+//			{
+//				if (RatingtDto == null) return BadRequest("Invalid Rating data.");
 				
-				// Extarct UserId From Token
-				var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+//				// Extarct UserId From Token
+//				var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
 
-				if (userIdClaim == null)
-					return Unauthorized("User is not authenticated");
+//				if (userIdClaim == null)
+//					return Unauthorized("User is not authenticated");
 
-				var userId = int.Parse(userIdClaim.Value);
+//				var userId = int.Parse(userIdClaim.Value);
 
-				var rating = _mapper.Map<Rating>(RatingtDto);
-				rating.AppUserId = userId;
+//				var rating = _mapper.Map<Rating>(RatingtDto);
+//				rating.AppUserId = userId;
 				
 
-				await _unitOfWork.RatingRepository.AddRatingAsync(rating);
+//				await _unitOfWork.RatingRepository.AddRatingAsync(rating);
 
-				return Ok("Rating added successfully.");
-			}
-			catch (InvalidOperationException ex)
-			{
-				return BadRequest(new { message = ex.Message }); // Handle duplicate rating
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(500, new { message = "An unexpected error occurred.", details = ex.Message });
-			}
+//				return Ok("Rating added successfully.");
+//			}
+//			catch (InvalidOperationException ex)
+//			{
+//				return BadRequest(new { message = ex.Message }); // Handle duplicate rating
+//			}
+//			catch (Exception ex)
+//			{
+//				return StatusCode(500, new { message = "An unexpected error occurred.", details = ex.Message });
+//			}
 			
-		}
+//		}
 
-		//  Get All Rating for a Story
-		[HttpGet("{storyId}")]
-		public async Task<IActionResult> GetRating(int storyId)
-		{
+//		//  Get All Rating for a Story
+//		[HttpGet("{storyId}")]
+//		public async Task<IActionResult> GetRating(int storyId)
+//		{
 
-			var spec = new RatingOfStorySpec(storyId);
+//			var spec = new RatingOfStorySpec(storyId);
 
-			var ratings = await _unitOfWork.RatingRepository.GetRatingByStoryIdAsync(spec);
+//			var ratings = await _unitOfWork.RatingRepository.GetRatingByStoryIdAsync(spec);
 
-			var ratingDtos = ratings.Select(c => new RatingResponseDto
-			{
-				Id = c.Id,
-				Score = c.Score,
-				WriterName = $"{c.AppUser.FirstName} {c.AppUser.LastName}", // Avoid circular reference
-				StoryTitle = c.Story.Title // Avoid circular reference
-			}).ToList();
+//			var ratingDtos = ratings.Select(c => new RatingResponseDto
+//			{
+//				Id = c.Id,
+//				Score = c.Score,
+//				WriterName = $"{c.AppUser.FirstName} {c.AppUser.LastName}", // Avoid circular reference
+//				StoryTitle = c.Story.Title // Avoid circular reference
+//			}).ToList();
 
-			return Ok(ratingDtos);
+//			return Ok(ratingDtos);
 
-		}
-
-
-		// Get AverageRating
-		[HttpGet("average-rating/{storyId}")]
-		public async Task<IActionResult> GetAverageRating(int storyId)
-		{
-			var story = await _unitOfWork.StoryRepository.GetByIdAsync(storyId);
-			if (story == null)
-			{
-				return NotFound(new ApiResponse(404));
-			}
-
-			var averageScore = await _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(storyId);
-			return Ok(new
-			{
-				StoryTitle = story.Title,
-				AverageRating = averageScore
-			});
-		}
-
-		// Delete Rating
-		[HttpDelete("{ratingId}")]
-		public async Task<IActionResult> DeleteRating(int ratingId)
-		{
-			var rating = await _unitOfWork.RatingRepository.GetByIdAsync(ratingId);
-			if (rating == null)
-			{
-				return NotFound("rating not found.");
-			}
-
-			await _unitOfWork.RatingRepository.DeleteAsync(ratingId);
-			var deleted = _unitOfWork.Complete();
+//		}
 
 
-			return Ok(new { message = "Rating deleted successfully." });
-		}
-	}
-}
+//		// Get AverageRating
+//		[HttpGet("average-rating/{storyId}")]
+//		public async Task<IActionResult> GetAverageRating(int storyId)
+//		{
+//			var story = await _unitOfWork.StoryRepository.GetByIdAsync(storyId);
+//			if (story == null)
+//			{
+//				return NotFound(new ApiResponse(404));
+//			}
+
+//			var averageScore = await _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(storyId);
+//			return Ok(new
+//			{
+//				StoryTitle = story.Title,
+//				AverageRating = averageScore
+//			});
+//		}
+
+//		// Delete Rating
+//		[HttpDelete("{ratingId}")]
+//		public async Task<IActionResult> DeleteRating(int ratingId)
+//		{
+//			var rating = await _unitOfWork.RatingRepository.GetByIdAsync(ratingId);
+//			if (rating == null)
+//			{
+//				return NotFound("rating not found.");
+//			}
+
+//			await _unitOfWork.RatingRepository.DeleteAsync(ratingId);
+//			var deleted = _unitOfWork.Complete();
+
+
+//			return Ok(new { message = "Rating deleted successfully." });
+//		}
+//	}
+//}

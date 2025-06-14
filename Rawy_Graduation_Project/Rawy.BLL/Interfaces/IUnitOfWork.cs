@@ -12,7 +12,7 @@ namespace Rawy.BLL.Interfaces
         public IStoryRepository StoryRepository { get;  }
       //  public IWriterRepository WriterRepository { get; }
 		public IUserRepository UserRepository { get; }
-		public IRatingRepository RatingRepository { get; }
+		//public IRatingRepository RatingRepository { get; }
         public ICommentRepository CommentRepository { get;  }
 		public IFollowRepository FollowRepository { get; }
 		public IResetPasswordRepository ResetPasswordRepository { get; }

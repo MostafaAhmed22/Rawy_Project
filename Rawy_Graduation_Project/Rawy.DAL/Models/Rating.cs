@@ -8,8 +8,8 @@ namespace Rawy.DAL.Models
 {
 	public class Rating : BaseEntity
 	{
-        // Score between [1,5]
-     //   public string Id { get; set; } = Guid.NewGuid().ToString();
+		// Score between [1,5]
+		//   public string Id { get; set; } = Guid.NewGuid().ToString();
 		public int Score { get; set; }
 
 		public DateTime CreatedAt { get; set; }

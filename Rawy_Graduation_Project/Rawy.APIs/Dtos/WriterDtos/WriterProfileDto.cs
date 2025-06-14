@@ -14,7 +14,7 @@ namespace Rawy.APIs.Dtos.WriterDtos
         public int FollowersCount { get; set; }
         public int FollowingsCount { get; set; }
 
-        public List<StoryDto> Stories { get; set; }
+        public List<StoryResponseDto> Stories { get; set; }
     }
 }
 
