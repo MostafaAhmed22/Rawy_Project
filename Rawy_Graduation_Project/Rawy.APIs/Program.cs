@@ -130,6 +130,36 @@ namespace Rawy.APIs
 			builder.Services.AddScoped<IStoryLikeService, StoryLikeService>();
 			builder.Services.AddHttpContextAccessor();
 
+
+			// ========== ADD HTTPCLIENT FOR MODERATION SERVICE ==========
+			builder.Services.AddHttpClient("ModerationService", client =>
+			{
+				var moderationConfig = builder.Configuration.GetSection("ModerationService");
+				var apiUrl = "https://walker11-rawipostreview.hf.space";
+				//moderationConfig["ApiUrl"];
+				var timeoutSeconds = 30;
+									 //moderationConfig.GetValue<int>("TimeoutSeconds", 30);
+
+				if (!string.IsNullOrEmpty(apiUrl))
+				{
+					client.BaseAddress = new Uri(apiUrl);
+				}
+
+				client.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
+				client.DefaultRequestHeaders.Add("User-Agent", "Rawy-Story-Platform/1.0");
+			});
+
+			// Register HttpClient for StoryController
+			builder.Services.AddScoped<HttpClient>(serviceProvider =>
+			{
+				var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+				return httpClientFactory.CreateClient("ModerationService");
+			});
+			// ============================================================
+
+
+
+
 			//builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));  // Allow DI For AutoMapper
 

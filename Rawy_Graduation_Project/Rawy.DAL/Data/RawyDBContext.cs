@@ -34,7 +34,7 @@ namespace Rawy.DAL.Data
 		
         public DbSet<Comment> Comments { get; set; }
 		public DbSet<Rating> Ratings { get; set; }
-		public DbSet<StoryLike> Likes { get; set; }
+	//	public DbSet<StoryLike> Likes { get; set; }
 		public DbSet<WriterFollow> WriterFollows { get; set; }
 		public DbSet<ResetPassword> PasswordResetCodes { get; set; }
 		public DbSet<SavedStory> savedStories { get; set; }

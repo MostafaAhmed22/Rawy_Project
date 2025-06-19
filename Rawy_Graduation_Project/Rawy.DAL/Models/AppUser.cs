@@ -14,7 +14,7 @@ namespace Rawy.DAL.Models
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 
-		public string? Bio { get; set; }
+	//	public string? Bio { get; set; }
 		public string? ProfilePictureUrl { get; set; }
 
 		public string? ProfilePicturePublicId { get; set; }
@@ -31,7 +31,7 @@ namespace Rawy.DAL.Models
 		//Rating 
 		public ICollection<Rating> Ratings { get; set; }
 
-		public ICollection<StoryLike> StoryLikes { get; set; }
+	//	public ICollection<StoryLike> StoryLikes { get; set; }
 		public ICollection<Story> Stories { get; set; }
 		public ICollection<SavedStory> SavedStories { get; set; }
     }

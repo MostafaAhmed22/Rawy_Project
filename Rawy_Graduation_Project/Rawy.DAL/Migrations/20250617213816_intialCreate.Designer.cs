@@ -9,11 +9,11 @@ using Rawy.DAL.Data;
 
 #nullable disable
 
-namespace Rawy.DAL.Data.Migrations
+namespace Rawy.DAL.Migrations
 {
     [DbContext(typeof(RawyDBContext))]
-    [Migration("20250602195501_AllUpdates")]
-    partial class AllUpdates
+    [Migration("20250617213816_intialCreate")]
+    partial class intialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,9 +169,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Bio")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -291,24 +288,19 @@ namespace Rawy.DAL.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Score")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
+                        .HasColumnType("int");
 
                     b.Property<int>("StoryId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StoryId");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("AppUserId", "StoryId")
-                        .IsUnique();
+                    b.HasIndex("StoryId");
 
                     b.ToTable("Ratings");
                 });
@@ -396,33 +388,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Stories");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.StoryLike", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsLike")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("StoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StoryId");
-
-                    b.HasIndex("AppUserId", "StoryId")
-                        .IsUnique();
-
-                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
@@ -518,7 +483,7 @@ namespace Rawy.DAL.Data.Migrations
                     b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
                         .WithMany("Ratings")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Rawy.DAL.Models.Story", "Story")
@@ -537,7 +502,7 @@ namespace Rawy.DAL.Data.Migrations
                     b.HasOne("Rawy.DAL.Models.Story", "Story")
                         .WithMany("SavedByUsers")
                         .HasForeignKey("StoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Rawy.DAL.Models.AppUser", "User")
@@ -556,29 +521,10 @@ namespace Rawy.DAL.Data.Migrations
                     b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
                         .WithMany("Stories")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("Rawy.DAL.Models.StoryLike", b =>
-                {
-                    b.HasOne("Rawy.DAL.Models.AppUser", "AppUser")
-                        .WithMany("StoryLikes")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Rawy.DAL.Models.Story", "Story")
-                        .WithMany("StoryLikes")
-                        .HasForeignKey("StoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Story");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.WriterFollow", b =>
@@ -613,8 +559,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("SavedStories");
 
                     b.Navigation("Stories");
-
-                    b.Navigation("StoryLikes");
                 });
 
             modelBuilder.Entity("Rawy.DAL.Models.Story", b =>
@@ -624,8 +568,6 @@ namespace Rawy.DAL.Data.Migrations
                     b.Navigation("Ratings");
 
                     b.Navigation("SavedByUsers");
-
-                    b.Navigation("StoryLikes");
                 });
 #pragma warning restore 612, 618
         }

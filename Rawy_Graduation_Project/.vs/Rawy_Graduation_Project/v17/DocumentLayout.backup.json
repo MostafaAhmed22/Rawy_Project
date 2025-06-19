@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\writercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\writerfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\writerfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\repositories\\followrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\repositories\\followrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.bll\\interfaces\\ifollowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ED5D260-74B5-4533-9AD3-48A9C4CAAC91}|Rawy.BLL\\Rawy.BLL.csproj|solutionrelative:rawy.bll\\interfaces\\ifollowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\writerspec\\followedstoriesspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\writerspec\\followedstoriesspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\writerspec\\writerwithstoriesspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\writerspec\\writerwithstoriesspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84684B47-2017-4DB3-BAE6-03960FDB6DD5}|Rawy.APIs\\Rawy.APIs.csproj|solutionrelative:rawy.apis\\controllers\\storycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|d:\\graduation2\\rawy_project\\rawy_graduation_project\\rawy.dal\\models\\storyspec\\storywithreviewandwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC575149-E911-4334-AB4D-916C4CDB87EC}|Rawy.DAL\\Rawy.DAL.csproj|solutionrelative:rawy.dal\\models\\storyspec\\storywithreviewandwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,41 +62,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WriterWithStoriesSpec.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
-              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
-              "RelativeToolTip": "Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAADwvxMAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FollowRepository.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\FollowRepository.cs",
+              "RelativeDocumentMoniker": "Rawy.BLL\\Repositories\\FollowRepository.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Repositories\\FollowRepository.cs",
+              "RelativeToolTip": "Rawy.BLL\\Repositories\\FollowRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T07:04:57.51Z",
+              "WhenOpened": "2025-06-19T13:11:29.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "StoryController.cs",
               "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
               "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\StoryController.cs",
               "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\StoryController.cs",
               "RelativeToolTip": "Rawy.APIs\\Controllers\\StoryController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAIwIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T07:02:20.936Z",
+              "WhenOpened": "2025-06-19T13:01:00.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StoryWithReviewAndWriter.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
+              "RelativeToolTip": "Rawy.DAL\\Models\\StorySpec\\StoryWithReviewAndWriter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T12:45:09.943Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WriterController.cs",
-              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\WriterController.cs",
-              "RelativeDocumentMoniker": "Rawy.APIs\\Controllers\\WriterController.cs",
-              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.APIs\\Controllers\\WriterController.cs",
-              "RelativeToolTip": "Rawy.APIs\\Controllers\\WriterController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAACAAAAAAAAAA==",
+              "Title": "WriterFollow.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterFollow.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\WriterFollow.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterFollow.cs",
+              "RelativeToolTip": "Rawy.DAL\\Models\\WriterFollow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T07:00:39.402Z",
+              "WhenOpened": "2025-06-19T12:43:39.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IFollowRepository.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IFollowRepository.cs",
+              "RelativeDocumentMoniker": "Rawy.BLL\\Interfaces\\IFollowRepository.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.BLL\\Interfaces\\IFollowRepository.cs",
+              "RelativeToolTip": "Rawy.BLL\\Interfaces\\IFollowRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T13:16:14.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WriterWithStoriesSpec.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
+              "RelativeToolTip": "Rawy.DAL\\Models\\WriterSpec\\WriterWithStoriesSpec.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T12:42:41.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FollowedStoriesSpec.cs",
+              "DocumentMoniker": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\FollowedStoriesSpec.cs",
+              "RelativeDocumentMoniker": "Rawy.DAL\\Models\\WriterSpec\\FollowedStoriesSpec.cs",
+              "ToolTip": "D:\\Graduation2\\Rawy_Project\\Rawy_Graduation_Project\\Rawy.DAL\\Models\\WriterSpec\\FollowedStoriesSpec.cs",
+              "RelativeToolTip": "Rawy.DAL\\Models\\WriterSpec\\FollowedStoriesSpec.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T12:42:11.385Z",
               "EditorCaption": ""
             }
           ]

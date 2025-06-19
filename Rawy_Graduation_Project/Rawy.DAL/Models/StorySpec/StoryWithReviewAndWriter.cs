@@ -1,4 +1,4 @@
-﻿using Rawy.DAL.Specification;
+﻿ using Rawy.DAL.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace Rawy.DAL.Models.StorySpec
 			AddInclude("Comments.AppUser");
 
 			//Includes.Add(S => S.Ratings);
-			Includes.Add(S => S.StoryLikes);
+		//	Includes.Add(S => S.StoryLikes);
 
 			//Apply sorting based on the 'sort' parameter
 			//if (!string.IsNullOrEmpty(specParams.Sort))
@@ -56,7 +56,7 @@ namespace Rawy.DAL.Models.StorySpec
 			Includes.Add(S => S.Comments);
 			AddInclude("Comments.AppUser");
 			//Includes.Add(S => S.Ratings);
-			Includes.Add(S => S.StoryLikes);
+		//	Includes.Add(S => S.StoryLikes);
 		}
     }
 }

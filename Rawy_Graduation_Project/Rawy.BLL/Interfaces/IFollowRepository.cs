@@ -9,6 +9,8 @@ namespace Rawy.BLL.Interfaces
 {
    public interface IFollowRepository: IGenericRepository<WriterFollow>
 	{
+		Task<List<int>> GetFollowedUserIdsAsync(int currentUserId);
 
-    }
+
+	}
 }

@@ -10,6 +10,7 @@ using Rawy.APIs.Services.Token;
 using Rawy.BLL.Interfaces;
 using Rawy.DAL.Models;
 
+
 namespace Rawy.APIs.Services.AccountService
 {
     public class AccountService : IAccountService
@@ -36,15 +37,21 @@ namespace Rawy.APIs.Services.AccountService
 			_configuration = configuration;
 		}
 
+		
+
 		public async Task<ApiResponse> RegisterWriterAsync(RegisterDto model)
 		{
 			var existingUser = await _userManager.FindByEmailAsync(model.Email);
 			if (existingUser != null)
-				return new ApiResponse(400, "Email already in use.");
+				return new ApiResponse(400, "البريد الإلكتروني مستخدم بالفعل.");
 
 			var user = _mapper.Map<AppUser>(model);
 			var result = await _userManager.CreateAsync(user, model.Password);
 
+			//var translatedErrors = result.Errors.Select(e => ErrorTranslation.Translate(e.Description));
+			//var errorMessage = string.Join(" | ", translatedErrors);
+
+			//	return BadRequest(new ApiResponse(400, errorMessage));
 			var errors = string.Join(" | ", result.Errors.Select(e => e.Description));
 			if (!result.Succeeded)
 				return new ApiResponse(400, errors);
@@ -59,7 +66,7 @@ namespace Rawy.APIs.Services.AccountService
 
 			//await _unitOfWork.WriterRepository.AddAsync(writer);
 
-			return new ApiResponse(200, "Success", new UserDto
+			return new ApiResponse(200, "تم إنشاء الحساب بنجاح", new UserDto
 			{
 				UserId = user.Id,
 				Email = user.Email,
@@ -95,7 +102,7 @@ namespace Rawy.APIs.Services.AccountService
 		public async Task<ApiResponse> ForgotPasswordAsync(ForgetPasswordDto model)
 		{
 			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null) return new ApiResponse(404, "Email doesn't exist");
+			if (user == null) return new ApiResponse(404, "البريد الإلكتروني غير موجود");
 			var code = new Random().Next(100000, 999999).ToString();
 			var resetCode = new ResetPassword
 			{
@@ -109,13 +116,13 @@ namespace Rawy.APIs.Services.AccountService
 
 			var email = new Email
 			{
-				Subject = "Reset Your Password",
+				Subject = "إعادة تعيين كلمة المرور",
 				Body = code,
 				Recipents = user.Email
 			};
 
 			await EmailService.SendEmailAsync(email);
-			return new ApiResponse(200, "Reset code sent to email");
+			return new ApiResponse(200, "تم إرسال رمز إعادة التعيين إلى البريد الإلكتروني");
 		}
 
 		public async Task<ApiResponse> ResetPasswordAsync(ResetPasswordDto model)
@@ -128,7 +135,7 @@ namespace Rawy.APIs.Services.AccountService
 			//	return new ApiResponse(400, "Invalid or expired code");
 
 			var user = await _userManager.FindByEmailAsync(model.Email);
-			if (user == null) return new ApiResponse(404, "User not found");
+			if (user == null) return new ApiResponse(404, "المستخدم غير موجود");
 
 			var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
 			var result = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
@@ -140,7 +147,7 @@ namespace Rawy.APIs.Services.AccountService
 			await _unitOfWork.ResetPasswordRepository.Delete(resetEntry);
 			 _unitOfWork.Complete();
 
-			return new ApiResponse(200, "Password reset successful");
+			return new ApiResponse(200, "تم إعادة تعيين كلمة المرور بنجاح");
 
 			#region LinkReset
 			//try

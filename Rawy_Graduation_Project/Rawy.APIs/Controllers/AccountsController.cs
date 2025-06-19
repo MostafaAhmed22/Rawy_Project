@@ -65,7 +65,7 @@ namespace Rawy.APIs.Controllers
 				return BadRequest(ModelState);
 
 			var response = await _accountService.RegisterWriterAsync(model);
-			return StatusCode(response.StatusCode,response.Data);
+			return StatusCode(response.StatusCode,response.Message);
 		}
         
 	    [HttpPost("Login")]
@@ -81,7 +81,7 @@ namespace Rawy.APIs.Controllers
 			}
 			catch
 			{
-				return Unauthorized(new ApiResponse(401, "Invalid credentials"));
+				return Unauthorized(new ApiResponse(401, "البريد الإلكتروني أو كلمة المرور غير صحيحة"));
 			}
 
 		}
@@ -240,7 +240,7 @@ namespace Rawy.APIs.Controllers
 		{
 			var isValid = await _accountService.VerifyResetCodeAsync(model.Code);
 
-			return isValid ? Ok("Code is valid.") : BadRequest("Invalid or expired code.");
+			return isValid ? Ok("الرمز صحيح.") : BadRequest("الكود غير صحيح أو انتهت صلاحيته.");
 		}
 
 

@@ -170,25 +170,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Rawy.APIs.Controllers.LikeConroller",
-    "Method": "ReactToStory",
-    "RelativePath": "api/LikeConroller/react",
-    "HttpMethod": "POST",
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "DeleteRating",
+    "RelativePath": "api/Rating/{ratingId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "Rawy.APIs.Dtos.StoryDtos.ReactToStoryDto",
+        "Name": "ratingId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Rawy.APIs.Controllers.LikeConroller",
-    "Method": "GetReactionStatus",
-    "RelativePath": "api/LikeConroller/reaction/{storyId}",
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "GetRating",
+    "RelativePath": "api/Rating/{storyId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -196,6 +196,38 @@
       {
         "Name": "storyId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "HasUserRated",
+    "RelativePath": "api/Rating/is-rated/{storyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "storyId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.RatingController",
+    "Method": "AddOrUpdateRate",
+    "RelativePath": "api/Rating/rate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ratingDto",
+        "Type": "Rawy.APIs.Dtos.StoryDtos.RatingDto",
         "IsRequired": true
       }
     ],
@@ -428,6 +460,26 @@
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.StoryController",
+    "Method": "GetFollowedStories",
+    "RelativePath": "api/Story/followed-stories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Rawy.APIs.Dtos.StoryDtos.StoryResponseDto, Rawy.APIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.StoryController",
     "Method": "SaveStories",
     "RelativePath": "api/Story/Save",
     "HttpMethod": "POST",
@@ -461,6 +513,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Rawy.APIs.Controllers.StoryController",
+    "Method": "TestModeration",
+    "RelativePath": "api/Story/test-moderation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "testDto",
+        "Type": "Rawy.APIs.Dtos.ModerationDtos.TestModerationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Rawy.APIs.Controllers.StoryController",

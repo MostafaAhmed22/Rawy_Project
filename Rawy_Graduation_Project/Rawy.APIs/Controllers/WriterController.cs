@@ -54,7 +54,7 @@ namespace Rawy.APIs.Controllers
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
 				
-				Stories = writer.Stories.Select(story => new StoryResponseDto
+				Stories = writer.Stories.OrderByDescending(s => s.CreatedAt).Select(story => new StoryResponseDto
 				{
 					Id = story.Id,
 					Title = story.Title,
@@ -67,8 +67,9 @@ namespace Rawy.APIs.Controllers
 					WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
 					PhotoUrl = story.AppUser.ProfilePictureUrl,
 					PhotoPublicId = story.AppUser.ProfilePicturePublicId,
-					//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
-					LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+					RatingstCount = _unitOfWork.RatingRepository.CountRatingsAsync(story.Id).Result,
+					//LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
 					//DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 					CommentCount = story.Comments?.Count ?? 0
 
@@ -107,7 +108,7 @@ namespace Rawy.APIs.Controllers
 				FollowersCount = writer.Followers?.Count ?? 0,
 				FollowingsCount = writer.Followings?.Count ?? 0,
 
-				Stories = writer.Stories.Select(story => new StoryResponseDto
+				Stories = writer.Stories.OrderByDescending(s => s.CreatedAt).Select(story => new StoryResponseDto
 				{
 					Id = story.Id,
 					Title = story.Title,
@@ -120,8 +121,9 @@ namespace Rawy.APIs.Controllers
 					WriterName = $"{story.AppUser.FirstName} {story.AppUser.LastName}",
 					PhotoUrl = story.AppUser.ProfilePictureUrl,
 					PhotoPublicId = story.AppUser.ProfilePicturePublicId,
-					//AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
-					LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
+					AverageRating = _unitOfWork.RatingRepository.GetAverageRatingByStoryIdAsync(story.Id).Result, // Ensure async handling in a real case
+					RatingstCount = _unitOfWork.RatingRepository.CountRatingsAsync(story.Id).Result,
+					//LikestCount = _unitOfWork.StoryLikeRepository.CountLikesAsync(story.Id).Result,
 					//DisLikeCount = _unitOfWork.StoryLikeRepository.CountDislikesAsync(story.Id).Result,
 					CommentCount = story.Comments?.Count ?? 0
 

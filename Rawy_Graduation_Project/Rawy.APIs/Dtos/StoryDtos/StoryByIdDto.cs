@@ -17,9 +17,10 @@ namespace Rawy.APIs.Dtos.StoryDtos
 		public string PhotoUrl { get; set; }
 
 		//  Story Average Rating
-		//public double? AverageRating { get; set; }
-		public int LikestCount { get; set; } // num of LikestCount
-		public int DisLikeCount { get; set; } // num of DisLikeCount 
+		public double? AverageRating { get; set; }
+		public int RatingstCount { get; set; } // num of RatingsCount
+		//public int LikestCount { get; set; } // num of LikestCount
+		//public int DisLikeCount { get; set; } // num of DisLikeCount 
 
 		public List<StoryCommentDto> Comments { get; set; }
 	}

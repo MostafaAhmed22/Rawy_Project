@@ -1,17 +1,20 @@
-﻿//using Rawy.DAL.Models;
-//using Rawy.DAL.Specification;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using Rawy.DAL.Models;
+using Rawy.DAL.Specification;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace Rawy.BLL.Interfaces
-//{
-//	public interface IRatingRepository : IGenericRepository<Rating>
-//	{
-//		Task<IEnumerable<Rating>> GetRatingByStoryIdAsync(ISpecifications<Rating> spec);
-//		Task<double> GetAverageRatingByStoryIdAsync(int storyId);
-//		Task AddRatingAsync(Rating rating);
-//	}
-//}
+namespace Rawy.BLL.Interfaces
+{
+	public interface IRatingRepository : IGenericRepository<Rating>
+	{
+		Task<IEnumerable<Rating>> GetRatingByStoryIdAsync(ISpecifications<Rating> spec);
+		Task<double> GetAverageRatingByStoryIdAsync(int storyId);
+		Task AddRatingAsync(Rating rating);
+		Task<int> CountRatingsAsync(int storyId);
+		Task<bool> HasUserRatedAsync(int userId, int storyId);
+		Task<Rating?> GetRatingByUserAndStoryAsync(int userId, int storyId);
+	}
+}

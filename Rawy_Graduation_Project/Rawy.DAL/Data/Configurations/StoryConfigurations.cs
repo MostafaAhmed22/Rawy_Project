@@ -36,10 +36,30 @@ namespace Rawy.DAL.Data.Configurations
 			//	.OnDelete(DeleteBehavior.ClientSetNull);
 
 			// Foreign Key Relationship with Writer
+			// Relationship: Story ↔ AppUser (Writer)
 			builder.HasOne(s => s.AppUser)
-				.WithMany(w => w.Stories)
-				.HasForeignKey(s => s.AppUserId)
-				.OnDelete(DeleteBehavior.Cascade);
+				   .WithMany(u => u.Stories)
+				   .HasForeignKey(s => s.AppUserId)
+				   .OnDelete(DeleteBehavior.Restrict); // Prevent delete user from deleting their stories
+
+			// Relationship: Story ↔ Comments
+			builder.HasMany(s => s.Comments)
+				   .WithOne(c => c.Story)
+				   .HasForeignKey(c => c.StoryId)
+				   .OnDelete(DeleteBehavior.Cascade);
+
+			// Relationship: Story ↔ Ratings
+			builder.HasMany(s => s.Ratings)
+				   .WithOne(r => r.Story)
+				   .HasForeignKey(r => r.StoryId)
+				   .OnDelete(DeleteBehavior.Cascade);
+
+			builder.HasMany(s => s.SavedByUsers) // Assuming you have this navigation property
+		   .WithOne(ss => ss.Story) 
+		   .HasForeignKey(ss => ss.StoryId)
+		   .OnDelete(DeleteBehavior.Cascade); // This will delete saved stories when story is d
+
+
 		}
 	}
 }
